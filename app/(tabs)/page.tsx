@@ -14,7 +14,11 @@ export default function HomePage() {
   const now = Date.now();
 
   const open = unlockedChapters(contentIndex, state);
-  const openExercises = contentIndex.exercisesInOrder.filter((e) => open.some((c) => c.id === contentIndex.chapterOfExercise.get(e.id)?.id));
+  const openIds = new Set(open.map((c) => c.id));
+  const openExercises = contentIndex.exercisesInOrder.filter((e) => {
+    const chapterId = contentIndex.chapterOfExercise.get(e.id)?.id;
+    return chapterId !== undefined && openIds.has(chapterId);
+  });
   const due = countDue(openExercises, state, now);
   const streak = effectiveStreak(state.streak, now);
 

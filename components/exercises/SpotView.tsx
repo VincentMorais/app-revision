@@ -38,10 +38,12 @@ export function SpotView({ exercise, seed, verdict, onSubmit }: ExerciseComponen
       {(line !== null || verdict) && (
         <>
           <p className="text-sm text-fg-muted">2. Pourquoi est-ce une erreur ?</p>
-          <div className="flex flex-col gap-2" role="radiogroup">
+          <div className="flex flex-col gap-2" role="radiogroup" aria-label="Raisons proposées">
             {reasons.map((r) => (
               <Choice
                 key={r.original}
+                role="radio"
+                checked={reason === r.original}
                 state={choiceState(r.original, reason, exercise.reasonAnswer, verdict)}
                 disabled={verdict !== null}
                 onClick={() => setReason(r.original)}

@@ -21,10 +21,12 @@ export function McqView({ exercise, seed, verdict, onSubmit }: ExerciseComponent
       <Prompt>{exercise.prompt}</Prompt>
       {exercise.code && <CodeBlock code={exercise.code.code} language={exercise.code.language} lineNumbers={isOutput} />}
       {isOutput && <p className="text-sm text-fg-muted">Que se passe-t-il à l&apos;exécution ?</p>}
-      <div className="flex flex-col gap-2" role="radiogroup">
+      <div className="flex flex-col gap-2" role="radiogroup" aria-label="Réponses proposées">
         {choices.map((c) => (
           <Choice
             key={c.original}
+            role="radio"
+            checked={selected === c.original}
             state={choiceState(c.original, selected, exercise.answer, verdict)}
             disabled={verdict !== null}
             onClick={() => setSelected(c.original)}

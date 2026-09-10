@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { contentIndex } from "@/content";
 import { ExerciseView, KIND_LABELS } from "@/components/exercises/ExerciseView";
 import { LessonView } from "@/components/lesson/LessonView";
@@ -34,6 +34,25 @@ export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; titl
 
   const steps = active.steps;
   const total = steps.length;
+  const current = step < total ? steps[step] : undefined;
+
+  /**
+   * Une étape peut pointer sur un id absent du contenu (sauvegarde importée,
+   * contenu remanié entre deux versions). On la saute — depuis un effet, pas
+   * pendant le rendu : avancer l'état au milieu d'un rendu est fragile.
+   */
+  const missing =
+    current === undefined
+      ? false
+      : current.kind === "lesson"
+        ? !contentIndex.lessonsById.has(current.lessonId)
+        : !contentIndex.exercisesById.has(current.exerciseId);
+
+  useEffect(() => {
+    if (!missing) return;
+    setVerdict(null);
+    setStep((s) => s + 1);
+  }, [missing, step]);
 
   if (total === 0) {
     return (
@@ -69,7 +88,7 @@ export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; titl
     );
   }
 
-  const current = steps[step];
+  if (current === undefined) return null;
 
   function next() {
     setVerdict(null);
@@ -78,10 +97,8 @@ export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; titl
 
   if (current.kind === "lesson") {
     const lesson = contentIndex.lessonsById.get(current.lessonId);
-    if (!lesson) {
-      next();
-      return null;
-    }
+    // `missing` a déjà programmé le saut : on n'affiche rien en attendant.
+    if (!lesson) return null;
     return (
       <Shell title={title} mode={active.mode} progress={step / total} onExit={onExit} counter={`${step + 1}/${total}`}>
         <LessonView
@@ -98,10 +115,7 @@ export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; titl
   }
 
   const exercise = contentIndex.exercisesById.get(current.exerciseId);
-  if (!exercise) {
-    next();
-    return null;
-  }
+  if (!exercise) return null;
 
   function submit(answer: Answer) {
     if (!exercise) return;

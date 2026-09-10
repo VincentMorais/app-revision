@@ -58,7 +58,14 @@ const CHOICE_CLASS: Record<ChoiceState, string> = {
   muted: "border-border bg-bg-elevated text-fg-muted",
 };
 
-/** Option pleine largeur, 44 px minimum, texte aligné à gauche. */
+/**
+ * Option pleine largeur, 44 px minimum, texte aligné à gauche.
+ *
+ * Dans un `role="radiogroup"` (choix unique), passer `role="radio"` et
+ * `checked` : un lecteur d'écran doit annoncer un choix parmi n, pas une
+ * bascule indépendante. `checked` reste la sélection de l'utilisateur même
+ * après le verdict, où `state` bascule sur juste/faux.
+ */
 export function Choice({
   state,
   onClick,
@@ -66,6 +73,8 @@ export function Choice({
   prefix,
   children,
   mono = false,
+  role,
+  checked,
 }: {
   state: ChoiceState;
   onClick?: () => void;
@@ -73,13 +82,18 @@ export function Choice({
   prefix?: ReactNode;
   children: ReactNode;
   mono?: boolean;
+  role?: "radio";
+  checked?: boolean;
 }) {
+  const isRadio = role === "radio";
   return (
     <button
       type="button"
       onClick={onClick}
       disabled={disabled}
-      aria-pressed={state === "selected"}
+      role={isRadio ? "radio" : undefined}
+      aria-checked={isRadio ? checked === true : undefined}
+      aria-pressed={isRadio ? undefined : state === "selected"}
       className={`flex min-h-11 w-full items-center gap-3 rounded-lg border px-3 py-2.5 text-left text-[15px] leading-snug ${mono ? "font-mono text-[13px]" : ""} ${CHOICE_CLASS[state]}`}
     >
       {prefix !== undefined && <span className="shrink-0 text-sm text-fg-muted">{prefix}</span>}

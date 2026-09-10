@@ -8,7 +8,7 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { contentIndex } from "@/content";
 import { answerExercise, markLessonRead } from "./engine";
 import type { Grade } from "./srs";
-import { createEmptyState, loadState, resetState, subscribe, updateState, type AppState } from "./storage";
+import { createEmptyState, loadState, resetState, saveState, subscribe, updateState, type AppState } from "./storage";
 
 const SERVER_SNAPSHOT: AppState = createEmptyState();
 
@@ -33,5 +33,9 @@ export const actions = {
   },
   reset(): AppState {
     return resetState();
+  },
+  /** Remplace toute la progression par celle d'une sauvegarde importée. */
+  restore(state: AppState): AppState {
+    return saveState(state);
   },
 };
