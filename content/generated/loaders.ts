@@ -18,6 +18,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "java-exceptions": () => import("../java/exceptions"),
   "java-fondamentaux": () => import("../java/fondamentaux"),
   "java-interfaces-classes-abstraites": () => import("../java/interfaces-classes-abstraites"),
+  "java-jvm": () => import("../java/jvm"),
   "java-lambdas-streams": () => import("../java/lambdas-streams"),
   "java-moderne": () => import("../java/moderne"),
   "react-etat-data": () => import("../react/etat-data"),

@@ -5,6 +5,7 @@ import { chapter as equalsHashcodeComparable } from "./equals-hashcode-comparabl
 import { chapter as exceptions } from "./exceptions";
 import { chapter as fondamentaux } from "./fondamentaux";
 import { chapter as interfacesClassesAbstraites } from "./interfaces-classes-abstraites";
+import { chapter as jvm } from "./jvm";
 import { chapter as lambdasStreams } from "./lambdas-streams";
 import { chapter as moderne } from "./moderne";
 
@@ -23,5 +24,6 @@ export const javaCourse: Course = {
     lambdasStreams,
     moderne,
     concurrence,
+    jvm,
   ],
 };

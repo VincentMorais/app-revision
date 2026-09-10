@@ -2595,6 +2595,299 @@ export const courses: CourseMeta[] = [
           }
         ],
         "format": "detaille"
+      },
+      {
+        "id": "java-jvm",
+        "title": "La JVM : mémoire, ramasse-miettes, fuites et diagnostic",
+        "objective": "Savoir où va la mémoire d'une application Java : distinguer les zones, lire un débordement de pile et une saturation du tas, comprendre l'atteignabilité et le modèle générationnel, choisir un collecteur sans régler à l'aveugle, reconnaître les motifs de fuite, situer le chargement de classes et diagnostiquer un incident en partant du symptôme.",
+        "prerequisites": [
+          "java-fondamentaux"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l1",
+            "title": "Les zones mémoire"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-jvm-01",
+            "difficulty": 1,
+            "tags": [
+              "jvm",
+              "memoire"
+            ],
+            "prompt": "Où vit l'objet créé par `Client c = new Client();` dans une méthode ?"
+          },
+          {
+            "kind": "match",
+            "id": "java-jvm-02",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "memoire"
+            ],
+            "prompt": "Associe chaque zone à ce qu'elle contient."
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-03",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "memoire",
+              "docker"
+            ],
+            "prompt": "Pourquoi fixer `-Xmx` à la taille de la limite du conteneur est-il une mauvaise idée ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l2",
+            "title": "La pile et StackOverflowError"
+          },
+          {
+            "kind": "output",
+            "id": "java-jvm-04",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "pile"
+            ],
+            "prompt": "Que se passe-t-il à l'exécution de `compte(5)` ?"
+          },
+          {
+            "kind": "spot",
+            "id": "java-jvm-05",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "pile"
+            ],
+            "prompt": "Cet accesseur provoque un `StackOverflowError`. Quelle ligne ?"
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-06",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "pile"
+            ],
+            "prompt": "Comment lit-on une trace de `StackOverflowError`, et quand augmenter `-Xss` est-il légitime ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l3",
+            "title": "Le tas et OutOfMemoryError"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-jvm-07",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "memoire"
+            ],
+            "prompt": "Que signifie exactement `OutOfMemoryError: Java heap space` ?"
+          },
+          {
+            "kind": "order",
+            "id": "java-jvm-08",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "diagnostic"
+            ],
+            "prompt": "Une application tombe en `OutOfMemoryError` en production. Remets le diagnostic dans l'ordre."
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-09",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "diagnostic"
+            ],
+            "prompt": "Pourquoi la trace d'un `OutOfMemoryError` ne désigne-t-elle presque jamais le coupable ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l4",
+            "title": "Le ramasse-miettes : atteignabilité et générations"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-jvm-10",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "gc"
+            ],
+            "prompt": "Deux objets se référencent mutuellement et plus aucune racine ne les atteint. Que se passe-t-il ?"
+          },
+          {
+            "kind": "match",
+            "id": "java-jvm-11",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "gc"
+            ],
+            "prompt": "Associe chaque élément à son rôle dans le modèle générationnel."
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-12",
+            "difficulty": 3,
+            "tags": [
+              "jvm",
+              "gc"
+            ],
+            "prompt": "Pourquoi « inutile » et « collectable » ne sont-ils pas la même chose ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l5",
+            "title": "Les collecteurs et les pauses"
+          },
+          {
+            "kind": "fill",
+            "id": "java-jvm-13",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "gc"
+            ],
+            "prompt": "Complète les options : journaliser les collectes, et viser une durée de pause."
+          },
+          {
+            "kind": "mcq",
+            "id": "java-jvm-14",
+            "difficulty": 3,
+            "tags": [
+              "jvm",
+              "gc"
+            ],
+            "prompt": "Fixer `-XX:MaxGCPauseMillis=10` sur une application chargée avec G1 : quel risque ?"
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-15",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "gc",
+              "diagnostic"
+            ],
+            "prompt": "Que cherche-t-on dans des journaux de collecte, et pourquoi avant tout réglage ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l6",
+            "title": "Les fuites mémoire en Java"
+          },
+          {
+            "kind": "spot",
+            "id": "java-jvm-16",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "fuites"
+            ],
+            "prompt": "Ce cache fait monter la mémoire en escalier. Quelle ligne est en cause ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-jvm-17",
+            "difficulty": 3,
+            "tags": [
+              "jvm",
+              "fuites"
+            ],
+            "prompt": "Dans quel cas une `WeakHashMap` n'empêche-t-elle pas la fuite ?"
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-18",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "fuites"
+            ],
+            "prompt": "Cite les motifs de fuite les plus fréquents en Java."
+          },
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l7",
+            "title": "Le chargement de classes"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-jvm-19",
+            "difficulty": 3,
+            "tags": [
+              "jvm",
+              "classloading"
+            ],
+            "prompt": "Comment un `ClassCastException: com.example.Client cannot be cast to com.example.Client` est-il possible ?"
+          },
+          {
+            "kind": "match",
+            "id": "java-jvm-20",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "classloading"
+            ],
+            "prompt": "Associe chaque erreur à sa cause."
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-21",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "classloading"
+            ],
+            "prompt": "Quelle différence entre le chargement et l'initialisation d'une classe ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "java-jvm-l8",
+            "title": "Diagnostiquer une JVM"
+          },
+          {
+            "kind": "match",
+            "id": "java-jvm-22",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "diagnostic"
+            ],
+            "prompt": "Associe chaque symptôme au premier outil à sortir."
+          },
+          {
+            "kind": "mcq",
+            "id": "java-jvm-23",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "diagnostic"
+            ],
+            "prompt": "Quel est l'intérêt d'un enregistrement JFR continu par rapport à `jcmd` au moment de l'incident ?"
+          },
+          {
+            "kind": "recall",
+            "id": "java-jvm-24",
+            "difficulty": 2,
+            "tags": [
+              "jvm",
+              "diagnostic"
+            ],
+            "prompt": "Quelles options activer par défaut en production, et pourquoi avant d'en avoir besoin ?"
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },
