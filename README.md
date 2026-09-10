@@ -17,7 +17,8 @@ fois chargée, sans backend ni compte.
 npm run dev     # serveur de dev
 npm test        # tests unitaires (moteur)
 npm run lint
-npm run build   # build + génération de public/precache.json
+npm run build   # métadonnées + build + génération de public/precache.json
+npm run content:meta  # régénère content/generated après un changement de contenu
 npm run icons   # régénère les PNG de la PWA depuis public/icon.svg
 ```
 
@@ -37,6 +38,9 @@ components/
   lesson/         LessonView : rendu des blocs text / code / callout / comparison
   nav/            BottomNav
 content/        contenu pédagogique typé, un fichier par chapitre — jamais dans les composants
+  registry.ts       la liste ordonnée des parcours, sans import de contenu
+  generated/        métadonnées et table des chargeurs (générés, versionnés)
+  full.ts           chargement du contenu complet, à la demande et par chapitre
 lib/
   types.ts      Course → Chapter → Unit (Lesson | Exercise), 7 types d'exercices
   content.ts    index en lecture seule sur les parcours (ids, ordre, rattachements)
@@ -102,6 +106,31 @@ badges.
   réponse est fausse — chacun rejouable isolément.
 - **Statistiques** : réponses, série, taux par parcours et par notion (avec le compte des
   réponses laborieuses), notions les plus ratées. Réinitialisation avec confirmation.
+
+## Chargement du contenu
+
+Le contenu pèse près d'un mégaoctet, dont **88 % de corps** — blocs de leçon,
+code, choix, explications. Or les écrans qui listent, comptent et calculent la
+progression n'ont besoin que des identifiants, types, tags et énoncés.
+
+Le contenu est donc coupé en deux. `content/generated/meta.ts` porte les
+métadonnées (138 ko) et se charge avec l'application ; les corps restent dans
+`content/<parcours>/<chapitre>.ts` et sont importés **dynamiquement, chapitre
+par chapitre**, au moment d'entrer en session (`content/full.ts`, monté par
+`components/session/SessionContent.tsx`). Le bundler en fait autant de morceaux
+séparés, tous préchargés par le service worker : le hors ligne reste complet.
+
+Effet sur la page chapitre : **454 ko → 152 ko** de JS au premier chargement.
+
+Les deux fichiers de `content/generated/` sont produits par
+`scripts/gen-content-meta.mjs` avant `next build`, et versionnés pour que les
+tests tournent sans build préalable. `content/__tests__/content.test.ts`
+compare les métadonnées générées à celles dérivées des fichiers de chapitre :
+toute dérive fait échouer les tests.
+
+Les types complets étendent les types de métadonnées (`Lesson = LessonMeta &
+{ blocks }`), si bien qu'un `Exercise` reste utilisable partout où un
+`ExerciseMeta` est attendu.
 
 ## Hors ligne et installation
 

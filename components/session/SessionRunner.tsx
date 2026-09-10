@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { contentIndex } from "@/content";
+import type { FullContent } from "@/content/full";
 import { ExerciseView, KIND_LABELS } from "@/components/exercises/ExerciseView";
 import { LessonView } from "@/components/lesson/LessonView";
 import { Button } from "@/components/ui/Button";
@@ -24,7 +24,7 @@ const MODE_LABEL: Record<SessionPlan["mode"], string> = {
  * Chaque réponse est enregistrée dès la validation (pas à la fin), pour ne
  * rien perdre si la session est quittée en cours.
  */
-export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; title: string; onExit: () => void }) {
+export function SessionRunner({ plan, title, contenu, onExit }: { plan: SessionPlan; title: string; contenu: FullContent; onExit: () => void }) {
   const [sessionSeed] = useState(() => Date.now());
   const [active, setActive] = useState<SessionPlan>(plan);
   const [step, setStep] = useState(0);
@@ -45,8 +45,8 @@ export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; titl
     current === undefined
       ? false
       : current.kind === "lesson"
-        ? !contentIndex.lessonsById.has(current.lessonId)
-        : !contentIndex.exercisesById.has(current.exerciseId);
+        ? !contenu.lessonsById.has(current.lessonId)
+        : !contenu.exercisesById.has(current.exerciseId);
 
   useEffect(() => {
     if (!missing) return;
@@ -96,7 +96,7 @@ export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; titl
   }
 
   if (current.kind === "lesson") {
-    const lesson = contentIndex.lessonsById.get(current.lessonId);
+    const lesson = contenu.lessonsById.get(current.lessonId);
     // `missing` a déjà programmé le saut : on n'affiche rien en attendant.
     if (!lesson) return null;
     return (
@@ -114,7 +114,7 @@ export function SessionRunner({ plan, title, onExit }: { plan: SessionPlan; titl
     );
   }
 
-  const exercise = contentIndex.exercisesById.get(current.exerciseId);
+  const exercise = contenu.exercisesById.get(current.exerciseId);
   if (!exercise) return null;
 
   function submit(answer: Answer) {

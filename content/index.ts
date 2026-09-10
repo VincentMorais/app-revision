@@ -1,34 +1,19 @@
 /**
- * Registre des parcours. Un fichier par chapitre dans `content/<parcours>/`,
- * enregistré dans `content/<parcours>/index.ts` puis ici.
+ * Point d'entrée du contenu — **métadonnées seulement**.
  *
- * L'ordre des parcours et des chapitres suit `referentiel-poste-java-react.md`.
- * Le plan complet, les ids et les prérequis sont dans `content/PLAN.md`.
+ * Le contenu complet (blocs de leçon, choix, code, explications) représente
+ * 88 % du poids et n'est utile qu'en session : il est chargé à la demande,
+ * chapitre par chapitre, via `content/full.ts`. Importer ici les fichiers de
+ * chapitre les ferait retomber dans le chunk partagé de toutes les pages.
+ *
+ * Les métadonnées sont produites par `scripts/gen-content-meta.mjs` à partir
+ * des `content/<parcours>/index.ts`, qui restent la source de vérité.
  */
 
 import { buildIndex } from "@/lib/content";
-import type { Course } from "@/lib/types";
-import { archiCourse } from "./archi";
-import { dataCourse } from "./data";
-import { devopsCourse } from "./devops";
-import { dockerCourse } from "./docker";
-import { javaCourse } from "./java";
-import { reactCourse } from "./react";
-import { springCourse } from "./spring";
-import { testsCourse } from "./tests";
-import { transverseCourse } from "./transverse";
+import { courses } from "./generated/meta";
 
-export const courses: Course[] = [
-  javaCourse,
-  springCourse,
-  dataCourse,
-  archiCourse,
-  testsCourse,
-  dockerCourse,
-  reactCourse,
-  devopsCourse,
-  transverseCourse,
-];
+export { courses };
 
 /** Index construit une seule fois au chargement du module. */
 export const contentIndex = buildIndex(courses);

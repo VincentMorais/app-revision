@@ -12,7 +12,7 @@
 import { exercisesOf, type ContentIndex } from "./content";
 import { masteryOf, type Mastery } from "./srs";
 import type { AppState } from "./storage";
-import type { Chapter } from "./types";
+import type { ChapterMeta } from "./types";
 
 export const VALIDATION_THRESHOLD = 0.7;
 
@@ -38,7 +38,7 @@ export type ChapterProgress = ChapterMastery & {
   meetsThreshold: boolean;
 };
 
-export function chapterMastery(chapter: Chapter, state: AppState): ChapterMastery {
+export function chapterMastery(chapter: ChapterMeta, state: AppState): ChapterMastery {
   const exercises = exercisesOf(chapter);
   const total = exercises.length;
   const byLevel: Record<Mastery, number> = { new: 0, fragile: 0, learning: 0, acquired: 0 };
@@ -54,18 +54,18 @@ export function chapterMastery(chapter: Chapter, state: AppState): ChapterMaster
   return { total, seen, mastered, rate: total === 0 ? 1 : mastered / total, byLevel };
 }
 
-export function isChapterValidated(chapter: Chapter, state: AppState): boolean {
+export function isChapterValidated(chapter: ChapterMeta, state: AppState): boolean {
   return state.validatedChapters[chapter.id] !== undefined;
 }
 
-export function isChapterUnlocked(chapter: Chapter, index: ContentIndex, state: AppState): boolean {
+export function isChapterUnlocked(chapter: ChapterMeta, index: ContentIndex, state: AppState): boolean {
   return chapter.prerequisites.every((id) => {
     const prereq = index.chaptersById.get(id);
     return prereq !== undefined && isChapterValidated(prereq, state);
   });
 }
 
-export function chapterProgress(chapter: Chapter, index: ContentIndex, state: AppState): ChapterProgress {
+export function chapterProgress(chapter: ChapterMeta, index: ContentIndex, state: AppState): ChapterProgress {
   const mastery = chapterMastery(chapter, state);
   const validatedAt = state.validatedChapters[chapter.id] ?? null;
   return {
@@ -95,8 +95,8 @@ export function settleValidation(state: AppState, index: ContentIndex, now: numb
 }
 
 /** Chapitres ouverts, dans l'ordre du référentiel. */
-export function unlockedChapters(index: ContentIndex, state: AppState): Chapter[] {
-  const out: Chapter[] = [];
+export function unlockedChapters(index: ContentIndex, state: AppState): ChapterMeta[] {
+  const out: ChapterMeta[] = [];
   for (const course of index.courses) {
     for (const chapter of course.chapters) {
       if (isChapterUnlocked(chapter, index, state)) out.push(chapter);

@@ -3,6 +3,7 @@
 import { useParams, useRouter, useSearchParams } from "next/navigation";
 import { useMemo } from "react";
 import { contentIndex } from "@/content";
+import { SessionContent } from "@/components/session/SessionContent";
 import { SessionRunner } from "@/components/session/SessionRunner";
 import { Button } from "@/components/ui/Button";
 import { isChapterUnlocked } from "@/lib/progress";
@@ -62,5 +63,16 @@ export function LearnChapterClient() {
       </main>
     );
   }
-  return <SessionRunner plan={plan} title={chapter.title} onExit={() => router.push("/apprendre")} />;
+  return (
+    <SessionContent plan={plan}>
+      {(contenu) => (
+        <SessionRunner
+          plan={plan}
+          title={chapter.title}
+          contenu={contenu}
+          onExit={() => router.push("/apprendre")}
+        />
+      )}
+    </SessionContent>
+  );
 }

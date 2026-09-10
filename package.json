@@ -4,13 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/gen-precache.mjs",
+    "build": "node scripts/gen-content-meta.mjs && next build && node scripts/gen-precache.mjs",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit",
-    "icons": "node scripts/gen-icons.mjs"
+    "icons": "node scripts/gen-icons.mjs",
+    "content:meta": "node scripts/gen-content-meta.mjs"
   },
   "dependencies": {
     "next": "15.5.25",

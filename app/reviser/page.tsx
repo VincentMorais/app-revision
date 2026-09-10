@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useMemo } from "react";
 import { contentIndex } from "@/content";
+import { SessionContent } from "@/components/session/SessionContent";
 import { SessionRunner } from "@/components/session/SessionRunner";
 import { Button } from "@/components/ui/Button";
 import { unlockedChapters } from "@/lib/progress";
@@ -39,5 +40,16 @@ export default function ReviewPage() {
       </main>
     );
   }
-  return <SessionRunner plan={plan} title="Révision du jour" onExit={() => router.push("/")} />;
+  return (
+    <SessionContent plan={plan}>
+      {(contenu) => (
+        <SessionRunner
+          plan={plan}
+          title="Révision du jour"
+          contenu={contenu}
+          onExit={() => router.push("/")}
+        />
+      )}
+    </SessionContent>
+  );
 }

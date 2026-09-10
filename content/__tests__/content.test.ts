@@ -11,10 +11,30 @@
 import { describe, expect, it } from "vitest";
 import { contentIndex, courses } from "@/content";
 import { checkChapter } from "@/lib/content-rules";
-import { isExercise, isLesson, type Chapter } from "@/lib/types";
+import { isExercise, isLesson, type Chapter, type ChapterMeta, type UnitMeta } from "@/lib/types";
+import { courses as generatedCourses } from "@/content/generated/meta";
+import { chapterLoaders } from "@/content/generated/loaders";
+
+/** Même extraction que scripts/gen-content-meta.mjs, pour comparer. */
+function metaDuChapitre(chapter: Chapter): ChapterMeta {
+  const units: UnitMeta[] = chapter.units.map((u) =>
+    isLesson(u)
+      ? { kind: "lesson" as const, id: u.id, title: u.title }
+      : { kind: u.kind, id: u.id, difficulty: u.difficulty, tags: u.tags, prompt: u.prompt },
+  );
+  const meta: ChapterMeta = {
+    id: chapter.id,
+    title: chapter.title,
+    objective: chapter.objective,
+    prerequisites: chapter.prerequisites,
+    units,
+  };
+  if (chapter.format) meta.format = chapter.format;
+  return meta;
+}
 
 const modules = import.meta.glob<{ chapter?: Chapter }>(
-  ["../*/*.ts", "!../*/index.ts", "!../demo/*", "!../__tests__/*"],
+  ["../*/*.ts", "!../*/index.ts", "!../demo/*", "!../__tests__/*", "!../generated/*"],
   { eager: true },
 );
 
@@ -70,5 +90,34 @@ describe("chapitre étalon", () => {
     expect(ch).toBeDefined();
     expect(ch.units.filter(isLesson)).toHaveLength(4);
     expect(ch.units.filter(isExercise)).toHaveLength(30);
+  });
+});
+
+describe("métadonnées générées", () => {
+  it("content/generated/meta.ts est à jour", () => {
+    // Les métadonnées sont dérivées des fichiers de chapitre par
+    // scripts/gen-content-meta.mjs. Si un chapitre est ajouté ou modifié
+    // sans régénérer, ce test le dit — sinon la dérive passerait inaperçue
+    // jusqu'à un écran vide en production.
+    const attendu = new Map(
+      chapterFiles.map(({ chapter }) => [chapter.id, metaDuChapitre(chapter)]),
+    );
+    const genere = new Map(
+      generatedCourses.flatMap((c) => c.chapters.map((ch) => [ch.id, ch])),
+    );
+
+    expect([...genere.keys()].sort()).toEqual([...attendu.keys()].sort());
+    for (const [id, ch] of attendu) {
+      expect(genere.get(id), `chapitre ${id} : lancer npm run content:meta`).toEqual(ch);
+    }
+  });
+
+  it("chaque chapitre a un chargeur de contenu complet", () => {
+    for (const { chapter } of chapterFiles) {
+      expect(chapterLoaders[chapter.id], `pas de chargeur pour ${chapter.id}`).toBeDefined();
+    }
+    expect(Object.keys(chapterLoaders).sort()).toEqual(
+      chapterFiles.map((c) => c.chapter.id).sort(),
+    );
   });
 });

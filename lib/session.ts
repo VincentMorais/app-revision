@@ -16,7 +16,7 @@
 import { createRng, shuffle } from "./random";
 import { DAY_MS, sortDue, type ItemState } from "./srs";
 import type { AppState } from "./storage";
-import type { Chapter, Exercise } from "./types";
+import type { ChapterMeta, ExerciseMeta } from "./types";
 
 export type SessionMode = "learn" | "review" | "replay";
 
@@ -57,7 +57,7 @@ export function capLearningSteps(steps: SessionStep[]): SessionStep[] {
 }
 
 export type LearningOptions = {
-  chapter: Chapter;
+  chapter: ChapterMeta;
   state: AppState;
   /**
    * Si vrai (défaut), on saute les leçons déjà lues et les exercices déjà
@@ -102,7 +102,7 @@ export function composeLearningSession(opts: LearningOptions): SessionPlan {
 }
 
 /** Position dans un chapitre : unités faites / total. */
-export function learningProgress(chapter: Chapter, state: AppState): { done: number; total: number } {
+export function learningProgress(chapter: ChapterMeta, state: AppState): { done: number; total: number } {
   let done = 0;
   for (const unit of chapter.units) {
     if (unit.kind === "lesson") {
@@ -122,7 +122,7 @@ export const REVIEW_DEFAULT = 12;
 
 export type ReviewOptions = {
   /** Exercices éligibles (chapitres ouverts), dans l'ordre du référentiel. */
-  exercises: Exercise[];
+  exercises: ExerciseMeta[];
   state: AppState;
   now: number;
   /** Taille visée. Défaut 12, bornée à [10, 15]. */
@@ -132,7 +132,7 @@ export type ReviewOptions = {
 };
 
 /** Nombre d'items dus, pour l'afficher sur l'accueil. */
-export function countDue(exercises: Exercise[], state: AppState, now: number): number {
+export function countDue(exercises: ExerciseMeta[], state: AppState, now: number): number {
   let n = 0;
   for (const ex of exercises) {
     const st = state.items[ex.id];

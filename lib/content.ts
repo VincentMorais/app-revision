@@ -3,26 +3,34 @@
  * rattachement exercice → chapitre → parcours.
  */
 
-import { isExercise, isLesson, type Chapter, type Course, type Exercise, type Lesson } from "./types";
+import { isExercise, isLesson, type ChapterMeta, type CourseMeta, type ExerciseMeta, type LessonMeta, type UnitMeta } from "./types";
 
+/**
+ * Index sur les **métadonnées** : identifiants, titres, types, tags, énoncés.
+ * Les corps de leçons et d'exercices ne sont pas ici — ils sont chargés par
+ * chapitre au moment d'entrer en session (`content/full.ts`).
+ */
 export type ContentIndex = {
-  courses: Course[];
-  chaptersById: Map<string, Chapter>;
-  exercisesById: Map<string, Exercise>;
-  lessonsById: Map<string, Lesson>;
+  courses: CourseMeta[];
+  chaptersById: Map<string, ChapterMeta>;
+  exercisesById: Map<string, ExerciseMeta>;
+  lessonsById: Map<string, LessonMeta>;
   /** Tous les exercices, dans l'ordre du référentiel (parcours → chapitre → unité). */
-  exercisesInOrder: Exercise[];
-  chapterOfExercise: Map<string, Chapter>;
-  courseOfChapter: Map<string, Course>;
+  exercisesInOrder: ExerciseMeta[];
+  chapterOfExercise: Map<string, ChapterMeta>;
+  /** Sert à savoir quels chapitres charger pour une session. */
+  chapterOfLesson: Map<string, ChapterMeta>;
+  courseOfChapter: Map<string, CourseMeta>;
 };
 
-export function buildIndex(courses: Course[]): ContentIndex {
-  const chaptersById = new Map<string, Chapter>();
-  const exercisesById = new Map<string, Exercise>();
-  const lessonsById = new Map<string, Lesson>();
-  const exercisesInOrder: Exercise[] = [];
-  const chapterOfExercise = new Map<string, Chapter>();
-  const courseOfChapter = new Map<string, Course>();
+export function buildIndex(courses: CourseMeta[]): ContentIndex {
+  const chaptersById = new Map<string, ChapterMeta>();
+  const exercisesById = new Map<string, ExerciseMeta>();
+  const lessonsById = new Map<string, LessonMeta>();
+  const exercisesInOrder: ExerciseMeta[] = [];
+  const chapterOfExercise = new Map<string, ChapterMeta>();
+  const chapterOfLesson = new Map<string, ChapterMeta>();
+  const courseOfChapter = new Map<string, CourseMeta>();
 
   for (const course of courses) {
     for (const chapter of course.chapters) {
@@ -35,6 +43,7 @@ export function buildIndex(courses: Course[]): ContentIndex {
         if (isLesson(unit)) {
           if (lessonsById.has(unit.id)) throw new Error(`Id de leçon en double : ${unit.id}`);
           lessonsById.set(unit.id, unit);
+          chapterOfLesson.set(unit.id, chapter);
         } else if (isExercise(unit)) {
           if (exercisesById.has(unit.id)) throw new Error(`Id d'exercice en double : ${unit.id}`);
           exercisesById.set(unit.id, unit);
@@ -60,14 +69,15 @@ export function buildIndex(courses: Course[]): ContentIndex {
     lessonsById,
     exercisesInOrder,
     chapterOfExercise,
+    chapterOfLesson,
     courseOfChapter,
   };
 }
 
-export function exercisesOf(chapter: Chapter): Exercise[] {
+export function exercisesOf<U extends UnitMeta>(chapter: { units: U[] }): Exclude<U, { kind: "lesson" }>[] {
   return chapter.units.filter(isExercise);
 }
 
-export function lessonsOf(chapter: Chapter): Lesson[] {
+export function lessonsOf<U extends UnitMeta>(chapter: { units: U[] }): Extract<U, { kind: "lesson" }>[] {
   return chapter.units.filter(isLesson);
 }

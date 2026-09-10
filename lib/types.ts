@@ -43,11 +43,18 @@ export type Block =
   /** Deux colonnes côte à côte (ex. surcharge vs redéfinition). */
   | { kind: "comparison"; title?: string; left: ComparisonSide; right: ComparisonSide };
 
-export type Lesson = {
+/**
+ * Ce que l'application connaît d'une leçon sans charger son contenu.
+ * Voir `UnitMeta` pour la raison de cette séparation.
+ */
+export type LessonMeta = {
   kind: "lesson";
   id: string;
   title: string;
-  /** 150 à 300 mots, un concept par leçon. */
+};
+
+export type Lesson = LessonMeta & {
+  /** 500 à 900 mots en format détaillé, une notion par leçon. */
   blocks: Block[];
 };
 
@@ -166,6 +173,50 @@ export const EXERCISE_KINDS: readonly ExerciseKind[] = [
 
 export type Unit = Lesson | Exercise;
 
+// ---------------------------------------------------------------------------
+// Métadonnées
+// ---------------------------------------------------------------------------
+
+/**
+ * Le contenu pèse près d'un mégaoctet, dont 88 % de corps de leçons et
+ * d'exercices — blocs, code, choix, explications. Or les écrans qui listent,
+ * comptent et calculent la progression n'ont besoin que des identifiants, des
+ * types, des tags et des énoncés.
+ *
+ * On sépare donc les **métadonnées**, chargées avec l'application, du
+ * **contenu complet**, chargé à la demande par chapitre au moment d'entrer
+ * en session (`content/full.ts`). Les types complets sont des extensions des
+ * types de métadonnées : un `Exercise` est utilisable partout où un
+ * `ExerciseMeta` est attendu.
+ */
+export type ExerciseMeta = {
+  kind: ExerciseKind;
+  id: string;
+  difficulty: Difficulty;
+  tags: string[];
+  /** Énoncé : affiché dans le journal d'erreurs sans charger le corps. */
+  prompt: string;
+};
+
+export type UnitMeta = LessonMeta | ExerciseMeta;
+
+export type ChapterMeta = {
+  id: string;
+  title: string;
+  objective: string;
+  prerequisites: string[];
+  format?: ChapterFormat;
+  units: UnitMeta[];
+};
+
+export type CourseMeta = {
+  id: string;
+  title: string;
+  description: string;
+  icon: string;
+  chapters: ChapterMeta[];
+};
+
 /**
  * Densité éditoriale du chapitre, qui décide des règles vérifiées par
  * `lib/content-rules.ts`.
@@ -202,10 +253,14 @@ export type Course = {
   chapters: Chapter[];
 };
 
-export function isLesson(unit: Unit): unit is Lesson {
+/**
+ * Gardes génériques : appliqués à des `Unit` ils affinent vers `Lesson` et
+ * `Exercise`, appliqués à des `UnitMeta` vers `LessonMeta` et `ExerciseMeta`.
+ */
+export function isLesson<T extends UnitMeta>(unit: T): unit is Extract<T, { kind: "lesson" }> {
   return unit.kind === "lesson";
 }
 
-export function isExercise(unit: Unit): unit is Exercise {
+export function isExercise<T extends UnitMeta>(unit: T): unit is Exclude<T, { kind: "lesson" }> {
   return unit.kind !== "lesson";
 }
