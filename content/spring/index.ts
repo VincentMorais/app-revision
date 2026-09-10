@@ -1,4 +1,5 @@
 import type { Course } from "@/lib/types";
+import { chapter as configuration } from "./configuration";
 import { chapter as ioc } from "./ioc";
 import { chapter as jpa } from "./jpa";
 import { chapter as rest } from "./rest";
@@ -11,5 +12,5 @@ export const springCourse: Course = {
   title: "Spring Boot",
   description: "Le conteneur, l'API REST, la persistance JPA et les transactions.",
   icon: "☘",
-  chapters: [ioc, rest, jpa, transactions, security],
+  chapters: [ioc, configuration, rest, jpa, transactions, security],
 };
