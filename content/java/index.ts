@@ -1,5 +1,6 @@
 import type { Course } from "@/lib/types";
 import { chapter as collections } from "./collections";
+import { chapter as concurrence } from "./concurrence";
 import { chapter as equalsHashcodeComparable } from "./equals-hashcode-comparable";
 import { chapter as exceptions } from "./exceptions";
 import { chapter as fondamentaux } from "./fondamentaux";
@@ -21,5 +22,6 @@ export const javaCourse: Course = {
     exceptions,
     lambdasStreams,
     moderne,
+    concurrence,
   ],
 };
