@@ -28,6 +28,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "spring-configuration": () => import("../spring/configuration"),
   "spring-ioc": () => import("../spring/ioc"),
   "spring-jpa": () => import("../spring/jpa"),
+  "spring-migrations": () => import("../spring/migrations"),
   "spring-rest": () => import("../spring/rest"),
   "spring-security": () => import("../spring/security"),
   "spring-transactions": () => import("../spring/transactions"),

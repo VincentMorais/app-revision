@@ -3,6 +3,7 @@ import { chapter as autour } from "./autour";
 import { chapter as configuration } from "./configuration";
 import { chapter as ioc } from "./ioc";
 import { chapter as jpa } from "./jpa";
+import { chapter as migrations } from "./migrations";
 import { chapter as rest } from "./rest";
 import { chapter as security } from "./security";
 import { chapter as transactions } from "./transactions";
@@ -13,5 +14,5 @@ export const springCourse: Course = {
   title: "Spring Boot",
   description: "Le conteneur, l'API REST, la persistance JPA et les transactions.",
   icon: "☘",
-  chapters: [ioc, configuration, rest, jpa, transactions, security, autour],
+  chapters: [ioc, configuration, rest, jpa, migrations, transactions, security, autour],
 };

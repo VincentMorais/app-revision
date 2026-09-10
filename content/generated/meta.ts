@@ -4219,6 +4219,299 @@ export const courses: CourseMeta[] = [
         ]
       },
       {
+        "id": "spring-migrations",
+        "title": "Migrations : versionner le schéma et déployer sans casse",
+        "objective": "Traiter le schéma comme du code : comprendre le mécanisme de Flyway, écrire des migrations qui ne bloquent pas la production, migrer des données par lots reprenables, déployer un changement destructif sans interruption, savoir ce que vaut réellement un retour en arrière, travailler à plusieurs sans conflits, et confier à JPA la vérification plutôt que la génération.",
+        "prerequisites": [
+          "spring-jpa"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l1",
+            "title": "Pourquoi versionner le schéma"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-01",
+            "difficulty": 1,
+            "tags": [
+              "migrations",
+              "schema"
+            ],
+            "prompt": "Quel est le principe d'un outil de migration de schéma ?"
+          },
+          {
+            "kind": "match",
+            "id": "spring-migr-02",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "schema"
+            ],
+            "prompt": "Associe chaque symptôme à ce qu'il révèle."
+          },
+          {
+            "kind": "recall",
+            "id": "spring-migr-03",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "schema"
+            ],
+            "prompt": "Pourquoi les migrations doivent-elles vivre dans le même dépôt que le code ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l2",
+            "title": "Flyway : versions, historique et empreintes"
+          },
+          {
+            "kind": "fill",
+            "id": "spring-migr-04",
+            "difficulty": 1,
+            "tags": [
+              "migrations",
+              "flyway"
+            ],
+            "prompt": "Complète le nom de fichier et le préfixe d'une migration rejouable."
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-05",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "flyway"
+            ],
+            "prompt": "Flyway refuse de démarrer : l'empreinte de `V2` ne correspond plus. Que faire ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-migr-06",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "flyway"
+            ],
+            "prompt": "À quoi servent l'empreinte et le verrou de Flyway ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l3",
+            "title": "Écrire une migration sûre"
+          },
+          {
+            "kind": "spot",
+            "id": "spring-migr-07",
+            "difficulty": 3,
+            "tags": [
+              "migrations",
+              "production"
+            ],
+            "prompt": "Cette migration immobilise une table de dix millions de lignes. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-08",
+            "difficulty": 3,
+            "tags": [
+              "migrations",
+              "production"
+            ],
+            "prompt": "Pourquoi `CREATE INDEX CONCURRENTLY` demande-t-il une précaution particulière avec Flyway ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-migr-09",
+            "difficulty": 3,
+            "tags": [
+              "migrations",
+              "production"
+            ],
+            "prompt": "Comment ajouter une contrainte `NOT NULL` sur une grande table sans l'immobiliser ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l4",
+            "title": "Migrer les données, pas seulement le schéma"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-10",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "donnees"
+            ],
+            "prompt": "Pourquoi éviter un `UPDATE` unique sur dix millions de lignes dans une migration ?"
+          },
+          {
+            "kind": "order",
+            "id": "spring-migr-11",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "donnees"
+            ],
+            "prompt": "Remets dans l'ordre la préparation d'une migration de données volumineuse."
+          },
+          {
+            "kind": "recall",
+            "id": "spring-migr-12",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "donnees"
+            ],
+            "prompt": "Qu'est-ce qui rend une migration de données reprenable, et pourquoi est-ce important ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l5",
+            "title": "Déployer sans interruption"
+          },
+          {
+            "kind": "order",
+            "id": "spring-migr-13",
+            "difficulty": 3,
+            "tags": [
+              "migrations",
+              "deploiement"
+            ],
+            "prompt": "Remets dans l'ordre les étapes d'un renommage de colonne sans interruption."
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-14",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "deploiement"
+            ],
+            "prompt": "Quelle règle rend une migration compatible avec un déploiement progressif ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-migr-15",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "deploiement"
+            ],
+            "prompt": "Pourquoi l'étape de contraction est-elle si souvent oubliée, et comment s'en prémunir ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l6",
+            "title": "Le retour en arrière : mythe et réalité"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-16",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "rollback"
+            ],
+            "prompt": "Pourquoi un script de retour en arrière donne-t-il une fausse sécurité ?"
+          },
+          {
+            "kind": "match",
+            "id": "spring-migr-17",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "rollback"
+            ],
+            "prompt": "Associe chaque migration à sa réversibilité réelle."
+          },
+          {
+            "kind": "recall",
+            "id": "spring-migr-18",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "rollback"
+            ],
+            "prompt": "Quelle stratégie de récupération adopter, si les scripts de retour ne suffisent pas ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l7",
+            "title": "Migrations en équipe"
+          },
+          {
+            "kind": "spot",
+            "id": "spring-migr-19",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "equipe"
+            ],
+            "prompt": "Deux branches ont créé une migration. Après fusion, l'application refuse de démarrer. Quelle ligne pose problème ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-20",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "equipe",
+              "ci"
+            ],
+            "prompt": "Pourquoi appliquer les migrations à la fois sur une base vide et sur une copie du schéma de production ?"
+          },
+          {
+            "kind": "match",
+            "id": "spring-migr-21",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "equipe"
+            ],
+            "prompt": "Associe chaque situation à la bonne réaction."
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-migr-l8",
+            "title": "ddl-auto et le rôle de JPA"
+          },
+          {
+            "kind": "output",
+            "id": "spring-migr-22",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "jpa"
+            ],
+            "prompt": "L'entité a gagné un champ `statut`, mais aucune migration n'a été écrite. `ddl-auto: validate`. Que se passe-t-il au démarrage ?"
+          },
+          {
+            "kind": "spot",
+            "id": "spring-migr-23",
+            "difficulty": 2,
+            "tags": [
+              "migrations",
+              "jpa",
+              "production"
+            ],
+            "prompt": "Cette configuration de production contient un réglage dangereux. Lequel ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-migr-24",
+            "difficulty": 1,
+            "tags": [
+              "migrations",
+              "jpa"
+            ],
+            "prompt": "Quelle répartition des rôles entre Flyway et JPA ?"
+          }
+        ],
+        "format": "detaille"
+      },
+      {
         "id": "spring-transactions",
         "title": "Transactions et persistence context",
         "objective": "Savoir où et comment une transaction s'ouvre et se termine, prédire commit ou rollback, et raisonner sur l'état d'une entité pour ne plus perdre de modification ni subir de LazyInitializationException.",
