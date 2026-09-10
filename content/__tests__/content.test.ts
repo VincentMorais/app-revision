@@ -32,7 +32,10 @@ describe("fichiers de chapitre", () => {
 
   for (const { file, chapter } of chapterFiles) {
     it(`${file} → ${chapter.id} respecte les règles éditoriales`, () => {
-      expect(checkChapter(chapter)).toEqual([]);
+      const problemes = checkChapter(chapter);
+      // Le message porte la liste complète : une assertion sur un tableau
+      // vide tronque l'affichage et rend l'échec inexploitable.
+      expect(problemes, problemes.map((p) => "\n  - " + p).join("")).toEqual([]);
     });
   }
 
