@@ -34,6 +34,7 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | 7 | `spring-rest` ✔ | spring | REST : contrôleurs, DTO, validation, erreurs | `spring-ioc` | 2.3 |
 | 8 | `spring-jpa` ✔ | spring | JPA : entités, relations, LAZY/EAGER, N+1 | `spring-ioc`, `java-equals-hashcode-comparable` | 3.5, 2.4 |
 | 9 | `spring-transactions` ✔ | spring | Transactions et persistence context | `spring-jpa` | 2.4, 3.5 |
+| ★ | `java-moderne` ✔ | java | var, blocs de texte, record et constructeur compact, sealed, filtrage par motif, switch, java.time — **format `detaille`** | `java-lambdas-streams` | 1.5 |
 | ★ | `spring-configuration` ✔ | spring | Configuration : sources, précédence, YAML, profils, liaison typée, validation, secrets — **format `detaille`** | `spring-ioc` | 2.2 |
 | ★ | `spring-security` ✔ | spring | Sécurité : filtres, BCrypt, session/stateless, JWT, OAuth2/OIDC, autorisation, CSRF — **format `detaille`, chapitre étalon** | `spring-rest` | 2.5 |
 | ★ | `transverse-http-api` ✔ | transverse | HTTP et conception d'API : méthodes, idempotence, codes, en-têtes, cache, Richardson, URL, erreurs — **format `detaille`** | — | 9.1 |
@@ -49,7 +50,6 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 
 | id | Parcours | Titre | Prérequis | Réf. |
 |---|---|---|---|---|
-| `java-moderne` ☐ | java | var, text blocks, record avancé, sealed, pattern matching, java.time | `java-lambdas-streams` | 1.5 |
 | `java-concurrence` ☐ | java | Threads, ExecutorService, CompletableFuture, collections concurrentes, virtual threads | `java-lambdas-streams` | 1.6 (P2) |
 | `java-jvm` ☐ | java | Mémoire, GC, OOM vs SOE, classloading | `java-fondamentaux` | 1.7 (P2) |
 | `spring-autour` ☐ | spring | Actuator, logging/MDC, cache, @Scheduled/@Async, RestClient, events, AOP | `spring-ioc` | 2.6 (P2/P3) |

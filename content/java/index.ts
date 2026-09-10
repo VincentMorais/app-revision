@@ -5,6 +5,7 @@ import { chapter as exceptions } from "./exceptions";
 import { chapter as fondamentaux } from "./fondamentaux";
 import { chapter as interfacesClassesAbstraites } from "./interfaces-classes-abstraites";
 import { chapter as lambdasStreams } from "./lambdas-streams";
+import { chapter as moderne } from "./moderne";
 
 /** Parcours Java (référentiel section 1). Un fichier par chapitre, dans l'ordre du référentiel. */
 export const javaCourse: Course = {
@@ -19,5 +20,6 @@ export const javaCourse: Course = {
     collections,
     exceptions,
     lambdasStreams,
+    moderne,
   ],
 };
