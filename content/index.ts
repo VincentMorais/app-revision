@@ -16,6 +16,7 @@ import { javaCourse } from "./java";
 import { reactCourse } from "./react";
 import { springCourse } from "./spring";
 import { testsCourse } from "./tests";
+import { transverseCourse } from "./transverse";
 
 export const courses: Course[] = [
   javaCourse,
@@ -26,6 +27,7 @@ export const courses: Course[] = [
   dockerCourse,
   reactCourse,
   devopsCourse,
+  transverseCourse,
 ];
 
 /** Index construit une seule fois au chargement du module. */

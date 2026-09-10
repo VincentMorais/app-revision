@@ -35,6 +35,7 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | 8 | `spring-jpa` ✔ | spring | JPA : entités, relations, LAZY/EAGER, N+1 | `spring-ioc`, `java-equals-hashcode-comparable` | 3.5, 2.4 |
 | 9 | `spring-transactions` ✔ | spring | Transactions et persistence context | `spring-jpa` | 2.4, 3.5 |
 | ★ | `spring-security` ✔ | spring | Sécurité : filtres, BCrypt, session/stateless, JWT, OAuth2/OIDC, autorisation, CSRF — **format `detaille`, chapitre étalon** | `spring-rest` | 2.5 |
+| ★ | `transverse-entretien` ✔ | transverse | Entretien : se présenter, présenter un projet, ADR, revue de code, agile, estimation, live coding — **format `detaille`** | — | 9.3, 9.4 |
 | 10 | `tests-tdd` ✔ | tests | TDD : cycle, JUnit 5, Mockito, Testcontainers | `spring-ioc` | 5.1–5.3 |
 | 11 | `docker-bases` ✔ | docker | Images, Dockerfile, multi-stage, compose | — | 7.1–7.3 |
 | 12 | `archi-hexagonale` ✔ | archi | Architecture hexagonale : ports, adapters, SOLID | `spring-ioc` | 4.1, 4.2, 4.3 (SOLID) |
@@ -61,8 +62,7 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | `react-etat-data` ☐ | react | Context/Redux/Zustand, TanStack Query, React Router, error boundaries | `react-hooks` | 6.2 |
 | `react-ecosysteme` ☐ | react | Vite, Vitest + RTL, ESLint, appels API et token, accessibilité | `react-hooks` | 6.3 (P2) |
 | `devops-git-workflow` ☐ | devops | GitFlow / trunk-based, revue de code, SonarQube, semver | `devops-git-gitlab-ci` | 8.1, 8.3 |
-| `transverse-http-api` ☐ | (à créer) | Méthodes, idempotence, codes, headers, REST/Richardson, auth | — | 9.1 |
-| `transverse-entretien` ☐ | (à créer) | Agile, estimation, code review, ADR, présenter un projet, live coding | — | 9.3, 9.4 |
+| `transverse-http-api` ☐ | transverse | Méthodes, idempotence, codes, headers, REST/Richardson, auth | — | 9.1 |
 
 ## Règles éditoriales (vérifiées par `content/__tests__/content.test.ts` via `lib/content-rules.ts`)
 
