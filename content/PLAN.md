@@ -66,11 +66,47 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 
 ## Règles éditoriales (vérifiées par `content/__tests__/content.test.ts` via `lib/content-rules.ts`)
 
-- Leçon : 150 à 300 mots hors code, un concept, au moins un bloc de code commenté, lignes ≤ 55 caractères.
-- Chaque leçon est suivie de 3 à 8 exercices sur ce qui vient d'être lu. 30 exercices par chapitre.
-- Chaque chapitre couvre les 7 types et compte au moins 5 rappels libres.
-- QCM / sortie : 4 choix distincts. Trous : autant de `{{n}}` que de `blanks`, distracteurs ≠ réponses, un seul token valide par blanc.
+Deux formats coexistent, portés par le champ `format` du chapitre. Les seuils
+sont vérifiés selon ce champ.
+
+### `detaille` — format courant, pour tout nouveau chapitre
+
+Le format `compact` s'est révélé trop dense à l'usage : ~200 mots de cours pour
+7 à 8 exercices, soit une règle énoncée mais jamais motivée. Le format
+`detaille` explique avant d'interroger.
+
+- **8 à 10 leçons** par chapitre, une par notion — le découpage suit la matière,
+  pas un gabarit fixe.
+- **500 à 900 mots** par leçon (code exclu), visant ~700, dans cet ordre :
+  1. *Pourquoi ça existe* — le problème que ça résout, avant toute règle.
+  2. *Le contre-exemple* — le code sans, et ce qui casse.
+  3. *L'exemple* — le même code avec, et ce qu'on y gagne.
+  4. *La règle* — l'énoncé précis, une fois le besoin compris.
+  5. *La comparaison* — face à la notion voisine avec laquelle on la confond.
+  6. *Les pièges* — cas limites et contre-exemples.
+- Structure vérifiée mécaniquement : **≥ 2 blocs de code** (le contre-exemple
+  puis l'exemple), **≥ 1 encadré**, **≥ 1 comparaison** par leçon.
+- **3 à 5 exercices** par leçon seulement, portant sur cette notion précise.
+- Le chapitre couvre les 7 types et compte au moins 5 rappels libres.
+
+Une session d'apprentissage est plafonnée à 12 étapes (`LEARN_MAX_STEPS`) et
+coupe de préférence juste avant une leçon : un chapitre se fait en plusieurs
+fois, la reprise étant automatique.
+
+### `compact` — format d'origine, en cours de reprise
+
+Les 16 premiers chapitres sont encore à ce format et le restent tant qu'ils
+n'ont pas été repris : 4 leçons de 150 à 300 mots, 7 à 8 exercices chacune,
+30 exercices par chapitre, ≥ 1 bloc de code par leçon.
+
+### Communes aux deux formats
+
+- QCM / sortie : 4 choix distincts. Trous : autant de `{{n}}` que de `blanks`,
+  distracteurs ≠ réponses, un seul token valide par blanc.
 - Repérage d'erreur : ligne non ambiguë. Association : gauches et droites distinctes.
-- Ids en kebab-case : `<prefixe>-l1`…`-l4` pour les leçons, `<prefixe>-01`…`-30` pour les exercices. Uniques sur tout le contenu.
-- Tags en kebab-case, réutilisés d'un chapitre à l'autre.
-- Le test valide tout fichier `content/*/*.ts` présent sur le disque, enregistré ou non.
+- Ids en kebab-case : `<prefixe>-l1`…`-l10` pour les leçons, `<prefixe>-01`…
+  pour les exercices. Uniques sur tout le contenu.
+- Chaque exercice a une explication (> 40 caractères), une difficulté 1–3 et
+  des tags en kebab-case, réutilisés d'un chapitre à l'autre.
+- Le test valide tout fichier `content/*/*.ts` présent sur le disque,
+  enregistré ou non.

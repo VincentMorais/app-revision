@@ -1,6 +1,8 @@
 import { describe, expect, it } from "vitest";
 import { markLessonRead, recordAnswer } from "@/lib/engine";
 import {
+  LEARN_MAX_STEPS,
+  capLearningSteps,
   composeLearningSession,
   composeReplaySession,
   composeReviewSession,
@@ -33,6 +35,50 @@ const chapter: Chapter = {
     mcq("b2"),
   ],
 };
+
+/** Chapitre au format détaillé : 4 notions de 1 leçon + 3 exercices. */
+function longChapter(): Chapter {
+  const units: Chapter["units"] = [];
+  for (let n = 1; n <= 4; n++) {
+    units.push({ kind: "lesson", id: `L${n}`, title: "", blocks: [] });
+    for (let i = 1; i <= 3; i++) units.push(mcq(`n${n}x${i}`));
+  }
+  return { id: "long", title: "Long", objective: "", prerequisites: [], units };
+}
+
+describe("plafond de session d'apprentissage", () => {
+  it("laisse passer une session déjà courte", () => {
+    const steps = composeLearningSession({ chapter, state: createEmptyState() }).steps;
+    expect(steps).toHaveLength(6);
+  });
+
+  it("coupe un chapitre long juste avant une leçon", () => {
+    const plan = composeLearningSession({ chapter: longChapter(), state: createEmptyState() });
+    // 16 étapes au total : on s'arrête à la fin de la 2e notion.
+    expect(plan.steps).toHaveLength(8);
+    expect(plan.steps.at(-1)).toEqual({ kind: "exercise", exerciseId: "n2x3" });
+  });
+
+  it("ne dépasse jamais le plafond dur, même sans leçon où couper", () => {
+    const steps = capLearningSteps(
+      Array.from({ length: 40 }, (_, i) => ({ kind: "exercise", exerciseId: `e${i}` }) as const),
+    );
+    expect(steps).toHaveLength(LEARN_MAX_STEPS);
+  });
+
+  it("reprend là où on s'était arrêté au lancement suivant", () => {
+    const state = createEmptyState();
+    const first = composeLearningSession({ chapter: longChapter(), state });
+    // On simule : tout ce qui a été vu dans la première session est fait.
+    for (const step of first.steps) {
+      if (step.kind === "lesson") state.lessonsRead[step.lessonId] = T0;
+      else state.items[step.exerciseId] = { ease: 2.5, interval: 1, reps: 1, lapses: 0, due: T0, lastReview: T0 };
+    }
+    const second = composeLearningSession({ chapter: longChapter(), state });
+    expect(second.steps[0]).toEqual({ kind: "lesson", lessonId: "L3" });
+    expect(second.steps).toHaveLength(8);
+  });
+});
 
 describe("mode apprentissage", () => {
   it("parcourt le chapitre dans l'ordre, leçon puis exercices", () => {

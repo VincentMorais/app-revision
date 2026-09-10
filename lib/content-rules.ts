@@ -3,14 +3,46 @@
  * une liste de problèmes (vide = conforme). Utilisées par les tests.
  */
 
-import { isExercise, isLesson, type Block, type Chapter, type Exercise, type Lesson } from "./types";
+import { isExercise, isLesson, type Block, type Chapter, type ChapterFormat, type Exercise, type Lesson } from "./types";
 
-export const LESSON_WORDS_MIN = 150;
-export const LESSON_WORDS_MAX = 300;
-export const EXERCISES_PER_LESSON_MIN = 3;
-export const EXERCISES_PER_LESSON_MAX = 8;
+/**
+ * Les seuils dépendent du format du chapitre (voir `ChapterFormat`).
+ *
+ * `detaille` autorise des leçons trois fois plus longues et réduit le nombre
+ * d'exercices qui les suivent : on explique avant d'interroger, et on
+ * s'arrête plus souvent. Il impose aussi une structure minimale — deux blocs
+ * de code (le contre-exemple puis l'exemple), une comparaison, un piège —
+ * qui est le squelette du format.
+ */
+export type Range = { min: number; max: number };
+
+export const LESSON_WORDS: Record<ChapterFormat, Range> = {
+  compact: { min: 150, max: 300 },
+  detaille: { min: 500, max: 900 },
+};
+
+export const EXERCISES_PER_LESSON: Record<ChapterFormat, Range> = {
+  compact: { min: 3, max: 8 },
+  detaille: { min: 3, max: 5 },
+};
+
+export const LESSONS_PER_CHAPTER: Record<ChapterFormat, Range> = {
+  compact: { min: 1, max: 12 },
+  detaille: { min: 8, max: 10 },
+};
+
+/** Blocs imposés par leçon en `detaille`. Aucun en `compact`. */
+export const BLOCKS_REQUIRED: Record<ChapterFormat, { code: number; callout: number; comparison: number }> = {
+  compact: { code: 1, callout: 0, comparison: 0 },
+  detaille: { code: 2, callout: 1, comparison: 1 },
+};
+
 export const RECALL_MIN = 5;
 export const ALL_KINDS = ["fill", "match", "mcq", "order", "output", "recall", "spot"] as const;
+
+export function formatOf(ch: Chapter): ChapterFormat {
+  return ch.format ?? "compact";
+}
 
 export function lessonWords(lesson: Lesson): number {
   const texts: string[] = [];
@@ -28,11 +60,26 @@ export function lessonWords(lesson: Lesson): number {
     .filter((w) => w.length > 0).length;
 }
 
-export function checkLesson(l: Lesson): string[] {
+function count(l: Lesson, kind: Block["kind"]): number {
+  return l.blocks.filter((b) => b.kind === kind).length;
+}
+
+export function checkLesson(l: Lesson, format: ChapterFormat = "compact"): string[] {
   const out: string[] = [];
   const words = lessonWords(l);
-  if (words < LESSON_WORDS_MIN || words > LESSON_WORDS_MAX) out.push(`${l.id} : ${words} mots (attendu ${LESSON_WORDS_MIN}–${LESSON_WORDS_MAX})`);
-  if (!l.blocks.some((b) => b.kind === "code")) out.push(`${l.id} : aucun bloc de code`);
+  const range = LESSON_WORDS[format];
+  if (words < range.min || words > range.max) {
+    out.push(`${l.id} : ${words} mots (attendu ${range.min}–${range.max} en « ${format} »)`);
+  }
+
+  const required = BLOCKS_REQUIRED[format];
+  const code = count(l, "code");
+  if (code < required.code) out.push(`${l.id} : ${code} bloc(s) de code (attendu ≥ ${required.code})`);
+  const callout = count(l, "callout");
+  if (callout < required.callout) out.push(`${l.id} : ${callout} encadré(s) (attendu ≥ ${required.callout})`);
+  const comparison = count(l, "comparison");
+  if (comparison < required.comparison) out.push(`${l.id} : ${comparison} comparaison(s) (attendu ≥ ${required.comparison})`);
+
   if (l.title.trim().length < 5) out.push(`${l.id} : titre trop court`);
   return out;
 }
@@ -86,20 +133,27 @@ export function checkExercise(ex: Exercise): string[] {
 
 export function checkChapter(ch: Chapter): string[] {
   const out: string[] = [];
+  const format = formatOf(ch);
   if (ch.objective.trim().length <= 10) out.push(`${ch.id} : objectif trop court`);
   const lessons = ch.units.filter(isLesson);
   const exercises = ch.units.filter(isExercise);
   if (lessons.length === 0) out.push(`${ch.id} : aucune leçon`);
 
-  for (const l of lessons) out.push(...checkLesson(l));
+  const lessonRange = LESSONS_PER_CHAPTER[format];
+  if (lessons.length > 0 && (lessons.length < lessonRange.min || lessons.length > lessonRange.max)) {
+    out.push(`${ch.id} : ${lessons.length} leçons (attendu ${lessonRange.min}–${lessonRange.max} en « ${format} »)`);
+  }
+
+  for (const l of lessons) out.push(...checkLesson(l, format));
   for (const ex of exercises) out.push(...checkExercise(ex));
 
-  // Chaque leçon est suivie de 3 à 8 exercices avant la leçon suivante.
+  // Chaque leçon est suivie de ses exercices avant la leçon suivante.
+  const exRange = EXERCISES_PER_LESSON[format];
   let current: Lesson | null = null;
   let count = 0;
   const flush = () => {
-    if (current && (count < EXERCISES_PER_LESSON_MIN || count > EXERCISES_PER_LESSON_MAX)) {
-      out.push(`${current.id} : suivie de ${count} exercices (attendu ${EXERCISES_PER_LESSON_MIN}–${EXERCISES_PER_LESSON_MAX})`);
+    if (current && (count < exRange.min || count > exRange.max)) {
+      out.push(`${current.id} : suivie de ${count} exercices (attendu ${exRange.min}–${exRange.max} en « ${format} »)`);
     }
   };
   for (const u of ch.units) {

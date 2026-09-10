@@ -166,6 +166,21 @@ export const EXERCISE_KINDS: readonly ExerciseKind[] = [
 
 export type Unit = Lesson | Exercise;
 
+/**
+ * Densité éditoriale du chapitre, qui décide des règles vérifiées par
+ * `lib/content-rules.ts`.
+ *
+ * - `compact` : format d'origine, 4 leçons de 150–300 mots suivies de 7 à 8
+ *   exercices. Trop dense à l'usage : la règle est énoncée, jamais motivée.
+ * - `detaille` : format courant, 8 à 10 leçons de 500–900 mots (pourquoi
+ *   ça existe, un contre-exemple, l'exemple, la règle, une comparaison, les
+ *   pièges) suivies de 3 à 5 exercices seulement.
+ *
+ * Les chapitres écrits avant la bascule restent en `compact` le temps d'être
+ * repris ; c'est la valeur par défaut quand le champ est absent.
+ */
+export type ChapterFormat = "compact" | "detaille";
+
 export type Chapter = {
   id: string;
   title: string;
@@ -173,6 +188,8 @@ export type Chapter = {
   objective: string;
   /** Ids de chapitres à valider (70 % de réussite) avant d'ouvrir celui-ci. */
   prerequisites: string[];
+  /** Défaut : `compact` (chapitres antérieurs à la bascule). */
+  format?: ChapterFormat;
   units: Unit[];
 };
 

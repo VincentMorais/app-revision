@@ -35,6 +35,27 @@ export type SessionPlan = {
 // Apprentissage
 // ---------------------------------------------------------------------------
 
+/**
+ * Plafond d'une session d'apprentissage.
+ *
+ * Sans plafond, ouvrir un chapitre neuf lançait 34 étapes d'affilée (leçons
+ * et exercices), là où la révision s'arrête à 12. On coupe donc net, de
+ * préférence juste avant une leçon : on ne veut pas finir sur une leçon qu'on
+ * vient de lire sans l'avoir travaillée, ni couper au milieu de ses exercices.
+ * La reprise est déjà gérée (`resume`), rien n'est perdu.
+ */
+export const LEARN_TARGET_STEPS = 8;
+export const LEARN_MAX_STEPS = 12;
+
+export function capLearningSteps(steps: SessionStep[]): SessionStep[] {
+  if (steps.length <= LEARN_MAX_STEPS) return steps;
+  // Coupure nette : la première leçon rencontrée une fois la cible atteinte.
+  for (let i = LEARN_TARGET_STEPS; i < Math.min(steps.length, LEARN_MAX_STEPS + 1); i++) {
+    if (steps[i].kind === "lesson") return steps.slice(0, i);
+  }
+  return steps.slice(0, LEARN_MAX_STEPS);
+}
+
 export type LearningOptions = {
   chapter: Chapter;
   state: AppState;
@@ -77,7 +98,7 @@ export function composeLearningSession(opts: LearningOptions): SessionPlan {
     }
   }
 
-  return { mode: "learn", chapterId: chapter.id, steps };
+  return { mode: "learn", chapterId: chapter.id, steps: capLearningSteps(steps) };
 }
 
 /** Position dans un chapitre : unités faites / total. */
