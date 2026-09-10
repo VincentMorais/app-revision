@@ -34,6 +34,7 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | 7 | `spring-rest` ✔ | spring | REST : contrôleurs, DTO, validation, erreurs | `spring-ioc` | 2.3 |
 | 8 | `spring-jpa` ✔ | spring | JPA : entités, relations, LAZY/EAGER, N+1 | `spring-ioc`, `java-equals-hashcode-comparable` | 3.5, 2.4 |
 | 9 | `spring-transactions` ✔ | spring | Transactions et persistence context | `spring-jpa` | 2.4, 3.5 |
+| ★ | `spring-security` ✔ | spring | Sécurité : filtres, BCrypt, session/stateless, JWT, OAuth2/OIDC, autorisation, CSRF — **format `detaille`, chapitre étalon** | `spring-rest` | 2.5 |
 | 10 | `tests-tdd` ✔ | tests | TDD : cycle, JUnit 5, Mockito, Testcontainers | `spring-ioc` | 5.1–5.3 |
 | 11 | `docker-bases` ✔ | docker | Images, Dockerfile, multi-stage, compose | — | 7.1–7.3 |
 | 12 | `archi-hexagonale` ✔ | archi | Architecture hexagonale : ports, adapters, SOLID | `spring-ioc` | 4.1, 4.2, 4.3 (SOLID) |
@@ -49,7 +50,6 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | `java-concurrence` ☐ | java | Threads, ExecutorService, CompletableFuture, collections concurrentes, virtual threads | `java-lambdas-streams` | 1.6 (P2) |
 | `java-jvm` ☐ | java | Mémoire, GC, OOM vs SOE, classloading | `java-fondamentaux` | 1.7 (P2) |
 | `spring-configuration` ☐ | spring | yml, profils, @ConfigurationProperties, précédence, secrets | `spring-ioc` | 2.2 |
-| `spring-security` ☐ | spring | Filtres, JWT, OAuth2/OIDC, @PreAuthorize, BCrypt, CSRF | `spring-rest` | 2.5 (P2) |
 | `spring-autour` ☐ | spring | Actuator, logging/MDC, cache, @Scheduled/@Async, RestClient, events, AOP | `spring-ioc` | 2.6 (P2/P3) |
 | `spring-migrations` ☐ | spring | Flyway/Liquibase, versioning, migrations en équipe | `spring-jpa` | 3.5 |
 | `tests-strategie` ☐ | tests | Pyramide vs trophy, couverture, mutation testing, tests de contrat | `tests-tdd` | 5.4 (P2) |
