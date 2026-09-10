@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { contentIndex, courses } from "@/content";
 import { BackupPanel } from "@/components/BackupPanel";
+import { OfflineStatus } from "@/components/OfflineStatus";
 import { Button } from "@/components/ui/Button";
 import { rateByCourse, rateByTag, weakestTags, type RateStat } from "@/lib/stats";
 import { actions, useAppState, useMounted } from "@/lib/store";
@@ -101,6 +102,8 @@ export default function StatsPage() {
       </section>
 
       <BackupPanel />
+
+      <OfflineStatus />
 
       <section className="border-t border-border pt-4">
         {confirmReset ? (

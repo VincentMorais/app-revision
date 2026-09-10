@@ -17,7 +17,8 @@ fois chargée, sans backend ni compte.
 npm run dev     # serveur de dev
 npm test        # tests unitaires (moteur)
 npm run lint
-npm run build
+npm run build   # build + génération de public/precache.json
+npm run icons   # régénère les PNG de la PWA depuis public/icon.svg
 ```
 
 ## Structure
@@ -50,7 +51,10 @@ lib/
   engine.ts     écritures : enregistrer une réponse, marquer une leçon lue
   store.ts      liaison React (useAppState, useMounted, actions) — seul point d'écriture depuis l'UI
   storage.ts    SEUL module qui touche localStorage
-public/sw.js    service worker : cache pour le hors ligne (production uniquement)
+public/sw.js    service worker : préchargement complet pour le hors ligne (production)
+scripts/
+  gen-precache.mjs  écrit public/precache.json après le build (pages + assets)
+  gen-icons.mjs     génère les PNG de la PWA depuis public/icon.svg
 ```
 
 ## Moteur d'apprentissage
@@ -99,12 +103,37 @@ badges.
 - **Statistiques** : réponses, série, taux par parcours et par notion (avec le compte des
   réponses laborieuses), notions les plus ratées. Réinitialisation avec confirmation.
 
+## Hors ligne et installation
+
+L'app est une PWA installable (« Ajouter à l'écran d'accueil »), en mode
+standalone, thème sombre. Icônes PNG 192/512, variante maskable pour Android,
+`apple-touch-icon` 180 pour iOS — générées par `npm run icons`.
+
+Le service worker ne se contente pas de mettre en cache ce qui a été visité :
+**il précharge tout à l'installation**, pour pouvoir réviser sans réseau un
+chapitre jamais ouvert. La liste vient de `public/precache.json`, écrit par
+`scripts/gen-precache.mjs` juste après le build à partir de ce que Next a
+réellement produit (`.next/BUILD_ID`, `prerender-manifest.json`,
+`.next/static/**`) — et non d'une analyse du HTML, qui rate les chunks dont le
+nom contient des parenthèses (`app/(tabs)/…`) ou des crochets
+(`app/apprendre/[chapterId]/…`).
+
+Le nom du cache est l'identifiant du build : un nouveau déploiement recharge
+tout et purge l'ancien cache sans qu'il faille modifier `sw.js`. L'onglet
+Statistiques affiche l'état du préchargement (« Prêt : 22 pages et 34
+fichiers »), à vérifier avant de partir sans réseau.
+
 ## Persistance
 
 `lib/storage.ts` expose `loadState`, `saveState`, `updateState`, `resetState`, `subscribe`. L'état
 est versionné (`version: 2`, migration depuis v1) et validé champ par champ au chargement : une donnée corrompue est
 ignorée, jamais fatale. Le journal est borné à 5000 réponses. `configureStorage(backend)` permet
 de substituer le support (tests, futur backend).
+
+`lib/backup.ts` ajoute l'export et l'import d'un fichier JSON (bouton dans
+Statistiques) : c'est la seule façon de ne pas perdre sa progression en
+changeant d'appareil. L'import valide le fichier, montre ce qu'il contient
+face à la progression en place, et attend une confirmation.
 
 ## Contenu
 
