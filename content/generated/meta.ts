@@ -4854,6 +4854,301 @@ export const courses: CourseMeta[] = [
           }
         ],
         "format": "detaille"
+      },
+      {
+        "id": "spring-autour",
+        "title": "Autour du cœur : exploitation, cache, planification, événements, AOP",
+        "objective": "Rendre une application Spring exploitable : exposer et protéger Actuator, distinguer vivacité et disponibilité, produire des journaux corrélés, poser un cache sans créer d'incohérence, planifier sans doublons ni annulation silencieuse, exécuter en arrière-plan en sachant ce qu'on perd, découpler par événements, et comprendre le proxy qui porte toutes ces annotations.",
+        "prerequisites": [
+          "spring-ioc"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l1",
+            "title": "Actuator : ce que l'application dit d'elle-même"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-01",
+            "difficulty": 1,
+            "tags": [
+              "spring",
+              "actuator"
+            ],
+            "prompt": "Pourquoi `management.endpoints.web.exposure.include: \"*\"` est-il risqué ?"
+          },
+          {
+            "kind": "match",
+            "id": "spring-autour-02",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "actuator"
+            ],
+            "prompt": "Associe chaque point de terminaison à son usage."
+          },
+          {
+            "kind": "recall",
+            "id": "spring-autour-03",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "actuator"
+            ],
+            "prompt": "Comment protéger Actuator, et pourquoi renseigner `info` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l2",
+            "title": "Les sondes : vivacité et disponibilité"
+          },
+          {
+            "kind": "spot",
+            "id": "spring-autour-04",
+            "difficulty": 3,
+            "tags": [
+              "spring",
+              "actuator",
+              "exploitation"
+            ],
+            "prompt": "Cette configuration provoque un redémarrage en boucle de toute la flotte dès que la base a un hoquet. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-05",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "actuator"
+            ],
+            "prompt": "À quoi sert la sonde de démarrage, en plus des deux autres ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-autour-06",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "actuator"
+            ],
+            "prompt": "Quelle différence entre vivacité et disponibilité, et pourquoi un indicateur maison doit-il être borné ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l3",
+            "title": "Journalisation structurée et contexte"
+          },
+          {
+            "kind": "fill",
+            "id": "spring-autour-07",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "logging"
+            ],
+            "prompt": "Complète le filtre de contexte de diagnostic."
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-08",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "logging"
+            ],
+            "prompt": "Pourquoi préférer `log.debug(\"Client {}\", id)` à `log.debug(\"Client \" + id)` ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-autour-09",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "logging"
+            ],
+            "prompt": "Quelles règles suivre pour qu'un journal reste exploitable en production ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l4",
+            "title": "Le cache applicatif"
+          },
+          {
+            "kind": "spot",
+            "id": "spring-autour-10",
+            "difficulty": 3,
+            "tags": [
+              "spring",
+              "cache",
+              "proxy"
+            ],
+            "prompt": "Le cache n'est jamais consulté et le calcul a lieu deux fois. Quelle ligne l'explique ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-11",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "cache"
+            ],
+            "prompt": "Quelle différence entre `@Cacheable` et `@CachePut` ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-autour-12",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "cache"
+            ],
+            "prompt": "Quelles questions poser avant d'ajouter un cache ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l5",
+            "title": "Les tâches planifiées"
+          },
+          {
+            "kind": "output",
+            "id": "spring-autour-13",
+            "difficulty": 3,
+            "tags": [
+              "spring",
+              "scheduling"
+            ],
+            "prompt": "Ordonnanceur laissé à sa configuration par défaut. À quel rythme les lignes apparaissent-elles ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-14",
+            "difficulty": 3,
+            "tags": [
+              "spring",
+              "scheduling"
+            ],
+            "prompt": "Que se passe-t-il si une tâche `@Scheduled(fixedDelay = …)` lève une exception non rattrapée ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-autour-15",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "scheduling"
+            ],
+            "prompt": "Quelles précautions prendre sur une tâche planifiée déployée en plusieurs instances ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l6",
+            "title": "@Async et l'exécution en arrière-plan"
+          },
+          {
+            "kind": "spot",
+            "id": "spring-autour-16",
+            "difficulty": 3,
+            "tags": [
+              "spring",
+              "async",
+              "proxy"
+            ],
+            "prompt": "La réponse HTTP reste aussi lente qu'avant l'ajout de `@Async`. Quelle ligne l'explique ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-17",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "async"
+            ],
+            "prompt": "Une méthode `@Async` renvoyant `void` lève une exception. Que devient-elle ?"
+          },
+          {
+            "kind": "recall",
+            "id": "spring-autour-18",
+            "difficulty": 3,
+            "tags": [
+              "spring",
+              "async"
+            ],
+            "prompt": "Que perd-on en passant un traitement en `@Async` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l7",
+            "title": "Les événements applicatifs"
+          },
+          {
+            "kind": "order",
+            "id": "spring-autour-19",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "events"
+            ],
+            "prompt": "Remets dans l'ordre ce qui se passe lors d'un `publishEvent` avec un abonné après validation."
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-20",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "events"
+            ],
+            "prompt": "Les événements applicatifs Spring sont-ils asynchrones ?"
+          },
+          {
+            "kind": "match",
+            "id": "spring-autour-21",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "events"
+            ],
+            "prompt": "Associe chaque besoin au mécanisme approprié."
+          },
+          {
+            "kind": "lesson",
+            "id": "spring-autour-l8",
+            "title": "AOP : ce qui se passe derrière les annotations"
+          },
+          {
+            "kind": "output",
+            "id": "spring-autour-22",
+            "difficulty": 3,
+            "tags": [
+              "spring",
+              "aop",
+              "cache"
+            ],
+            "prompt": "Premier appel à `deuxFois(\"a\")`, cache vide. Qu'affiche la console ?"
+          },
+          {
+            "kind": "fill",
+            "id": "spring-autour-23",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "aop"
+            ],
+            "prompt": "Complète l'aspect qui mesure la durée d'une méthode."
+          },
+          {
+            "kind": "mcq",
+            "id": "spring-autour-24",
+            "difficulty": 2,
+            "tags": [
+              "spring",
+              "aop"
+            ],
+            "prompt": "Pourquoi une méthode `final` annotée `@Transactional` ne fait-elle rien ?"
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },

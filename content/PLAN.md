@@ -34,6 +34,7 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | 7 | `spring-rest` ✔ | spring | REST : contrôleurs, DTO, validation, erreurs | `spring-ioc` | 2.3 |
 | 8 | `spring-jpa` ✔ | spring | JPA : entités, relations, LAZY/EAGER, N+1 | `spring-ioc`, `java-equals-hashcode-comparable` | 3.5, 2.4 |
 | 9 | `spring-transactions` ✔ | spring | Transactions et persistence context | `spring-jpa` | 2.4, 3.5 |
+| ★ | `spring-autour` ✔ | spring | Actuator, sondes, journalisation et MDC, cache, planification, @Async, événements, AOP — **format `detaille`** | `spring-ioc` | 2.6 |
 | ★ | `java-jvm` ✔ | java | Zones mémoire, pile et tas, atteignabilité et générations, collecteurs, fuites, chargement de classes, diagnostic — **format `detaille`** | `java-fondamentaux` | 1.7 |
 | ★ | `react-js-ts` ✔ | react | Portée, déstructuration, this, modules, boucle d'événements, promesses, TypeScript structurel, any/unknown/never — **format `detaille`** | — | 6.1 |
 | ★ | `java-concurrence` ✔ | java | Atomicité et visibilité, verrous, atomiques, collections concurrentes, exécuteurs, CompletableFuture, threads virtuels, interblocages — **format `detaille`** | `java-lambdas-streams` | 1.6 |
@@ -54,7 +55,6 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 
 | id | Parcours | Titre | Prérequis | Réf. |
 |---|---|---|---|---|
-| `spring-autour` ☐ | spring | Actuator, logging/MDC, cache, @Scheduled/@Async, RestClient, events, AOP | `spring-ioc` | 2.6 (P2/P3) |
 | `spring-migrations` ☐ | spring | Flyway/Liquibase, versioning, migrations en équipe | `spring-jpa` | 3.5 |
 | `tests-strategie` ☐ | tests | Pyramide vs trophy, couverture, mutation testing, tests de contrat | `tests-tdd` | 5.4 (P2) |
 | `docker-registry` ☐ | docker | Tags, push/pull, registry GitLab, scan | `docker-bases` | 7.4 (P2) |

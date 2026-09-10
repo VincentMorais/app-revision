@@ -24,6 +24,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "react-etat-data": () => import("../react/etat-data"),
   "react-hooks": () => import("../react/hooks"),
   "react-js-ts": () => import("../react/js-ts"),
+  "spring-autour": () => import("../spring/autour"),
   "spring-configuration": () => import("../spring/configuration"),
   "spring-ioc": () => import("../spring/ioc"),
   "spring-jpa": () => import("../spring/jpa"),
