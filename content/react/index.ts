@@ -1,6 +1,7 @@
 import type { Course } from "@/lib/types";
 import { chapter as etatData } from "./etat-data";
 import { chapter as hooks } from "./hooks";
+import { chapter as jsTs } from "./js-ts";
 
 /** Parcours React (référentiel section 6). */
 export const reactCourse: Course = {
@@ -8,5 +9,5 @@ export const reactCourse: Course = {
   title: "React",
   description: "Composants, hooks, état et re-renders.",
   icon: "⚛",
-  chapters: [hooks, etatData],
+  chapters: [jsTs, hooks, etatData],
 };

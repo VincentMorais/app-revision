@@ -34,6 +34,7 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | 7 | `spring-rest` ✔ | spring | REST : contrôleurs, DTO, validation, erreurs | `spring-ioc` | 2.3 |
 | 8 | `spring-jpa` ✔ | spring | JPA : entités, relations, LAZY/EAGER, N+1 | `spring-ioc`, `java-equals-hashcode-comparable` | 3.5, 2.4 |
 | 9 | `spring-transactions` ✔ | spring | Transactions et persistence context | `spring-jpa` | 2.4, 3.5 |
+| ★ | `react-js-ts` ✔ | react | Portée, déstructuration, this, modules, boucle d'événements, promesses, TypeScript structurel, any/unknown/never — **format `detaille`** | — | 6.1 |
 | ★ | `java-concurrence` ✔ | java | Atomicité et visibilité, verrous, atomiques, collections concurrentes, exécuteurs, CompletableFuture, threads virtuels, interblocages — **format `detaille`** | `java-lambdas-streams` | 1.6 |
 | ★ | `react-etat-data` ✔ | react | État dérivé, contexte et ses limites, magasins, cache serveur, mutations, routage, frontières d'erreur — **format `detaille`** | `react-hooks` | 6.2 |
 | ★ | `java-moderne` ✔ | java | var, blocs de texte, record et constructeur compact, sealed, filtrage par motif, switch, java.time — **format `detaille`** | `java-lambdas-streams` | 1.5 |
@@ -60,7 +61,6 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | `archi-ddd-patterns` ☐ | archi | DDD tactique, Clean vs Onion, patterns GoF utiles, anti-patterns | `archi-hexagonale` | 4.3 (P2) |
 | `archi-applicative` ☐ | archi | Monolithe vs microservices, sync/async, retry/circuit breaker, cache, observabilité | `spring-rest` | 9.2 (P2) |
 | `data-sql-avance` ☐ | data | Fonctions fenêtre avancées, CTE récursives, jsonb, types | `data-sql-postgres` | 3.1 |
-| `react-js-ts` ☐ | react | ES6+, asynchrone, TypeScript | — | 6.1 |
 | `react-ecosysteme` ☐ | react | Vite, Vitest + RTL, ESLint, appels API et token, accessibilité | `react-hooks` | 6.3 (P2) |
 | `devops-git-workflow` ☐ | devops | GitFlow / trunk-based, revue de code, SonarQube, semver | `devops-git-gitlab-ci` | 8.1, 8.3 |
 
