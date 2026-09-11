@@ -14,6 +14,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "data-sql-avance": () => import("../data/sql-avance"),
   "data-sql-postgres": () => import("../data/sql-postgres"),
   "devops-git-gitlab-ci": () => import("../devops/git-gitlab-ci"),
+  "devops-git-workflow": () => import("../devops/git-workflow"),
   "docker-bases": () => import("../docker/bases"),
   "docker-registry": () => import("../docker/registry"),
   "java-collections": () => import("../java/collections"),

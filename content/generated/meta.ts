@@ -9887,6 +9887,298 @@ export const courses: CourseMeta[] = [
             "prompt": "Comment organiser un déploiement sûr, avec possibilité de revenir en arrière ?"
           }
         ]
+      },
+      {
+        "id": "devops-git-workflow",
+        "title": "Flux de travail : branches, fusion, qualité et versions",
+        "objective": "Organiser le travail d'une équipe autour du dépôt : comprendre pourquoi la durée d'une branche est le paramètre décisif, choisir une stratégie de branches selon sa fréquence de livraison, découpler déploiement et activation, choisir une façon de fusionner et s'y tenir, écrire des messages qui servent dans deux ans, poser des exigences de qualité respectables, et versionner en fonction de l'impact sur les consommateurs.",
+        "prerequisites": [
+          "devops-git-gitlab-ci"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l1",
+            "title": "Une branche, une intention"
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-01",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Quel est le principal risque d'une branche de trois semaines ?"
+          },
+          {
+            "kind": "match",
+            "id": "devops-wf-02",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Associe chaque symptôme à sa cause."
+          },
+          {
+            "kind": "recall",
+            "id": "devops-wf-03",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Comment garder des branches courtes sur une fonctionnalité de plusieurs semaines ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l2",
+            "title": "GitFlow"
+          },
+          {
+            "kind": "order",
+            "id": "devops-wf-04",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Remets dans l'ordre le cycle d'une fonctionnalité dans GitFlow."
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-05",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Dans quel contexte GitFlow se justifie-t-il ?"
+          },
+          {
+            "kind": "recall",
+            "id": "devops-wf-06",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Quelle question détermine le modèle de branches à adopter ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l3",
+            "title": "L'intégration sur la branche principale"
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-07",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Que signifie « la branche principale doit rester déployable en permanence » ?"
+          },
+          {
+            "kind": "match",
+            "id": "devops-wf-08",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "Associe chaque prérequis à ce qu'il rend possible."
+          },
+          {
+            "kind": "recall",
+            "id": "devops-wf-09",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "workflow"
+            ],
+            "prompt": "En quoi l'intégration continue déplace-t-elle la difficulté plutôt que de la supprimer ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l4",
+            "title": "Les drapeaux de fonctionnalité"
+          },
+          {
+            "kind": "spot",
+            "id": "devops-wf-10",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "feature-flags",
+              "securite"
+            ],
+            "prompt": "Cette protection est insuffisante. Quelle ligne pose problème ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-11",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "feature-flags"
+            ],
+            "prompt": "Quel est le principal risque de la pratique des drapeaux de fonctionnalité ?"
+          },
+          {
+            "kind": "recall",
+            "id": "devops-wf-12",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "feature-flags"
+            ],
+            "prompt": "Quelle distinction fondamentale un drapeau de fonctionnalité permet-il ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l5",
+            "title": "Fusionner, rebaser, écraser"
+          },
+          {
+            "kind": "output",
+            "id": "devops-wf-13",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "historique"
+            ],
+            "prompt": "`main` contient A-B-C, la branche contient D-E. Que produit un rebase de la branche sur `main` ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-14",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "historique"
+            ],
+            "prompt": "Pourquoi l'écrasement à la fusion est-il devenu majoritaire sur les demandes de fusion courtes ?"
+          },
+          {
+            "kind": "recall",
+            "id": "devops-wf-15",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "historique"
+            ],
+            "prompt": "Quelle est la seule règle absolue concernant le rebase ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l6",
+            "title": "Les messages de commit"
+          },
+          {
+            "kind": "fill",
+            "id": "devops-wf-16",
+            "difficulty": 1,
+            "tags": [
+              "git",
+              "commits"
+            ],
+            "prompt": "Complète les deux types de la convention, selon la nature du changement."
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-17",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "commits"
+            ],
+            "prompt": "Que doit contenir le corps d'un message de commit ?"
+          },
+          {
+            "kind": "recall",
+            "id": "devops-wf-18",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "commits"
+            ],
+            "prompt": "Quel est l'intérêt réel d'une convention formalisée de messages ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l7",
+            "title": "Mesurer la qualité"
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-19",
+            "difficulty": 2,
+            "tags": [
+              "qualite",
+              "ci"
+            ],
+            "prompt": "Comment introduire une exigence de couverture sur un projet existant ?"
+          },
+          {
+            "kind": "match",
+            "id": "devops-wf-20",
+            "difficulty": 2,
+            "tags": [
+              "qualite",
+              "ci"
+            ],
+            "prompt": "Associe chaque catégorie de signalement au traitement approprié."
+          },
+          {
+            "kind": "spot",
+            "id": "devops-wf-21",
+            "difficulty": 2,
+            "tags": [
+              "qualite",
+              "ci"
+            ],
+            "prompt": "Cette porte de qualité sera désactivée dans la semaine. Quelle ligne ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "devops-wf-l8",
+            "title": "Versionner et publier"
+          },
+          {
+            "kind": "order",
+            "id": "devops-wf-22",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "versionnement"
+            ],
+            "prompt": "Remets dans l'ordre la publication automatisée d'une version."
+          },
+          {
+            "kind": "mcq",
+            "id": "devops-wf-23",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "versionnement"
+            ],
+            "prompt": "Une réécriture complète de l'implémentation, sans changement d'interface. Quel incrément ?"
+          },
+          {
+            "kind": "fill",
+            "id": "devops-wf-24",
+            "difficulty": 2,
+            "tags": [
+              "git",
+              "versionnement"
+            ],
+            "prompt": "Complète le classement de ces deux changements."
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },
