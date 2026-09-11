@@ -6135,6 +6135,297 @@ export const courses: CourseMeta[] = [
             "prompt": "Énonce les cinq principes SOLID, chacun avec un exemple Java en une phrase."
           }
         ]
+      },
+      {
+        "id": "archi-ddd-patterns",
+        "title": "DDD tactique et patrons : modéliser un domaine",
+        "objective": "Modéliser un domaine avec les outils qui comptent : partager le langage du métier, distinguer entité et objet-valeur, délimiter un agrégat par ses invariants, garder un dépôt qui ne fuit pas vers la technique, placer chaque règle au bon endroit, appliquer l'inversion de dépendance, connaître les patrons réellement utiles et reconnaître les anti-patrons du modèle.",
+        "prerequisites": [
+          "archi-hexagonale"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l1",
+            "title": "Le langage partagé"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-01",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "conception"
+            ],
+            "prompt": "Deux développeurs hésitent entre `annuler` et `supprimer` pour nommer une opération. Que révèle cette hésitation ?"
+          },
+          {
+            "kind": "match",
+            "id": "archi-ddd-02",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "conception"
+            ],
+            "prompt": "Associe chaque situation à ce qu'elle indique."
+          },
+          {
+            "kind": "recall",
+            "id": "archi-ddd-03",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "conception"
+            ],
+            "prompt": "En quoi le langage partagé est-il un outil de conception et pas une convention de nommage ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l2",
+            "title": "Entité et objet-valeur"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-04",
+            "difficulty": 1,
+            "tags": [
+              "ddd",
+              "conception"
+            ],
+            "prompt": "Quelle question distingue une entité d'un objet-valeur ?"
+          },
+          {
+            "kind": "spot",
+            "id": "archi-ddd-05",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "conception"
+            ],
+            "prompt": "Cette signature autorise un bug indétectable en relecture. Quelle ligne ?"
+          },
+          {
+            "kind": "recall",
+            "id": "archi-ddd-06",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "conception"
+            ],
+            "prompt": "Qu'apporte un objet-valeur par rapport à un type primitif ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l3",
+            "title": "L'agrégat et sa frontière"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-07",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "agregat"
+            ],
+            "prompt": "Qu'est-ce qui détermine la taille d'un agrégat ?"
+          },
+          {
+            "kind": "order",
+            "id": "archi-ddd-08",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "agregat"
+            ],
+            "prompt": "Remets dans l'ordre la démarche pour délimiter un agrégat."
+          },
+          {
+            "kind": "recall",
+            "id": "archi-ddd-09",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "agregat"
+            ],
+            "prompt": "Pourquoi une racine d'agrégat ne doit-elle jamais exposer sa collection interne ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l4",
+            "title": "Le dépôt"
+          },
+          {
+            "kind": "spot",
+            "id": "archi-ddd-10",
+            "difficulty": 3,
+            "tags": [
+              "ddd",
+              "depot",
+              "architecture"
+            ],
+            "prompt": "Cette interface de dépôt, déclarée dans le domaine, pose un problème d'architecture. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-11",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "depot"
+            ],
+            "prompt": "Comment servir une liste paginée de commandes avec cinq colonnes issues de trois tables ?"
+          },
+          {
+            "kind": "recall",
+            "id": "archi-ddd-12",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "depot",
+              "architecture"
+            ],
+            "prompt": "Pourquoi l'interface d'un dépôt doit-elle être déclarée dans le domaine ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l5",
+            "title": "Services de domaine et services applicatifs"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-13",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "services"
+            ],
+            "prompt": "Quel critère distingue un service de domaine d'un service applicatif ?"
+          },
+          {
+            "kind": "match",
+            "id": "archi-ddd-14",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "services"
+            ],
+            "prompt": "Associe chaque responsabilité à son destinataire."
+          },
+          {
+            "kind": "recall",
+            "id": "archi-ddd-15",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "services"
+            ],
+            "prompt": "Comment reconnaître qu'une règle métier est au mauvais endroit ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l6",
+            "title": "Hexagonale, Clean, Onion : la même idée"
+          },
+          {
+            "kind": "order",
+            "id": "archi-ddd-16",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "hexagonale"
+            ],
+            "prompt": "Remets dans l'ordre la mise en place d'une inversion de dépendance."
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-17",
+            "difficulty": 2,
+            "tags": [
+              "architecture"
+            ],
+            "prompt": "Quel découpage de paquets rend les frontières défendables ?"
+          },
+          {
+            "kind": "recall",
+            "id": "archi-ddd-18",
+            "difficulty": 2,
+            "tags": [
+              "architecture"
+            ],
+            "prompt": "Qu'ont en commun les architectures hexagonale, Clean et Onion, et comment vérifier qu'elle est respectée ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l7",
+            "title": "Les patrons qui servent vraiment"
+          },
+          {
+            "kind": "match",
+            "id": "archi-ddd-19",
+            "difficulty": 2,
+            "tags": [
+              "patterns",
+              "conception"
+            ],
+            "prompt": "Associe chaque besoin au patron approprié."
+          },
+          {
+            "kind": "fill",
+            "id": "archi-ddd-20",
+            "difficulty": 2,
+            "tags": [
+              "patterns",
+              "conception"
+            ],
+            "prompt": "Complète le patron qui remplace une cascade de conditions."
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-21",
+            "difficulty": 2,
+            "tags": [
+              "patterns",
+              "conception"
+            ],
+            "prompt": "Quel est le risque principal avec les patrons de conception ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-ddd-l8",
+            "title": "Les anti-patrons du modèle"
+          },
+          {
+            "kind": "output",
+            "id": "archi-ddd-22",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "anti-patterns"
+            ],
+            "prompt": "La classe `Commande` n'expose que des accesseurs et des mutateurs. Qu'affiche ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "archi-ddd-23",
+            "difficulty": 2,
+            "tags": [
+              "ddd",
+              "anti-patterns"
+            ],
+            "prompt": "Quelle ligne rend impossible toute garantie sur l'état de la commande ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-ddd-24",
+            "difficulty": 3,
+            "tags": [
+              "ddd",
+              "anti-patterns"
+            ],
+            "prompt": "Quand un modèle anémique est-il acceptable ?"
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },

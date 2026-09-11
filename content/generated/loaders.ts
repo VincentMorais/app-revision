@@ -8,6 +8,7 @@ import type { Chapter } from "@/lib/types";
 
 /** Un import dynamique par chapitre : le bundler en fait autant de morceaux. */
 export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>> = {
+  "archi-ddd-patterns": () => import("../archi/ddd-patterns"),
   "archi-hexagonale": () => import("../archi/hexagonale"),
   "data-sql-postgres": () => import("../data/sql-postgres"),
   "devops-git-gitlab-ci": () => import("../devops/git-gitlab-ci"),
