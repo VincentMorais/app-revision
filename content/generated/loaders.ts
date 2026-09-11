@@ -11,6 +11,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "archi-applicative": () => import("../archi/applicative"),
   "archi-ddd-patterns": () => import("../archi/ddd-patterns"),
   "archi-hexagonale": () => import("../archi/hexagonale"),
+  "data-sql-avance": () => import("../data/sql-avance"),
   "data-sql-postgres": () => import("../data/sql-postgres"),
   "devops-git-gitlab-ci": () => import("../devops/git-gitlab-ci"),
   "docker-bases": () => import("../docker/bases"),

@@ -5793,6 +5793,304 @@ export const courses: CourseMeta[] = [
             "prompt": "Quels sont les niveaux d'isolation, quelles anomalies évitent-ils, et lequel Postgres applique-t-il par défaut ?"
           }
         ]
+      },
+      {
+        "id": "data-sql-avance",
+        "title": "SQL avancé : fenêtres, récursivité, jsonb et types",
+        "objective": "Aller au-delà du SQL courant : agréger sans regrouper avec les fonctions fenêtre, maîtriser partition, ordre et cadre, structurer une requête avec des expressions de table, parcourir une hiérarchie sans boucle infinie, stocker et indexer du semi-structuré, choisir des types qui remplacent du code, et savoir quand le document est un mauvais choix.",
+        "prerequisites": [
+          "data-sql-postgres"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "data-adv-l1",
+            "title": "Agréger sans regrouper"
+          },
+          {
+            "kind": "output",
+            "id": "data-adv-01",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "fenetres"
+            ],
+            "prompt": "La table contient Alice (IT, 50000), Bob (IT, 70000) et Carole (RH, 40000). Que renvoie cette requête ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-02",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "fenetres"
+            ],
+            "prompt": "Pourquoi `WHERE row_number() OVER (…) = 1` est-il refusé ?"
+          },
+          {
+            "kind": "recall",
+            "id": "data-adv-03",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "fenetres"
+            ],
+            "prompt": "Quelle différence entre `row_number`, `rank` et `dense_rank` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "data-adv-l2",
+            "title": "Partition, ordre et cadre"
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-04",
+            "difficulty": 3,
+            "tags": [
+              "sql",
+              "fenetres"
+            ],
+            "prompt": "Que calcule `sum(montant) OVER (ORDER BY jour)` ?"
+          },
+          {
+            "kind": "match",
+            "id": "data-adv-05",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "fenetres"
+            ],
+            "prompt": "Associe chaque construction à son effet."
+          },
+          {
+            "kind": "recall",
+            "id": "data-adv-06",
+            "difficulty": 3,
+            "tags": [
+              "sql",
+              "fenetres"
+            ],
+            "prompt": "Quelle différence entre `ROWS` et `RANGE`, et pourquoi elle pose problème ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "data-adv-l3",
+            "title": "Les expressions de table communes"
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-07",
+            "difficulty": 3,
+            "tags": [
+              "sql",
+              "cte"
+            ],
+            "prompt": "Depuis Postgres 12, une expression de table commune référencée une seule fois est-elle matérialisée ?"
+          },
+          {
+            "kind": "order",
+            "id": "data-adv-08",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "cte"
+            ],
+            "prompt": "Remets dans l'ordre la transformation d'une requête imbriquée en requête nommée."
+          },
+          {
+            "kind": "recall",
+            "id": "data-adv-09",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "cte"
+            ],
+            "prompt": "Quand utiliser `MATERIALIZED` sur une expression de table ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "data-adv-l4",
+            "title": "Les requêtes récursives"
+          },
+          {
+            "kind": "output",
+            "id": "data-adv-10",
+            "difficulty": 3,
+            "tags": [
+              "sql",
+              "recursivite"
+            ],
+            "prompt": "Alice n'a pas de manager, Bob dépend d'Alice, Carole dépend de Bob. Que renvoie la requête ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-11",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "recursivite"
+            ],
+            "prompt": "Pourquoi préférer `UNION ALL` à `UNION` dans une requête récursive ?"
+          },
+          {
+            "kind": "recall",
+            "id": "data-adv-12",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "recursivite"
+            ],
+            "prompt": "Comment une requête récursive s'arrête-t-elle, et que se passe-t-il en cas de cycle ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "data-adv-l5",
+            "title": "jsonb : stocker du semi-structuré"
+          },
+          {
+            "kind": "fill",
+            "id": "data-adv-13",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb"
+            ],
+            "prompt": "Complète : extraire une valeur en texte, et tester la contenance."
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-14",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb"
+            ],
+            "prompt": "Pourquoi préférer `jsonb` à `json` ?"
+          },
+          {
+            "kind": "recall",
+            "id": "data-adv-15",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb"
+            ],
+            "prompt": "Quelles garanties perd-on en rangeant des données dans un `jsonb` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "data-adv-l6",
+            "title": "Indexer du jsonb"
+          },
+          {
+            "kind": "spot",
+            "id": "data-adv-16",
+            "difficulty": 3,
+            "tags": [
+              "sql",
+              "jsonb",
+              "index"
+            ],
+            "prompt": "Un index GIN existe sur `attributs`. Pourtant cette requête parcourt toute la table. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-17",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb",
+              "index"
+            ],
+            "prompt": "Quel est l'avantage principal d'un index GIN sur une colonne `jsonb` ?"
+          },
+          {
+            "kind": "recall",
+            "id": "data-adv-18",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb",
+              "index"
+            ],
+            "prompt": "Comment choisir entre un index GIN et un index d'expression sur du `jsonb` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "data-adv-l7",
+            "title": "Les types qui font gagner"
+          },
+          {
+            "kind": "match",
+            "id": "data-adv-19",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "types"
+            ],
+            "prompt": "Associe chaque besoin au type Postgres approprié."
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-20",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "types",
+              "jsonb"
+            ],
+            "prompt": "Comment rendre un champ `jsonb` très interrogé à la fois typé, contraint et indexable ?"
+          },
+          {
+            "kind": "fill",
+            "id": "data-adv-21",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "types"
+            ],
+            "prompt": "Complète les deux choix de type qui évitent des erreurs coûteuses."
+          },
+          {
+            "kind": "lesson",
+            "id": "data-adv-l8",
+            "title": "Quand ne pas utiliser jsonb"
+          },
+          {
+            "kind": "spot",
+            "id": "data-adv-22",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb",
+              "conception"
+            ],
+            "prompt": "Cette table va dériver en quelques mois. Quelle ligne pose problème ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "data-adv-23",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb",
+              "conception"
+            ],
+            "prompt": "Quelle question décide entre des colonnes et un `jsonb` ?"
+          },
+          {
+            "kind": "match",
+            "id": "data-adv-24",
+            "difficulty": 2,
+            "tags": [
+              "sql",
+              "jsonb",
+              "conception"
+            ],
+            "prompt": "Associe chaque donnée au stockage approprié."
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },
