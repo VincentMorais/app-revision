@@ -7108,6 +7108,312 @@ export const courses: CourseMeta[] = [
             "prompt": "Comment garantir que l'application ne démarre qu'une fois Postgres prêt à accepter des connexions ?"
           }
         ]
+      },
+      {
+        "id": "docker-registry",
+        "title": "Registre : distribuer, sécuriser et gérer ses images",
+        "objective": "Maîtriser la distribution d'images : comprendre couches, manifeste et digest, cesser de confondre tag et version, publier depuis une chaîne d'intégration sans divulguer de secret, réduire taille et surface d'attaque, analyser les vulnérabilités au bon moment, prouver l'origine d'une image et tenir une politique de rétention sans casser la production.",
+        "prerequisites": [
+          "docker-bases"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l1",
+            "title": "Image, couche, digest"
+          },
+          {
+            "kind": "mcq",
+            "id": "docker-reg-01",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "images"
+            ],
+            "prompt": "Un `Dockerfile` copie une clé privée puis la supprime dans une instruction `RUN` ultérieure. Est-elle protégée ?"
+          },
+          {
+            "kind": "match",
+            "id": "docker-reg-02",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "images"
+            ],
+            "prompt": "Associe chaque élément à ce qu'il est."
+          },
+          {
+            "kind": "recall",
+            "id": "docker-reg-03",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "images",
+              "cache"
+            ],
+            "prompt": "Pourquoi l'ordre des instructions d'un `Dockerfile` change-t-il radicalement le temps de construction ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l2",
+            "title": "Les tags ne sont pas des versions"
+          },
+          {
+            "kind": "output",
+            "id": "docker-reg-04",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "tags"
+            ],
+            "prompt": "L'image a été construite avec le tag `1.0` uniquement. Que fait la dernière commande ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "docker-reg-05",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "tags",
+              "deploiement"
+            ],
+            "prompt": "Pourquoi épingler le digest plutôt que le tag dans un déploiement ?"
+          },
+          {
+            "kind": "recall",
+            "id": "docker-reg-06",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "tags"
+            ],
+            "prompt": "Quelle stratégie de tags concilie lisibilité et reproductibilité ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l3",
+            "title": "Le registre : pousser, tirer, s'authentifier"
+          },
+          {
+            "kind": "fill",
+            "id": "docker-reg-07",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "registre",
+              "securite"
+            ],
+            "prompt": "Complète la connexion sûre à un registre."
+          },
+          {
+            "kind": "mcq",
+            "id": "docker-reg-08",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "registre",
+              "securite"
+            ],
+            "prompt": "Quel type d'identifiant donner à un environnement de production qui exécute des conteneurs ?"
+          },
+          {
+            "kind": "recall",
+            "id": "docker-reg-09",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "registre",
+              "securite"
+            ],
+            "prompt": "Où finissent les identifiants après un `docker login`, et pourquoi est-ce un problème ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l4",
+            "title": "Le registre GitLab dans une chaîne d'intégration"
+          },
+          {
+            "kind": "spot",
+            "id": "docker-reg-10",
+            "difficulty": 3,
+            "tags": [
+              "docker",
+              "ci",
+              "securite"
+            ],
+            "prompt": "Cette configuration divulgue un jeton. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "docker-reg-11",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "ci"
+            ],
+            "prompt": "Pourquoi une construction rapide en local devient-elle lente en intégration continue ?"
+          },
+          {
+            "kind": "recall",
+            "id": "docker-reg-12",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "ci"
+            ],
+            "prompt": "Pourquoi réserver les tags mouvants à la branche par défaut ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l5",
+            "title": "Réduire la taille d'une image"
+          },
+          {
+            "kind": "spot",
+            "id": "docker-reg-13",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "images",
+              "cache"
+            ],
+            "prompt": "Cette construction réinstalle toutes les dépendances à chaque modification du code. Quelle ligne ?"
+          },
+          {
+            "kind": "order",
+            "id": "docker-reg-14",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "images"
+            ],
+            "prompt": "Classe ces optimisations de la plus efficace à la moins efficace sur la taille d'une image Java."
+          },
+          {
+            "kind": "recall",
+            "id": "docker-reg-15",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "images",
+              "securite"
+            ],
+            "prompt": "En quoi la taille d'une image est-elle aussi une question de sécurité ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l6",
+            "title": "Analyser les vulnérabilités"
+          },
+          {
+            "kind": "mcq",
+            "id": "docker-reg-16",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "securite"
+            ],
+            "prompt": "Une image analysée sans vulnérabilité il y a trois mois est-elle encore sûre ?"
+          },
+          {
+            "kind": "match",
+            "id": "docker-reg-17",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "securite"
+            ],
+            "prompt": "Associe chaque situation à la bonne réaction."
+          },
+          {
+            "kind": "recall",
+            "id": "docker-reg-18",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "securite",
+              "ci"
+            ],
+            "prompt": "Comment régler le seuil de blocage d'une analyse dans une chaîne d'intégration ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l7",
+            "title": "Signer et vérifier la provenance"
+          },
+          {
+            "kind": "mcq",
+            "id": "docker-reg-19",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "securite",
+              "supply-chain"
+            ],
+            "prompt": "À quelle question la signature d'une image répond-elle ?"
+          },
+          {
+            "kind": "order",
+            "id": "docker-reg-20",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "securite",
+              "supply-chain"
+            ],
+            "prompt": "Classe ces protections de la plus simple à mettre en place à la plus exigeante."
+          },
+          {
+            "kind": "fill",
+            "id": "docker-reg-21",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "securite",
+              "supply-chain"
+            ],
+            "prompt": "Complète les deux artefacts attachés à une image."
+          },
+          {
+            "kind": "lesson",
+            "id": "docker-reg-l8",
+            "title": "Rétention et coûts"
+          },
+          {
+            "kind": "mcq",
+            "id": "docker-reg-22",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "registre",
+              "exploitation"
+            ],
+            "prompt": "Après avoir supprimé des centaines de tags, l'espace occupé n'a presque pas baissé. Pourquoi ?"
+          },
+          {
+            "kind": "match",
+            "id": "docker-reg-23",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "registre",
+              "exploitation"
+            ],
+            "prompt": "Associe chaque catégorie d'image à la politique adaptée."
+          },
+          {
+            "kind": "recall",
+            "id": "docker-reg-24",
+            "difficulty": 2,
+            "tags": [
+              "docker",
+              "registre",
+              "exploitation"
+            ],
+            "prompt": "Quelles précautions prendre avant d'activer une politique de rétention ?"
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },

@@ -12,6 +12,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "data-sql-postgres": () => import("../data/sql-postgres"),
   "devops-git-gitlab-ci": () => import("../devops/git-gitlab-ci"),
   "docker-bases": () => import("../docker/bases"),
+  "docker-registry": () => import("../docker/registry"),
   "java-collections": () => import("../java/collections"),
   "java-concurrence": () => import("../java/concurrence"),
   "java-equals-hashcode-comparable": () => import("../java/equals-hashcode-comparable"),

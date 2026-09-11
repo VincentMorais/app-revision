@@ -1,5 +1,6 @@
 import type { Course } from "@/lib/types";
 import { chapter as bases } from "./bases";
+import { chapter as registry } from "./registry";
 
 /** Parcours Docker (référentiel section 7). */
 export const dockerCourse: Course = {
@@ -7,5 +8,5 @@ export const dockerCourse: Course = {
   title: "Docker",
   description: "Images, Dockerfile, build multi-stage et compose.",
   icon: "🐳",
-  chapters: [bases],
+  chapters: [bases, registry],
 };
