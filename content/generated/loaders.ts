@@ -32,6 +32,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "spring-rest": () => import("../spring/rest"),
   "spring-security": () => import("../spring/security"),
   "spring-transactions": () => import("../spring/transactions"),
+  "tests-strategie": () => import("../tests/strategie"),
   "tests-tdd": () => import("../tests/tdd"),
   "transverse-entretien": () => import("../transverse/entretien"),
   "transverse-http-api": () => import("../transverse/http-api"),

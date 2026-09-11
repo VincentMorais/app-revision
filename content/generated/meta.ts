@@ -6464,6 +6464,298 @@ export const courses: CourseMeta[] = [
             "prompt": "Comment répartis-tu tes tests entre unitaires, tranches Spring et bout en bout ?"
           }
         ]
+      },
+      {
+        "id": "tests-strategie",
+        "title": "Stratégie de test : ce qu'on teste, et ce que ça prouve",
+        "objective": "Décider quoi tester et comment : arbitrer entre protection, résistance à la refonte, rapidité et coût, situer pyramide et trophée, écrire des tests qui survivent aux refontes, lire une couverture sans se tromper sur ce qu'elle mesure, savoir ce qu'apporte la mutation, choisir la bonne doublure, et détecter une incompatibilité entre services avant la production.",
+        "prerequisites": [
+          "tests-tdd"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l1",
+            "title": "À quoi sert une stratégie de test"
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-01",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "strategie"
+            ],
+            "prompt": "Quelle propriété d'une suite de tests ne peut pas être rattrapée après coup ?"
+          },
+          {
+            "kind": "match",
+            "id": "tests-strat-02",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "strategie"
+            ],
+            "prompt": "Associe chaque zone de code au type de test qui rapporte le plus."
+          },
+          {
+            "kind": "recall",
+            "id": "tests-strat-03",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "strategie"
+            ],
+            "prompt": "Quelles sont les quatre propriétés à arbitrer dans une suite de tests ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l2",
+            "title": "La pyramide et ses critiques"
+          },
+          {
+            "kind": "order",
+            "id": "tests-strat-04",
+            "difficulty": 1,
+            "tags": [
+              "tests",
+              "pyramide"
+            ],
+            "prompt": "Classe ces types de tests du plus nombreux au moins nombreux selon la pyramide."
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-05",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "pyramide"
+            ],
+            "prompt": "Pourquoi tester unitairement un contrôleur en simulant le service apporte-t-il peu ?"
+          },
+          {
+            "kind": "recall",
+            "id": "tests-strat-06",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "pyramide"
+            ],
+            "prompt": "Qu'est-ce qui a changé depuis la formulation de la pyramide, et avec quelle conséquence ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l3",
+            "title": "Le trophée : le poids des tests d'intégration"
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-07",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "integration"
+            ],
+            "prompt": "Quel est le raisonnement du trophée des tests ?"
+          },
+          {
+            "kind": "match",
+            "id": "tests-strat-08",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "integration"
+            ],
+            "prompt": "Associe chaque niveau du trophée à ce qu'il attrape."
+          },
+          {
+            "kind": "recall",
+            "id": "tests-strat-09",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "integration"
+            ],
+            "prompt": "Que couvre un test d'intégration sur une API qu'une série de tests unitaires ne couvre pas ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l4",
+            "title": "Tester le comportement, pas l'implémentation"
+          },
+          {
+            "kind": "spot",
+            "id": "tests-strat-10",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "conception"
+            ],
+            "prompt": "Ce test casse à chaque refonte sans jamais détecter de vrai défaut. Quelle ligne le montre le mieux ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-11",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "conception"
+            ],
+            "prompt": "Quand `verify` sur un simulacre est-il justifié ?"
+          },
+          {
+            "kind": "recall",
+            "id": "tests-strat-12",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "conception"
+            ],
+            "prompt": "Quel indicateur révèle qu'une suite de tests est couplée à l'implémentation ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l5",
+            "title": "La couverture : ce qu'elle mesure vraiment"
+          },
+          {
+            "kind": "output",
+            "id": "tests-strat-13",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "couverture"
+            ],
+            "prompt": "Que produit l'exécution de ce test, et que vaut la couverture de ligne de `divise` ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-14",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "couverture"
+            ],
+            "prompt": "Pourquoi la couverture de branche est-elle plus informative que celle de ligne ?"
+          },
+          {
+            "kind": "recall",
+            "id": "tests-strat-15",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "couverture"
+            ],
+            "prompt": "Comment lire utilement un rapport de couverture ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l6",
+            "title": "Les tests de mutation"
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-16",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "mutation"
+            ],
+            "prompt": "Que signifie un « mutant survivant » ?"
+          },
+          {
+            "kind": "fill",
+            "id": "tests-strat-17",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "mutation"
+            ],
+            "prompt": "Complète le raisonnement des tests de mutation."
+          },
+          {
+            "kind": "recall",
+            "id": "tests-strat-18",
+            "difficulty": 3,
+            "tags": [
+              "tests",
+              "mutation"
+            ],
+            "prompt": "Quelle question pose la mutation que la couverture ne pose pas, et à quel prix ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l7",
+            "title": "Les doublures de test"
+          },
+          {
+            "kind": "match",
+            "id": "tests-strat-19",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "doublures"
+            ],
+            "prompt": "Associe chaque doublure à son rôle."
+          },
+          {
+            "kind": "spot",
+            "id": "tests-strat-20",
+            "difficulty": 3,
+            "tags": [
+              "tests",
+              "doublures",
+              "conception"
+            ],
+            "prompt": "Ce test signale un problème qui n'est pas un problème de test. Quelle ligne le révèle ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-21",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "doublures"
+            ],
+            "prompt": "Que faut-il doubler dans un test ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "tests-strat-l8",
+            "title": "Les tests de contrat"
+          },
+          {
+            "kind": "order",
+            "id": "tests-strat-22",
+            "difficulty": 3,
+            "tags": [
+              "tests",
+              "contrat"
+            ],
+            "prompt": "Remets dans l'ordre le flot d'un test de contrat piloté par le consommateur."
+          },
+          {
+            "kind": "mcq",
+            "id": "tests-strat-23",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "contrat"
+            ],
+            "prompt": "Quel problème les tests de contrat résolvent-ils ?"
+          },
+          {
+            "kind": "fill",
+            "id": "tests-strat-24",
+            "difficulty": 2,
+            "tags": [
+              "tests",
+              "contrat"
+            ],
+            "prompt": "Complète la répartition des rôles dans un test de contrat."
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },
