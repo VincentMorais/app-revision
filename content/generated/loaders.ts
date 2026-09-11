@@ -25,6 +25,7 @@ export const chapterLoaders: Record<string, () => Promise<{ chapter: Chapter }>>
   "java-jvm": () => import("../java/jvm"),
   "java-lambdas-streams": () => import("../java/lambdas-streams"),
   "java-moderne": () => import("../java/moderne"),
+  "react-ecosysteme": () => import("../react/ecosysteme"),
   "react-etat-data": () => import("../react/etat-data"),
   "react-hooks": () => import("../react/hooks"),
   "react-js-ts": () => import("../react/js-ts"),

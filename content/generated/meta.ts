@@ -9248,6 +9248,301 @@ export const courses: CourseMeta[] = [
           }
         ],
         "format": "detaille"
+      },
+      {
+        "id": "react-ecosysteme",
+        "title": "Écosystème : outillage, tests, appels API et accessibilité",
+        "objective": "Maîtriser ce qui entoure les composants : comprendre pourquoi Vite démarre instantanément et ce que cela impose, écrire des tests qui survivent aux refontes, savoir lesquels valent la peine, simuler le réseau sans court-circuiter le code réel, activer les règles d'analyse qui attrapent de vrais bugs, centraliser les appels API et le jeton, et rendre une interface réellement utilisable au clavier.",
+        "prerequisites": [
+          "react-hooks"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "react-eco-l1",
+            "title": "Vite : pourquoi le démarrage est instantané"
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-01",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "outillage"
+            ],
+            "prompt": "Pourquoi le serveur de développement de Vite démarre-t-il instantanément quelle que soit la taille du projet ?"
+          },
+          {
+            "kind": "match",
+            "id": "react-eco-02",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "outillage"
+            ],
+            "prompt": "Associe chaque outil ou étape à son rôle."
+          },
+          {
+            "kind": "recall",
+            "id": "react-eco-03",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "outillage"
+            ],
+            "prompt": "Quelles conséquences pratiques a la différence entre développement et production ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "react-eco-l2",
+            "title": "Tester un composant"
+          },
+          {
+            "kind": "fill",
+            "id": "react-eco-04",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Complète : chercher un bouton comme le ferait une aide technique, et attendre un contenu asynchrone."
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-05",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Pourquoi préférer `userEvent` à `fireEvent` ?"
+          },
+          {
+            "kind": "recall",
+            "id": "react-eco-06",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests",
+              "accessibilite"
+            ],
+            "prompt": "Pourquoi chercher un élément par son rôle plutôt que par un identifiant de test ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "react-eco-l3",
+            "title": "Ce qu'il faut tester"
+          },
+          {
+            "kind": "spot",
+            "id": "react-eco-07",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Ce test ne peut détecter aucun défaut réel. Quelle ligne le montre ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-08",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Quel test de composant a le meilleur rapport valeur sur coût ?"
+          },
+          {
+            "kind": "recall",
+            "id": "react-eco-09",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Quels états d'une interface faut-il penser à tester, et lequel est le plus oublié ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "react-eco-l4",
+            "title": "Simuler le réseau"
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-10",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Pourquoi intercepter au niveau réseau plutôt que remplacer la fonction de requête ?"
+          },
+          {
+            "kind": "order",
+            "id": "react-eco-11",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Remets dans l'ordre la mise en place d'une interception réseau dans une suite de tests."
+          },
+          {
+            "kind": "recall",
+            "id": "react-eco-12",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "tests"
+            ],
+            "prompt": "Quel bénéfice, au-delà des tests, apporte l'interception réseau ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "react-eco-l5",
+            "title": "Les règles qui attrapent les bugs"
+          },
+          {
+            "kind": "spot",
+            "id": "react-eco-13",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "hooks",
+              "qualite"
+            ],
+            "prompt": "La liste ne se met jamais à jour quand le filtre change. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-14",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "qualite"
+            ],
+            "prompt": "Quelle place donner aux règles de formatage dans une revue de code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "react-eco-15",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "qualite"
+            ],
+            "prompt": "Comment introduire l'analyse statique sur un projet existant ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "react-eco-l6",
+            "title": "Les appels API et le jeton"
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-16",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "api",
+              "securite"
+            ],
+            "prompt": "Quel est le risque principal d'un jeton rangé dans `localStorage` ?"
+          },
+          {
+            "kind": "match",
+            "id": "react-eco-17",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "api"
+            ],
+            "prompt": "Associe chaque responsabilité à sa place dans un client d'API."
+          },
+          {
+            "kind": "recall",
+            "id": "react-eco-18",
+            "difficulty": 3,
+            "tags": [
+              "react",
+              "api"
+            ],
+            "prompt": "Quel problème de concurrence pose le rafraîchissement d'un jeton ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "react-eco-l7",
+            "title": "L'accessibilité : les bases"
+          },
+          {
+            "kind": "spot",
+            "id": "react-eco-19",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "accessibilite"
+            ],
+            "prompt": "Cet élément est inutilisable au clavier. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-20",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "accessibilite"
+            ],
+            "prompt": "Pourquoi ne pas supprimer l'indicateur de focus pour des raisons esthétiques ?"
+          },
+          {
+            "kind": "match",
+            "id": "react-eco-21",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "accessibilite"
+            ],
+            "prompt": "Associe chaque intention à l'élément approprié."
+          },
+          {
+            "kind": "lesson",
+            "id": "react-eco-l8",
+            "title": "Formulaires accessibles"
+          },
+          {
+            "kind": "output",
+            "id": "react-eco-22",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "accessibilite",
+              "tests"
+            ],
+            "prompt": "Que se passe-t-il lors de l'exécution de ce test ?"
+          },
+          {
+            "kind": "spot",
+            "id": "react-eco-23",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "accessibilite"
+            ],
+            "prompt": "Cette erreur de validation n'est jamais annoncée. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "react-eco-24",
+            "difficulty": 2,
+            "tags": [
+              "react",
+              "accessibilite"
+            ],
+            "prompt": "Un formulaire échoue à la validation. Quel geste manque le plus souvent ?"
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },

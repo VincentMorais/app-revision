@@ -1,4 +1,5 @@
 import type { Course } from "@/lib/types";
+import { chapter as ecosysteme } from "./ecosysteme";
 import { chapter as etatData } from "./etat-data";
 import { chapter as hooks } from "./hooks";
 import { chapter as jsTs } from "./js-ts";
@@ -9,5 +10,5 @@ export const reactCourse: Course = {
   title: "React",
   description: "Composants, hooks, état et re-renders.",
   icon: "⚛",
-  chapters: [jsTs, hooks, etatData],
+  chapters: [jsTs, hooks, etatData, ecosysteme],
 };

@@ -34,6 +34,7 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 | 7 | `spring-rest` ✔ | spring | REST : contrôleurs, DTO, validation, erreurs | `spring-ioc` | 2.3 |
 | 8 | `spring-jpa` ✔ | spring | JPA : entités, relations, LAZY/EAGER, N+1 | `spring-ioc`, `java-equals-hashcode-comparable` | 3.5, 2.4 |
 | 9 | `spring-transactions` ✔ | spring | Transactions et persistence context | `spring-jpa` | 2.4, 3.5 |
+| ★ | `react-ecosysteme` ✔ | react | Vite, tests de composants, ce qu'il faut tester, MSW, règles d'analyse, appels API et jeton, accessibilité, formulaires — **format `detaille`** | `react-hooks` | 6.3 |
 | ★ | `data-sql-avance` ✔ | data | Fonctions fenêtre, cadre, CTE, récursivité, jsonb, index GIN, types, quand ne pas utiliser jsonb — **format `detaille`** | `data-sql-postgres` | 3.1 |
 | ★ | `archi-applicative` ✔ | archi | Découpage et déploiement, coût du réseau, sync/async, reprises et idempotence, disjoncteur, cache, cohérence éventuelle, observabilité — **format `detaille`** | `spring-rest` | 9.2 |
 | ★ | `archi-ddd-patterns` ✔ | archi | Langage partagé, entité et objet-valeur, agrégat, dépôt, services, hexagonale/Clean/Onion, patrons, anti-patrons — **format `detaille`** | `archi-hexagonale` | 4.3 |
@@ -61,7 +62,6 @@ Légende : ★ chapitre étalon, ✔ écrit, ☐ à écrire. Ordre = ordre du r�
 
 | id | Parcours | Titre | Prérequis | Réf. |
 |---|---|---|---|---|
-| `react-ecosysteme` ☐ | react | Vite, Vitest + RTL, ESLint, appels API et token, accessibilité | `react-hooks` | 6.3 (P2) |
 | `devops-git-workflow` ☐ | devops | GitFlow / trunk-based, revue de code, SonarQube, semver | `devops-git-gitlab-ci` | 8.1, 8.3 |
 
 ## Règles éditoriales (vérifiées par `content/__tests__/content.test.ts` via `lib/content-rules.ts`)

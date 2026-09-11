@@ -171,8 +171,8 @@ dans `content/index.ts`. Chaque
 leçon fait 150–300 mots, un concept, un exemple de code commenté, suivie de 3 à 8 exercices.
 Chaque exercice a une explication (affichée juste ou faux), une difficulté 1–3 et des tags.
 
-**32 chapitres, 864 exercices**, sur 9 parcours : Java (9 chapitres), Spring Boot (8), Transverse (2), SQL et Postgres (2),
-Architecture (3), Tests (2), Docker (2), React (3), Git et GitLab CI. Le programme complet est dans
+**33 chapitres, 888 exercices**, sur 9 parcours : Java (9 chapitres), Spring Boot (8), Transverse (2), SQL et Postgres (2),
+Architecture (3), Tests (2), Docker (2), React (4), Git et GitLab CI. Le programme complet est dans
 `referentiel-poste-java-react.md`. Le découpage en chapitres, leurs ids
 et leurs prérequis sont dans `content/PLAN.md` ; les règles éditoriales sont vérifiées par
 `content/__tests__/content.test.ts`. Chapitre étalon du format `detaille` : `content/spring/security.ts` (8 leçons, 24 exercices).
