@@ -6426,6 +6426,299 @@ export const courses: CourseMeta[] = [
           }
         ],
         "format": "detaille"
+      },
+      {
+        "id": "archi-applicative",
+        "title": "Architecture applicative : distribuer sans se piéger",
+        "objective": "Raisonner sur un système distribué : distinguer découpage et déploiement, mesurer ce que coûte le réseau, choisir entre synchrone et asynchrone, rendre les opérations rejouables, isoler les pannes par disjoncteur et cloisonnement, poser un cache sans créer d'incohérence, assumer la cohérence éventuelle jusque dans l'interface, et observer ce qu'on ne peut plus déboguer par une pile d'appel.",
+        "prerequisites": [
+          "spring-rest"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "archi-app-l1",
+            "title": "Monolithe modulaire ou microservices"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-01",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "microservices"
+            ],
+            "prompt": "Pourquoi l'opposition « monolithe contre microservices » est-elle mal posée ?"
+          },
+          {
+            "kind": "match",
+            "id": "archi-app-02",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "microservices"
+            ],
+            "prompt": "Associe chaque bénéfice ou coût au bon côté."
+          },
+          {
+            "kind": "recall",
+            "id": "archi-app-03",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "microservices"
+            ],
+            "prompt": "Pourquoi commencer par un monolithe modulaire plutôt que par des microservices ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-app-l2",
+            "title": "Le coût du réseau"
+          },
+          {
+            "kind": "output",
+            "id": "archi-app-04",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "reseau",
+              "performance"
+            ],
+            "prompt": "L'API distante répond en 50 ms par appel et la liste contient 100 commandes. Combien de temps environ ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-05",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "reseau"
+            ],
+            "prompt": "Pourquoi un appel sortant sans délai d'attente est-il dangereux ?"
+          },
+          {
+            "kind": "recall",
+            "id": "archi-app-06",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "reseau"
+            ],
+            "prompt": "Qu'est-ce qu'un budget de latence, et comment se calcule-t-il ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-app-l3",
+            "title": "Synchrone ou asynchrone"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-07",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "messaging"
+            ],
+            "prompt": "Quel critère décide entre un appel synchrone et un message asynchrone ?"
+          },
+          {
+            "kind": "match",
+            "id": "archi-app-08",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "messaging"
+            ],
+            "prompt": "Associe chaque propriété au mode de communication."
+          },
+          {
+            "kind": "recall",
+            "id": "archi-app-09",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "messaging"
+            ],
+            "prompt": "Pourquoi nommer un message d'après un fait plutôt que d'après une action ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-app-l4",
+            "title": "Reprises et idempotence"
+          },
+          {
+            "kind": "spot",
+            "id": "archi-app-10",
+            "difficulty": 3,
+            "tags": [
+              "architecture",
+              "resilience"
+            ],
+            "prompt": "Cette politique de reprise aggrave les pannes. Quelle ligne ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-11",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "resilience"
+            ],
+            "prompt": "Quelles erreurs méritent une nouvelle tentative ?"
+          },
+          {
+            "kind": "recall",
+            "id": "archi-app-12",
+            "difficulty": 3,
+            "tags": [
+              "architecture",
+              "resilience",
+              "idempotence"
+            ],
+            "prompt": "Pourquoi l'idempotence est-elle indispensable dès qu'on réessaie ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-app-l5",
+            "title": "Disjoncteur et cloisonnement"
+          },
+          {
+            "kind": "order",
+            "id": "archi-app-13",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "resilience"
+            ],
+            "prompt": "Remets dans l'ordre le cycle d'un disjoncteur."
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-14",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "resilience"
+            ],
+            "prompt": "Quelle différence entre un disjoncteur et un cloisonnement ?"
+          },
+          {
+            "kind": "recall",
+            "id": "archi-app-15",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "resilience"
+            ],
+            "prompt": "Qu'est-ce qui fait la valeur d'un disjoncteur, au-delà de l'échec rapide ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-app-l6",
+            "title": "Le cache et ses risques"
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-16",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "cache"
+            ],
+            "prompt": "Un utilisateur voit alternativement une valeur à jour et une valeur ancienne en actualisant. Quelle cause ?"
+          },
+          {
+            "kind": "spot",
+            "id": "archi-app-17",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "cache"
+            ],
+            "prompt": "Ce cache finira par saturer la mémoire. Quelle ligne ?"
+          },
+          {
+            "kind": "recall",
+            "id": "archi-app-18",
+            "difficulty": 3,
+            "tags": [
+              "architecture",
+              "cache"
+            ],
+            "prompt": "Qu'est-ce que l'avalanche de cache et la ruée sur une clé, et comment s'en prémunir ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-app-l7",
+            "title": "La cohérence éventuelle"
+          },
+          {
+            "kind": "order",
+            "id": "archi-app-19",
+            "difficulty": 3,
+            "tags": [
+              "architecture",
+              "coherence"
+            ],
+            "prompt": "Remets dans l'ordre le motif de la transaction sortante."
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-20",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "coherence"
+            ],
+            "prompt": "Un utilisateur valide une commande et est redirigé vers une liste alimentée de façon asynchrone. Que voit-il ?"
+          },
+          {
+            "kind": "fill",
+            "id": "archi-app-21",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "coherence"
+            ],
+            "prompt": "Complète l'énoncé du compromis en cas de partition réseau."
+          },
+          {
+            "kind": "lesson",
+            "id": "archi-app-l8",
+            "title": "Observabilité"
+          },
+          {
+            "kind": "match",
+            "id": "archi-app-22",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "observabilite"
+            ],
+            "prompt": "Associe chaque signal à la question à laquelle il répond."
+          },
+          {
+            "kind": "mcq",
+            "id": "archi-app-23",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "observabilite"
+            ],
+            "prompt": "Pourquoi alerter sur la latence médiane est-il insuffisant ?"
+          },
+          {
+            "kind": "fill",
+            "id": "archi-app-24",
+            "difficulty": 2,
+            "tags": [
+              "architecture",
+              "observabilite"
+            ],
+            "prompt": "Complète le principe d'alerte et le mécanisme de corrélation."
+          }
+        ],
+        "format": "detaille"
       }
     ]
   },
