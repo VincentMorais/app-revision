@@ -6,7 +6,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { contentIndex } from "@/content";
-import { answerExercise, markLessonRead } from "./engine";
+import { answerExercise, awardXp, markLessonRead } from "./engine";
 import type { Grade } from "./srs";
 import { createEmptyState, loadState, resetState, saveState, subscribe, updateState, type AppState } from "./storage";
 
@@ -30,6 +30,24 @@ export const actions = {
   },
   readLesson(lessonId: string, now = Date.now()): AppState {
     return updateState((s) => markLessonRead(s, lessonId, now));
+  },
+  /** Bonus de fin de séance. */
+  bonusXp(amount: number, now = Date.now()): AppState {
+    return updateState((s) => awardXp(s, amount, now));
+  },
+  startProgram(now = Date.now()): AppState {
+    return updateState((s) => ({ ...s, program: { startedAt: now, skipped: [] } }));
+  },
+  stopProgram(): AppState {
+    return updateState((s) => ({ ...s, program: null }));
+  },
+  skipChapter(chapterId: string): AppState {
+    return updateState((s) =>
+      s.program === null || s.program.skipped.includes(chapterId) ? s : { ...s, program: { ...s.program, skipped: [...s.program.skipped, chapterId] } },
+    );
+  },
+  setDailyGoal(xp: number): AppState {
+    return updateState((s) => ({ ...s, dailyGoal: xp }));
   },
   reset(): AppState {
     return resetState();

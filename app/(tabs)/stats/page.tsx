@@ -5,6 +5,7 @@ import { contentIndex, courses } from "@/content";
 import { BackupPanel } from "@/components/BackupPanel";
 import { OfflineStatus } from "@/components/OfflineStatus";
 import { Button } from "@/components/ui/Button";
+import { DAILY_GOALS } from "@/lib/xp";
 import { rateByCourse, rateByTag, weakestTags, type RateStat } from "@/lib/stats";
 import { actions, useAppState, useMounted } from "@/lib/store";
 import { effectiveStreak } from "@/lib/streak";
@@ -48,6 +49,18 @@ export default function StatsPage() {
         <Tile label="Réponses" value={String(state.attempts.length)} />
         <Tile label="Série" value={`${streak} j`} />
         <Tile label="Record" value={`${state.streak.longest} j`} />
+      </section>
+
+      <section>
+        <h2 className="mb-2 text-sm font-semibold text-fg-muted">Objectif quotidien</h2>
+        <div className="grid grid-cols-3 gap-2" role="radiogroup" aria-label="Objectif quotidien">
+          {DAILY_GOALS.map((g) => (
+            <Button key={g.xp} variant={state.dailyGoal === g.xp ? "primary" : "secondary"} role="radio" aria-checked={state.dailyGoal === g.xp} onClick={() => actions.setDailyGoal(g.xp)}>
+              <span className="block font-semibold">{g.xp} XP</span>
+              <span className="block text-xs opacity-80">{g.label}</span>
+            </Button>
+          ))}
+        </div>
       </section>
 
       <section>

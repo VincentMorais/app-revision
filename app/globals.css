@@ -63,3 +63,53 @@ pre {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
 }
+
+/* Petites animations de récompense. Désactivées si l'appareil demande moins de mouvement. */
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pop {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes grow {
+  from {
+    width: var(--from, 0%);
+  }
+}
+
+.anim-rise {
+  animation: rise 0.25s ease-out both;
+}
+.anim-pop {
+  animation: pop 0.35s ease-out both;
+}
+.anim-grow {
+  animation: grow 0.7s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-rise,
+  .anim-pop,
+  .anim-grow {
+    animation: none;
+  }
+}

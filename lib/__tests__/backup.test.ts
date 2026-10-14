@@ -23,6 +23,10 @@ function sampleState(): AppState {
     lessonsRead: { "java-fondamentaux-l1": 100 },
     validatedChapters: { "java-fondamentaux": 100 },
     streak: { current: 4, longest: 9, lastActiveDay: "2026-09-10" },
+    xp: 12,
+    daily: { "2026-09-10": 12 },
+    dailyGoal: 50,
+    program: null,
   };
 }
 

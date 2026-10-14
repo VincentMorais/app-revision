@@ -5,7 +5,7 @@ import { CodeBlock } from "@/components/CodeBlock";
 import { InlineText, renderInline } from "@/components/InlineText";
 import { Button } from "@/components/ui/Button";
 import type { RecallExercise } from "@/lib/types";
-import { Prompt, type ExerciseComponentProps } from "./shared";
+import { Prompt, SimpleExplanation, type ExerciseComponentProps } from "./shared";
 
 /**
  * Rappel libre auto-évalué : on formule mentalement, on révèle, on se note.
@@ -33,8 +33,9 @@ export function RecallView({ exercise, verdict, onSubmit }: ExerciseComponentPro
 
       {(revealed || verdict !== null) && (
         <>
+          {exercise.simple && <SimpleExplanation simple={exercise.simple} />}
           <div className="rounded-lg border border-border bg-bg-elevated p-3">
-            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-fg-muted">Correction</p>
+            <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-fg-muted">{exercise.simple ? "Correction détaillée" : "Correction"}</p>
             <InlineText text={exercise.explanation} className="text-[15px] leading-relaxed" />
             {exercise.keyPoints && exercise.keyPoints.length > 0 && (
               <ul className="mt-3 flex flex-col gap-1 border-t border-border pt-3 text-sm">

@@ -44,8 +44,8 @@ export type SessionPlan = {
  * vient de lire sans l'avoir travaillée, ni couper au milieu de ses exercices.
  * La reprise est déjà gérée (`resume`), rien n'est perdu.
  */
-export const LEARN_TARGET_STEPS = 8;
-export const LEARN_MAX_STEPS = 12;
+export const LEARN_TARGET_STEPS = 6;
+export const LEARN_MAX_STEPS = 9;
 
 export function capLearningSteps(steps: SessionStep[]): SessionStep[] {
   if (steps.length <= LEARN_MAX_STEPS) return steps;
@@ -116,9 +116,9 @@ export function learningProgress(chapter: ChapterMeta, state: AppState): { done:
 // Révision
 // ---------------------------------------------------------------------------
 
-export const REVIEW_MIN = 10;
-export const REVIEW_MAX = 15;
-export const REVIEW_DEFAULT = 12;
+export const REVIEW_MIN = 8;
+export const REVIEW_MAX = 12;
+export const REVIEW_DEFAULT = 10;
 
 export type ReviewOptions = {
   /** Exercices éligibles (chapitres ouverts), dans l'ordre du référentiel. */

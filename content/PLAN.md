@@ -94,6 +94,30 @@ Une session d'apprentissage est plafonnée à 12 étapes (`LEARN_MAX_STEPS`) et
 coupe de préférence juste avant une leçon : un chapitre se fait en plusieurs
 fois, la reprise étant automatique.
 
+### `doux` — pour reprendre les bases ou aborder du neuf sans prérequis
+
+Né d'un constat à l'usage : les formats précédents supposent un lecteur qui connaît déjà
+le sujet (vocabulaire non défini, leçon qui n'enseigne pas ce que l'exercice demande). Le
+format `doux` est le même squelette, en plus court et en plus doux :
+
+- **5 à 10 leçons de 250 à 650 mots**, un bloc `text` de 60 à 110 mots par écran (les
+  leçons s'affichent une carte à la fois).
+- **Vocabulaire défini à sa première apparition**, une image concrète tenue d'un bout à
+  l'autre (case, boîte, flèche, plan, recette).
+- **Chaque exercice est précédé de la notion exacte qu'il demande**, avec un exemple de
+  même forme. Auto-contrôle à l'écriture : pour chaque exercice, retrouver la phrase de la
+  leçon qui donne la réponse.
+- **Difficulté croissante** dans le chapitre : difficulté 1 d'abord, quelques 3 à la fin.
+- **`simple` obligatoire** sur chaque exercice : l'explication « En clair », en mots du
+  quotidien (le champ `explanation` reste le détail technique).
+- Même structure vérifiée que `detaille` : ≥ 2 blocs de code, ≥ 1 encadré, ≥ 1 comparaison
+  par leçon, 3 à 5 exercices par leçon, 7 types d'exercices, ≥ 5 rappels libres.
+
+Le parcours **Fondations** (`content/bases/`, 6 chapitres) est écrit dans ce format ; le
+calendrier du programme intensif (`lib/program.ts`) le place en première semaine.
+`java-fondamentaux` y a été repris. Les 15 autres chapitres `compact` sont à reprendre
+dans l'ordre du calendrier.
+
 ### `compact` — format d'origine, en cours de reprise
 
 Les 16 premiers chapitres sont encore à ce format et le restent tant qu'ils

@@ -77,6 +77,13 @@ export type ExerciseBase = {
    * Pour `recall`, c'est la correction révélée.
    */
   explanation: string;
+  /**
+   * Même explication, en mots de tous les jours : 2 à 4 phrases, aucun terme
+   * technique non défini, une image concrète si elle aide. Affichée en premier
+   * sous « En clair » ; `explanation` passe alors en « détail technique ».
+   * Optionnel : les chapitres pas encore repris n'en ont pas.
+   */
+  simple?: string;
 };
 
 /** QCM : une bonne réponse parmi quatre. Les distracteurs sont des erreurs plausibles. */
@@ -227,10 +234,16 @@ export type CourseMeta = {
  *   ça existe, un contre-exemple, l'exemple, la règle, une comparaison, les
  *   pièges) suivies de 3 à 5 exercices seulement.
  *
+ * - `doux` : pour reprendre les bases ou aborder une notion nouvelle sans
+ *   connaissances préalables. 5 à 10 leçons de 250–650 mots, un vocabulaire
+ *   défini à chaque première apparition, une image concrète par notion, et
+ *   des exercices qui partent du plus simple : le chapitre monte en difficulté
+ *   leçon après leçon. Même squelette que `detaille`, en plus court.
+ *
  * Les chapitres écrits avant la bascule restent en `compact` le temps d'être
  * repris ; c'est la valeur par défaut quand le champ est absent.
  */
-export type ChapterFormat = "compact" | "detaille";
+export type ChapterFormat = "compact" | "detaille" | "doux";
 
 export type Chapter = {
   id: string;

@@ -19,22 +19,26 @@ export type Range = { min: number; max: number };
 export const LESSON_WORDS: Record<ChapterFormat, Range> = {
   compact: { min: 150, max: 300 },
   detaille: { min: 500, max: 900 },
+  doux: { min: 250, max: 650 },
 };
 
 export const EXERCISES_PER_LESSON: Record<ChapterFormat, Range> = {
   compact: { min: 3, max: 8 },
   detaille: { min: 3, max: 5 },
+  doux: { min: 3, max: 5 },
 };
 
 export const LESSONS_PER_CHAPTER: Record<ChapterFormat, Range> = {
   compact: { min: 1, max: 12 },
   detaille: { min: 8, max: 10 },
+  doux: { min: 5, max: 10 },
 };
 
 /** Blocs imposés par leçon en `detaille`. Aucun en `compact`. */
 export const BLOCKS_REQUIRED: Record<ChapterFormat, { code: number; callout: number; comparison: number }> = {
   compact: { code: 1, callout: 0, comparison: 0 },
   detaille: { code: 2, callout: 1, comparison: 1 },
+  doux: { code: 2, callout: 1, comparison: 1 },
 };
 
 export const RECALL_MIN = 5;

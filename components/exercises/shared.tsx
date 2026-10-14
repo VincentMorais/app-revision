@@ -125,3 +125,13 @@ export function Badge({ children, tone = "muted" }: { children: ReactNode; tone?
   }[tone];
   return <span className={`inline-flex h-6 min-w-6 items-center justify-center rounded-full px-1.5 text-xs font-semibold ${cls}`}>{children}</span>;
 }
+
+/** Explication « en clair » : mots simples d'abord, le détail technique reste disponible. */
+export function SimpleExplanation({ simple }: { simple: string }) {
+  return (
+    <div className="rounded-lg border-l-4 border-accent/60 bg-accent/10 px-3 py-2.5">
+      <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-accent">En clair</p>
+      <InlineText text={simple} className="text-[16px] leading-relaxed" />
+    </div>
+  );
+}

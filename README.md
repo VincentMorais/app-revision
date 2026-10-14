@@ -29,6 +29,7 @@ app/
   (tabs)/         accueil, apprendre (liste), erreurs, stats — avec la navigation basse
   apprendre/[id]  session d'apprentissage d'un chapitre (statique, généré au build)
   reviser/        session de révision (items dus, sans leçon)
+  programme/      calendrier du programme intensif (démarrer, sauter un chapitre, arrêter)
   rejouer/        rejouer une liste d'exercices : /rejouer?ids=a,b,c
   demo/           bac à sable des 7 types d'exercice
 components/
@@ -54,6 +55,8 @@ lib/
   streak.ts     série de jours consécutifs
   engine.ts     écritures : enregistrer une réponse, marquer une leçon lue
   store.ts      liaison React (useAppState, useMounted, actions) — seul point d'écriture depuis l'UI
+  xp.ts         points d'expérience, niveaux, objectif quotidien, phrases d'encouragement
+  program.ts    programme intensif de 30 jours : calendrier, mission du jour, retard (lève les verrous)
   storage.ts    SEUL module qui touche localStorage
 public/sw.js    service worker : préchargement complet pour le hors ligne (production)
 scripts/

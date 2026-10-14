@@ -8,6 +8,2011 @@ import type { CourseMeta } from "@/lib/types";
 
 export const courses: CourseMeta[] = [
   {
+    "id": "bases",
+    "title": "Fondations",
+    "description": "Les bases, doucement : variables, conditions et boucles, méthodes, objets, collections, erreurs.",
+    "icon": "🌱",
+    "chapters": [
+      {
+        "id": "bases-variables",
+        "title": "Variables, types et opérations",
+        "objective": "Savoir lire et écrire un petit programme qui déclare des variables, calcule et affiche un résultat, en suivant les valeurs ligne par ligne.",
+        "prerequisites": [],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "bases-var-l1",
+            "title": "Une variable, c'est une case étiquetée"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-var-01",
+            "difficulty": 1,
+            "tags": [
+              "variables"
+            ],
+            "prompt": "`int age = 30;` : que contient la case étiquetée `age` ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-var-02",
+            "difficulty": 1,
+            "tags": [
+              "variables",
+              "affectation"
+            ],
+            "prompt": "Crée une case entière `vies` qui contient 3, puis change sa valeur pour 2."
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-03",
+            "difficulty": 1,
+            "tags": [
+              "variables",
+              "affichage"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-var-04",
+            "difficulty": 1,
+            "tags": [
+              "variables",
+              "affectation"
+            ],
+            "prompt": "Avec tes mots : qu'est-ce qu'une variable ? Quelle est la différence entre `int score = 10;` et `score = 25;` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-var-l2",
+            "title": "Les types de base : choisir ce que la case contient"
+          },
+          {
+            "kind": "match",
+            "id": "bases-var-05",
+            "difficulty": 1,
+            "tags": [
+              "types"
+            ],
+            "prompt": "Associe chaque valeur au type de case qui lui convient."
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-var-06",
+            "difficulty": 1,
+            "tags": [
+              "types",
+              "double"
+            ],
+            "prompt": "Quel type choisir pour ranger le prix d'un article, par exemple 4.99 ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-var-07",
+            "difficulty": 1,
+            "tags": [
+              "types",
+              "char"
+            ],
+            "prompt": "Une seule ligne empêche ce code de compiler. Laquelle, et pourquoi ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-var-08",
+            "difficulty": 1,
+            "tags": [
+              "types"
+            ],
+            "prompt": "Pourquoi Java demande-t-il de choisir un type pour chaque case ? Donne un exemple de valeur pour `int`, `double`, `boolean`, `char` et `String`."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-var-l3",
+            "title": "Les opérations : calculer et coller"
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-09",
+            "difficulty": 1,
+            "tags": [
+              "operations",
+              "division-entiere"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-var-10",
+            "difficulty": 1,
+            "tags": [
+              "operations",
+              "reste"
+            ],
+            "prompt": "Tu donnes autant de bonbons que possible à chacun de 5 enfants, avec 17 bonbons. Quelle expression donne le nombre de bonbons qui restent ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-11",
+            "difficulty": 2,
+            "tags": [
+              "operations",
+              "priorites"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-var-12",
+            "difficulty": 2,
+            "tags": [
+              "operations",
+              "division-entiere",
+              "reste"
+            ],
+            "prompt": "Complète pour convertir 200 minutes en heures entières et minutes restantes."
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-13",
+            "difficulty": 2,
+            "tags": [
+              "operations",
+              "concatenation"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-var-l4",
+            "title": "Afficher et suivre un programme pas à pas"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-var-14",
+            "difficulty": 1,
+            "tags": [
+              "affichage",
+              "variables"
+            ],
+            "prompt": "Avec cette case, quelle ligne affiche le nombre 25 à l'écran ?"
+          },
+          {
+            "kind": "order",
+            "id": "bases-var-15",
+            "difficulty": 1,
+            "tags": [
+              "trace",
+              "variables"
+            ],
+            "prompt": "Remets ces lignes dans l'ordre pour que le programme affiche 55."
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-16",
+            "difficulty": 2,
+            "tags": [
+              "trace",
+              "affectation"
+            ],
+            "prompt": "Suis les valeurs ligne par ligne. Qu'affiche ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-var-17",
+            "difficulty": 2,
+            "tags": [
+              "trace",
+              "variables",
+              "erreurs"
+            ],
+            "prompt": "Une ligne empêche ce code de compiler. Laquelle, et pourquoi ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-var-18",
+            "difficulty": 2,
+            "tags": [
+              "trace",
+              "affectation"
+            ],
+            "prompt": "Explique comment tu suis un programme pas à pas dans ta tête, en prenant l'exemple de la ligne `a = a + b;`."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-var-l5",
+            "title": "Comparer et combiner : vrai ou faux"
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-19",
+            "difficulty": 1,
+            "tags": [
+              "comparaisons",
+              "booleens"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-var-20",
+            "difficulty": 1,
+            "tags": [
+              "comparaisons",
+              "booleens"
+            ],
+            "prompt": "Associe chaque signe à ce qu'il veut dire."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-var-21",
+            "difficulty": 2,
+            "tags": [
+              "comparaisons",
+              "affectation",
+              "erreurs"
+            ],
+            "prompt": "On voulait savoir si `a` et `b` sont égaux. Quelle ligne est fautive, et pourquoi ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-22",
+            "difficulty": 2,
+            "tags": [
+              "booleens",
+              "operateurs-logiques"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-var-23",
+            "difficulty": 2,
+            "tags": [
+              "booleens",
+              "operateurs-logiques",
+              "comparaisons"
+            ],
+            "prompt": "Explique la différence entre `&&` et `||`. Puis écris comment tester qu'un nombre `age` est compris entre 18 et 64 (inclus)."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-var-l6",
+            "title": "Convertir : nombres, décimales et texte"
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-24",
+            "difficulty": 2,
+            "tags": [
+              "conversion",
+              "double"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-var-25",
+            "difficulty": 2,
+            "tags": [
+              "conversion",
+              "cast"
+            ],
+            "prompt": "Une ligne empêche ce code de compiler. Laquelle, et pourquoi ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-var-26",
+            "difficulty": 2,
+            "tags": [
+              "conversion",
+              "cast",
+              "parse"
+            ],
+            "prompt": "Complète les trois conversions."
+          },
+          {
+            "kind": "output",
+            "id": "bases-var-27",
+            "difficulty": 3,
+            "tags": [
+              "conversion",
+              "division-entiere",
+              "parse"
+            ],
+            "prompt": "Suis chaque ligne. Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-var-28",
+            "difficulty": 3,
+            "tags": [
+              "conversion",
+              "cast",
+              "division-entiere"
+            ],
+            "prompt": "Que vaut `(int) 9.99` ? Pourquoi `double m = 7 / 2;` ne donne-t-il pas 3.5, et comment corriger ?"
+          }
+        ],
+        "format": "doux"
+      },
+      {
+        "id": "bases-controle",
+        "title": "Conditions et boucles",
+        "objective": "Savoir faire prendre des décisions et répéter des actions à un programme, et suivre le déroulement d'une boucle pas à pas.",
+        "prerequisites": [
+          "bases-variables"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l1",
+            "title": "if et else : le carrefour"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-ctl-01",
+            "difficulty": 1,
+            "tags": [
+              "if-else",
+              "conditions"
+            ],
+            "prompt": "Le programme arrive sur un `if (...) { ... } else { ... }`. Combien de routes prend-il ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-02",
+            "difficulty": 1,
+            "tags": [
+              "if-else",
+              "conditions"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-ctl-03",
+            "difficulty": 1,
+            "tags": [
+              "if-else",
+              "conditions"
+            ],
+            "prompt": "Complète le carrefour : s'il fait moins de 10 degrés on met un manteau, sinon un t-shirt."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-ctl-04",
+            "difficulty": 1,
+            "tags": [
+              "if-else",
+              "egalite"
+            ],
+            "prompt": "Ce code ne compile pas : Java le refuse. Trouve la ligne fautive."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l2",
+            "title": "else if : la première condition vraie gagne"
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-05",
+            "difficulty": 1,
+            "tags": [
+              "else-if",
+              "conditions"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "order",
+            "id": "bases-ctl-06",
+            "difficulty": 1,
+            "tags": [
+              "else-if",
+              "ordre-conditions"
+            ],
+            "prompt": "Remets les tests dans l'ordre où le programme doit les poser pour qu'une note de 18 donne bien « Excellent »."
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-ctl-07",
+            "difficulty": 1,
+            "tags": [
+              "else-if",
+              "ordre-conditions"
+            ],
+            "prompt": "Avec `note = 18`, ce code affiche « Moyen » au lieu de « Excellent ». Pourquoi ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-ctl-08",
+            "difficulty": 1,
+            "tags": [
+              "else-if",
+              "conditions"
+            ],
+            "prompt": "Explique avec tes mots la différence entre une chaîne `if / else if / else` et plusieurs `if` à la suite. Que se passe-t-il quand plusieurs conditions sont vraies ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l3",
+            "title": "switch : un aiguillage selon la valeur"
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-09",
+            "difficulty": 1,
+            "tags": [
+              "switch"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-ctl-10",
+            "difficulty": 1,
+            "tags": [
+              "switch",
+              "forme-flechee"
+            ],
+            "prompt": "Complète ce `switch` en forme fléchée."
+          },
+          {
+            "kind": "match",
+            "id": "bases-ctl-11",
+            "difficulty": 1,
+            "tags": [
+              "switch"
+            ],
+            "prompt": "Associe chaque morceau de `switch` à son rôle."
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-12",
+            "difficulty": 2,
+            "tags": [
+              "switch",
+              "break"
+            ],
+            "prompt": "Qu'affiche ce code ? Regarde bien les `break`."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l4",
+            "title": "while : répéter tant que la condition est vraie"
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-13",
+            "difficulty": 1,
+            "tags": [
+              "while",
+              "boucles"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-ctl-14",
+            "difficulty": 1,
+            "tags": [
+              "while",
+              "boucle-infinie"
+            ],
+            "prompt": "Explique ce que fait une boucle `while`, et pourquoi elle peut ne jamais s'arrêter."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-ctl-15",
+            "difficulty": 2,
+            "tags": [
+              "while",
+              "boucle-infinie"
+            ],
+            "prompt": "Ce programme devait compter à rebours de 5 à 1, mais il ne s'arrête jamais. Trouve la ligne fautive."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l5",
+            "title": "for : une boucle qui compte"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-ctl-16",
+            "difficulty": 1,
+            "tags": [
+              "for",
+              "boucles"
+            ],
+            "prompt": "Complète la boucle pour qu'elle affiche 1, 2, 3, 4, 5."
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-17",
+            "difficulty": 2,
+            "tags": [
+              "for",
+              "boucles",
+              "pas"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-ctl-18",
+            "difficulty": 2,
+            "tags": [
+              "for",
+              "boucles"
+            ],
+            "prompt": "Dans `for (int i = 0; i < 4; i++)`, que fait chacune des trois parties ? Combien de tours, et quelles valeurs prend `i` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l6",
+            "title": "Suivre une boucle pas à pas"
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-19",
+            "difficulty": 2,
+            "tags": [
+              "trace",
+              "somme",
+              "for"
+            ],
+            "prompt": "Qu'affiche ce code ? Déroule-le dans un tableau."
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-20",
+            "difficulty": 2,
+            "tags": [
+              "off-by-one",
+              "for",
+              "trace"
+            ],
+            "prompt": "Qu'affiche ce programme ? Déroule la boucle pour compter ses tours."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-ctl-21",
+            "difficulty": 2,
+            "tags": [
+              "off-by-one",
+              "for"
+            ],
+            "prompt": "Ce programme doit afficher « Bonjour » exactement 3 fois, mais il l'affiche 4 fois. Trouve la ligne fautive."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-ctl-22",
+            "difficulty": 2,
+            "tags": [
+              "off-by-one",
+              "for"
+            ],
+            "prompt": "Tu veux répéter une action exactement 10 fois. Écris l'en-tête d'un `for` qui part de 0, puis un autre qui part de 1, et explique comment tu vérifies le nombre de tours."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l7",
+            "title": "break, continue et boucles imbriquées"
+          },
+          {
+            "kind": "match",
+            "id": "bases-ctl-23",
+            "difficulty": 1,
+            "tags": [
+              "break-continue",
+              "boucles-imbriquees"
+            ],
+            "prompt": "Associe chaque notion à ce qu'elle fait."
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-24",
+            "difficulty": 2,
+            "tags": [
+              "break-continue",
+              "for",
+              "trace"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-ctl-25",
+            "difficulty": 3,
+            "tags": [
+              "boucles-imbriquees",
+              "break-continue",
+              "trace"
+            ],
+            "prompt": "Quelle valeur ce programme affiche-t-il ? Attention : un `break` est caché dans la boucle intérieure."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-ctl-l8",
+            "title": "Compter, additionner, chercher"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-ctl-26",
+            "difficulty": 2,
+            "tags": [
+              "compteur",
+              "boucles",
+              "conditions"
+            ],
+            "prompt": "Complète ce programme qui compte les multiples de 3 entre 1 et 10 (il doit afficher 3 : 3, 6 et 9)."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-ctl-27",
+            "difficulty": 3,
+            "tags": [
+              "somme",
+              "boucles",
+              "trace"
+            ],
+            "prompt": "Ce programme devrait afficher 10 (1 + 2 + 3 + 4), mais il affiche 4. Trouve la ligne fautive."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-ctl-28",
+            "difficulty": 2,
+            "tags": [
+              "somme",
+              "boucles",
+              "conditions"
+            ],
+            "prompt": "Tu veux additionner les nombres impairs de 1 à 9. Décris où tu crées la case du total, ce que fait la boucle, ce que teste le `if`, et ce que tu affiches à la fin."
+          }
+        ],
+        "format": "doux"
+      },
+      {
+        "id": "bases-methodes",
+        "title": "Les méthodes",
+        "objective": "Savoir écrire et appeler une méthode, comprendre ce qui entre (les paramètres) et ce qui sort (la valeur retournée), et savoir où vivent les variables.",
+        "prerequisites": [
+          "bases-controle"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l1",
+            "title": "Pourquoi des méthodes : la recette"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-mth-01",
+            "difficulty": 1,
+            "tags": [
+              "methodes"
+            ],
+            "prompt": "À quoi sert une méthode ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-mth-02",
+            "difficulty": 1,
+            "tags": [
+              "methodes",
+              "appel"
+            ],
+            "prompt": "Associe chaque geste de cuisine à son équivalent en Java."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-mth-03",
+            "difficulty": 1,
+            "tags": [
+              "methodes"
+            ],
+            "prompt": "Avec tes mots : pourquoi écrit-on une méthode plutôt que de recopier les mêmes lignes à plusieurs endroits ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l2",
+            "title": "Définir et appeler une méthode"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-mth-04",
+            "difficulty": 1,
+            "tags": [
+              "methodes",
+              "appel"
+            ],
+            "prompt": "Que se passe-t-il quand on lance ce programme ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-mth-05",
+            "difficulty": 1,
+            "tags": [
+              "methodes",
+              "appel"
+            ],
+            "prompt": "Complète pour définir la méthode, puis l'appeler."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-mth-06",
+            "difficulty": 1,
+            "tags": [
+              "methodes",
+              "appel"
+            ],
+            "prompt": "Ce code ne compile pas. Trouve la ligne fautive."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l3",
+            "title": "Les paramètres : ce qui entre dans la méthode"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-mth-07",
+            "difficulty": 1,
+            "tags": [
+              "parametres",
+              "methodes"
+            ],
+            "prompt": "Complète : la méthode reçoit un prénom (un texte), puis on la lance pour Ana."
+          },
+          {
+            "kind": "output",
+            "id": "bases-mth-08",
+            "difficulty": 1,
+            "tags": [
+              "parametres",
+              "methodes"
+            ],
+            "prompt": "Qu'affiche ce programme ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-mth-09",
+            "difficulty": 2,
+            "tags": [
+              "parametres",
+              "types"
+            ],
+            "prompt": "Ce code ne compile pas. Trouve la ligne fautive."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-mth-10",
+            "difficulty": 2,
+            "tags": [
+              "parametres",
+              "types"
+            ],
+            "prompt": "Une méthode est définie avec `presente(String nom, int age)`. Que doit respecter un appel pour que Java l'accepte ? Que se passe-t-il pour `presente(\"Lea\")` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l4",
+            "title": "La valeur retournée : ce qui sort de la méthode"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-mth-11",
+            "difficulty": 1,
+            "tags": [
+              "void",
+              "retour"
+            ],
+            "prompt": "Que veut dire `void` devant le nom d'une méthode ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-mth-12",
+            "difficulty": 1,
+            "tags": [
+              "retour",
+              "return"
+            ],
+            "prompt": "Complète pour que `doubler` renvoie le double d'un nombre entier."
+          },
+          {
+            "kind": "output",
+            "id": "bases-mth-13",
+            "difficulty": 2,
+            "tags": [
+              "retour",
+              "return",
+              "suivre-le-code"
+            ],
+            "prompt": "Qu'affiche ce programme ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-mth-14",
+            "difficulty": 2,
+            "tags": [
+              "retour",
+              "resultat-perdu"
+            ],
+            "prompt": "Ce programme compile, mais il affiche 5 alors qu'on voulait afficher 10. Trouve la ligne fautive."
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-mth-15",
+            "difficulty": 2,
+            "tags": [
+              "retour",
+              "return"
+            ],
+            "prompt": "Pourquoi ce code ne compile-t-il pas ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l5",
+            "title": "Les variables locales et leur portée"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-mth-16",
+            "difficulty": 1,
+            "tags": [
+              "portee",
+              "variables-locales"
+            ],
+            "prompt": "Ce code ne compile pas. Trouve la ligne fautive."
+          },
+          {
+            "kind": "output",
+            "id": "bases-mth-17",
+            "difficulty": 2,
+            "tags": [
+              "portee",
+              "variables-locales"
+            ],
+            "prompt": "Qu'affiche ce programme ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-mth-18",
+            "difficulty": 2,
+            "tags": [
+              "portee",
+              "variables-locales"
+            ],
+            "prompt": "Complète : `texte` doit être déclarée avant le `if` pour exister encore au `return`."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l6",
+            "title": "Les paramètres sont des copies"
+          },
+          {
+            "kind": "output",
+            "id": "bases-mth-19",
+            "difficulty": 2,
+            "tags": [
+              "passage-par-valeur",
+              "copie"
+            ],
+            "prompt": "Qu'affiche ce programme ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-mth-20",
+            "difficulty": 2,
+            "tags": [
+              "passage-par-valeur",
+              "retour"
+            ],
+            "prompt": "Dans `main`, `age` vaut 5. Quelle ligne le fait vraiment passer à 15 ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-mth-21",
+            "difficulty": 2,
+            "tags": [
+              "passage-par-valeur",
+              "copie"
+            ],
+            "prompt": "Une méthode `void` modifie son paramètre `int n`. Pourquoi la variable de l'appelant ne change-t-elle pas ? Comment faire pour que l'appelant récupère le nouveau nombre ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l7",
+            "title": "Une méthode qui en appelle une autre"
+          },
+          {
+            "kind": "order",
+            "id": "bases-mth-22",
+            "difficulty": 2,
+            "tags": [
+              "execution",
+              "appel",
+              "retour"
+            ],
+            "prompt": "La méthode `static int doubler(int n) { return n * 2; }` existe. Dans `main`, Java arrive à la ligne `int r = doubler(4);`. Remets les étapes dans l'ordre."
+          },
+          {
+            "kind": "output",
+            "id": "bases-mth-23",
+            "difficulty": 2,
+            "tags": [
+              "execution",
+              "appel",
+              "suivre-le-code"
+            ],
+            "prompt": "Qu'affiche ce programme ? Chaque `println` écrit sur sa propre ligne : donne les chiffres dans l'ordre."
+          },
+          {
+            "kind": "output",
+            "id": "bases-mth-24",
+            "difficulty": 3,
+            "tags": [
+              "execution",
+              "retour",
+              "suivre-le-code"
+            ],
+            "prompt": "Qu'affiche ce programme ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-mth-25",
+            "difficulty": 3,
+            "tags": [
+              "execution",
+              "retour",
+              "suivre-le-code"
+            ],
+            "prompt": "Suis ce programme à la main. Que valent `x` et `y`, et qu'affiche la dernière ligne ? Explique dans quel ordre Java passe d'une méthode à l'autre."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-mth-l8",
+            "title": "Un même nom pour plusieurs recettes, et main"
+          },
+          {
+            "kind": "output",
+            "id": "bases-mth-26",
+            "difficulty": 2,
+            "tags": [
+              "surcharge",
+              "methodes"
+            ],
+            "prompt": "Qu'affiche ce programme ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-mth-27",
+            "difficulty": 2,
+            "tags": [
+              "methodes",
+              "vocabulaire"
+            ],
+            "prompt": "Associe chaque mot du chapitre à son sens."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-mth-28",
+            "difficulty": 3,
+            "tags": [
+              "surcharge",
+              "main",
+              "methodes"
+            ],
+            "prompt": "Qu'est-ce que la surcharge ? Donne un exemple. Puis dis quelle méthode Java lance en premier quand on démarre un programme."
+          }
+        ],
+        "format": "doux"
+      },
+      {
+        "id": "bases-objets",
+        "title": "Classes et objets",
+        "objective": "Savoir définir une classe, créer des objets, et comprendre qu'une variable d'objet contient une flèche vers lui (et ce que null veut dire).",
+        "prerequisites": [
+          "bases-methodes"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l1",
+            "title": "Pourquoi des classes : le plan et la maison"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-obj-01",
+            "difficulty": 1,
+            "tags": [
+              "classes",
+              "objets"
+            ],
+            "prompt": "Dans notre image du plan et de la maison, la classe `Chien` correspond à quoi ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-obj-02",
+            "difficulty": 1,
+            "tags": [
+              "classes",
+              "objets"
+            ],
+            "prompt": "Associe chaque élément à son image : le plan ou la maison."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-obj-03",
+            "difficulty": 1,
+            "tags": [
+              "classes",
+              "objets"
+            ],
+            "prompt": "Avec tes mots : quelle est la différence entre une classe et un objet ? Prends l'image du plan et de la maison."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l2",
+            "title": "Les champs : ce que chaque objet garde"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-obj-04",
+            "difficulty": 1,
+            "tags": [
+              "champs",
+              "new"
+            ],
+            "prompt": "Complète pour construire un chien, puis lui donner un nom."
+          },
+          {
+            "kind": "order",
+            "id": "bases-obj-05",
+            "difficulty": 1,
+            "tags": [
+              "champs",
+              "new"
+            ],
+            "prompt": "Remets ces lignes dans l'ordre pour afficher le nom de Rex."
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-06",
+            "difficulty": 1,
+            "tags": [
+              "champs",
+              "objets"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l3",
+            "title": "Les méthodes d'objet : ce qu'un chien sait faire"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-obj-07",
+            "difficulty": 1,
+            "tags": [
+              "this",
+              "methodes-objet"
+            ],
+            "prompt": "Dans une méthode de la classe `Chien`, que veut dire `this` ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-obj-08",
+            "difficulty": 1,
+            "tags": [
+              "methodes-objet",
+              "champs"
+            ],
+            "prompt": "Complète la recette `aboyer` et son appel."
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-09",
+            "difficulty": 2,
+            "tags": [
+              "methodes-objet",
+              "this"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l4",
+            "title": "Le constructeur : remplir l'objet dès sa création"
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-10",
+            "difficulty": 1,
+            "tags": [
+              "constructeur",
+              "objets"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-obj-11",
+            "difficulty": 2,
+            "tags": [
+              "constructeur",
+              "this"
+            ],
+            "prompt": "Complète le constructeur et la construction du chien."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-obj-12",
+            "difficulty": 2,
+            "tags": [
+              "constructeur",
+              "this"
+            ],
+            "prompt": "On voudrait que `rex.age` vaille 3, mais ça affiche 0. Trouve la ligne responsable."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l5",
+            "title": "Une variable d'objet contient une flèche"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-obj-13",
+            "difficulty": 1,
+            "tags": [
+              "fleche",
+              "references"
+            ],
+            "prompt": "Que contient la variable `rex` après `Chien rex = new Chien(\"Rex\", 3);` ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-14",
+            "difficulty": 1,
+            "tags": [
+              "fleche",
+              "references"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-15",
+            "difficulty": 2,
+            "tags": [
+              "fleche",
+              "references"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-obj-16",
+            "difficulty": 2,
+            "tags": [
+              "fleche",
+              "references"
+            ],
+            "prompt": "`Chien b = a;` ne copie pas le chien. Explique avec l'image de la flèche ce qui se passe, et comment obtenir un vrai deuxième chien."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l6",
+            "title": "null : une flèche qui ne mène nulle part"
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-17",
+            "difficulty": 1,
+            "tags": [
+              "null",
+              "plantage"
+            ],
+            "prompt": "Que se passe-t-il quand on lance ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-obj-18",
+            "difficulty": 2,
+            "tags": [
+              "null",
+              "plantage"
+            ],
+            "prompt": "Ce programme plante avec une `NullPointerException`. Trouve la ligne qui plante."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-obj-19",
+            "difficulty": 2,
+            "tags": [
+              "null",
+              "plantage"
+            ],
+            "prompt": "C'est quoi `null` ? Que se passe-t-il si on écrit `c.aboyer()` alors que `c` vaut `null`, et comment l'éviter ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l7",
+            "title": "static : ce qui appartient au plan"
+          },
+          {
+            "kind": "match",
+            "id": "bases-obj-20",
+            "difficulty": 1,
+            "tags": [
+              "static",
+              "champs"
+            ],
+            "prompt": "Associe chaque ligne à ce qu'elle veut dire."
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-21",
+            "difficulty": 2,
+            "tags": [
+              "static",
+              "compteur"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-obj-22",
+            "difficulty": 2,
+            "tags": [
+              "static",
+              "champs"
+            ],
+            "prompt": "Dans la classe `Chien`, lequel de ces champs doit être `static` ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l8",
+            "title": "private et les accesseurs : protéger les champs"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-obj-23",
+            "difficulty": 2,
+            "tags": [
+              "private",
+              "accesseurs"
+            ],
+            "prompt": "Ce code ne compile pas. Trouve la ligne fautive."
+          },
+          {
+            "kind": "fill",
+            "id": "bases-obj-24",
+            "difficulty": 2,
+            "tags": [
+              "private",
+              "accesseurs"
+            ],
+            "prompt": "Complète la classe : un champ fermé et son getter."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-obj-25",
+            "difficulty": 2,
+            "tags": [
+              "private",
+              "accesseurs"
+            ],
+            "prompt": "Pourquoi met-on les champs en `private` et passe-t-on par un getter et un setter ? Donne un exemple de protection."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-obj-l9",
+            "title": "Comparer deux objets : == compare les flèches"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-obj-26",
+            "difficulty": 2,
+            "tags": [
+              "egalite",
+              "fleche"
+            ],
+            "prompt": "`a` et `b` sont construits chacun avec `new Chien(\"Rex\", 3)`. Pourquoi `a == b` vaut-il `false` ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-obj-27",
+            "difficulty": 3,
+            "tags": [
+              "egalite",
+              "fleche"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-obj-28",
+            "difficulty": 2,
+            "tags": [
+              "egalite",
+              "fleche"
+            ],
+            "prompt": "Que compare `==` quand on l'utilise entre deux objets ? Deux chiens construits avec les mêmes valeurs sont-ils `==` ?"
+          }
+        ],
+        "format": "doux"
+      },
+      {
+        "id": "bases-collections",
+        "title": "Tableaux, listes et dictionnaires",
+        "objective": "Savoir ranger plusieurs valeurs dans un tableau, une liste, un ensemble ou un dictionnaire, les parcourir, et choisir le bon rangement.",
+        "prerequisites": [
+          "bases-objets"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "bases-col-l1",
+            "title": "Une rangée de cases numérotées"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-col-01",
+            "difficulty": 1,
+            "tags": [
+              "collections",
+              "tableaux"
+            ],
+            "prompt": "Tu veux garder les notes de 30 élèves. Quelle idée est la plus pratique ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-col-02",
+            "difficulty": 1,
+            "tags": [
+              "indices",
+              "tableaux"
+            ],
+            "prompt": "Dans la rangée Lou, Max, Noé, Sam (de gauche à droite), associe chaque numéro de case à son contenu."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-col-03",
+            "difficulty": 1,
+            "tags": [
+              "collections",
+              "indices"
+            ],
+            "prompt": "Avec tes mots : pourquoi range-t-on plusieurs valeurs dans une rangée de cases plutôt que dans plusieurs variables, et à partir de quel numéro compte-t-on ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l2",
+            "title": "Le tableau : créer, lire et écrire une case"
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-04",
+            "difficulty": 1,
+            "tags": [
+              "tableaux",
+              "indices"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-col-05",
+            "difficulty": 1,
+            "tags": [
+              "tableaux",
+              "indices"
+            ],
+            "prompt": "Complète : crée un tableau de 3 cases, mets 18 dans la première case, puis affiche le nombre de cases."
+          },
+          {
+            "kind": "order",
+            "id": "bases-col-06",
+            "difficulty": 1,
+            "tags": [
+              "tableaux",
+              "indices"
+            ],
+            "prompt": "Remets ces lignes dans l'ordre pour que le programme affiche 18."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l3",
+            "title": "L'erreur classique : l'indice hors limites"
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-07",
+            "difficulty": 1,
+            "tags": [
+              "indices",
+              "tableaux"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-col-08",
+            "difficulty": 1,
+            "tags": [
+              "indices",
+              "tableaux"
+            ],
+            "prompt": "Un tableau a 5 cases. Quels numéros de cases existent ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-col-09",
+            "difficulty": 2,
+            "tags": [
+              "indices",
+              "tableaux"
+            ],
+            "prompt": "Ce programme plante avec « Index 3 out of bounds for length 3 ». Trouve la ligne fautive."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l4",
+            "title": "Parcourir : for avec indice ou for-each"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-col-10",
+            "difficulty": 1,
+            "tags": [
+              "boucles",
+              "tableaux"
+            ],
+            "prompt": "Complète la boucle qui additionne toutes les cases du tableau."
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-11",
+            "difficulty": 1,
+            "tags": [
+              "boucles",
+              "for-each"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-12",
+            "difficulty": 2,
+            "tags": [
+              "boucles",
+              "for-each"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-col-13",
+            "difficulty": 2,
+            "tags": [
+              "boucles",
+              "for-each",
+              "indices"
+            ],
+            "prompt": "Quand préfères-tu un `for` avec indice, et quand un for-each ? Donne la raison."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l5",
+            "title": "La liste ArrayList : une rangée qui change de taille"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-col-14",
+            "difficulty": 1,
+            "tags": [
+              "listes"
+            ],
+            "prompt": "Complète : crée une liste de textes, ajoute \"kiwi\", puis affiche sa taille."
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-15",
+            "difficulty": 2,
+            "tags": [
+              "listes",
+              "indices"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-col-16",
+            "difficulty": 2,
+            "tags": [
+              "listes",
+              "tableaux"
+            ],
+            "prompt": "Quelle différence y a-t-il entre un tableau et une `ArrayList` ? Comment lit-on le nombre d'éléments de chacun ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l6",
+            "title": "L'ensemble HashSet : jamais de doublon"
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-17",
+            "difficulty": 1,
+            "tags": [
+              "ensembles"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-18",
+            "difficulty": 2,
+            "tags": [
+              "ensembles",
+              "listes"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-col-19",
+            "difficulty": 2,
+            "tags": [
+              "ensembles",
+              "indices"
+            ],
+            "prompt": "Ce code ne compile pas. Trouve la ligne fautive."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l7",
+            "title": "Le dictionnaire HashMap : des paires clé et valeur"
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-20",
+            "difficulty": 1,
+            "tags": [
+              "dictionnaires"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-21",
+            "difficulty": 2,
+            "tags": [
+              "dictionnaires"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-col-22",
+            "difficulty": 2,
+            "tags": [
+              "dictionnaires",
+              "null"
+            ],
+            "prompt": "Ce programme plante au moment de l'exécution. Trouve la ligne fautive."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l8",
+            "title": "Choisir : liste, ensemble ou dictionnaire ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-col-23",
+            "difficulty": 2,
+            "tags": [
+              "choix-collection"
+            ],
+            "prompt": "Associe chaque besoin à la collection la plus adaptée."
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-col-24",
+            "difficulty": 2,
+            "tags": [
+              "choix-collection",
+              "ensembles"
+            ],
+            "prompt": "Un site garde les pseudos déjà pris. À chaque inscription, il demande « ce pseudo est-il déjà dedans ? » et ne veut jamais deux fois le même pseudo. Que prends-tu ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-col-25",
+            "difficulty": 3,
+            "tags": [
+              "choix-collection"
+            ],
+            "prompt": "Pour chaque besoin, dis quelle collection tu prends et pourquoi : (1) les notes d'une classe, dans l'ordre, avec des doublons possibles ; (2) les pseudos déjà pris, sans doublon ; (3) le prix de chaque produit, retrouvé par son nom."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-col-l9",
+            "title": "Compter les occurrences avec un dictionnaire"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-col-26",
+            "difficulty": 2,
+            "tags": [
+              "comptage",
+              "dictionnaires"
+            ],
+            "prompt": "Complète la ligne qui compte combien de fois chaque fruit apparaît."
+          },
+          {
+            "kind": "output",
+            "id": "bases-col-27",
+            "difficulty": 3,
+            "tags": [
+              "comptage",
+              "dictionnaires"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-col-28",
+            "difficulty": 3,
+            "tags": [
+              "comptage",
+              "dictionnaires",
+              "null"
+            ],
+            "prompt": "Pourquoi `compteur.put(mot, compteur.get(mot) + 1)` plante-t-il la première fois qu'on voit un mot ? Comment le corriger ?"
+          }
+        ],
+        "format": "doux"
+      },
+      {
+        "id": "bases-erreurs",
+        "title": "Comprendre et gérer les erreurs",
+        "objective": "Savoir lire un message d'erreur Java, reconnaître les erreurs courantes, et les gérer avec try / catch.",
+        "prerequisites": [
+          "bases-collections"
+        ],
+        "units": [
+          {
+            "kind": "lesson",
+            "id": "bases-err-l1",
+            "title": "Deux moments où ça casse : avant et pendant"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-err-01",
+            "difficulty": 1,
+            "tags": [
+              "compilation",
+              "execution"
+            ],
+            "prompt": "Tu lances ton programme et Java affiche une erreur avant d'avoir montré la moindre ligne. De quel genre d'erreur s'agit-il ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-err-02",
+            "difficulty": 1,
+            "tags": [
+              "compilation",
+              "execution"
+            ],
+            "prompt": "Relie chaque mot à ce qu'il veut dire."
+          },
+          {
+            "kind": "output",
+            "id": "bases-err-03",
+            "difficulty": 1,
+            "tags": [
+              "execution",
+              "tableaux"
+            ],
+            "prompt": "Ce code est bien écrit. Que se passe-t-il quand on le lance ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-err-l2",
+            "title": "Lire une erreur de compilation"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-err-04",
+            "difficulty": 1,
+            "tags": [
+              "compilation",
+              "messages-erreur"
+            ],
+            "prompt": "Java affiche `Main.java:12: error: cannot find symbol`. Que veut dire le `12` ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-err-05",
+            "difficulty": 1,
+            "tags": [
+              "compilation",
+              "messages-erreur"
+            ],
+            "prompt": "Relie chaque message de compilation à sa signification."
+          },
+          {
+            "kind": "spot",
+            "id": "bases-err-06",
+            "difficulty": 1,
+            "tags": [
+              "compilation",
+              "messages-erreur"
+            ],
+            "prompt": "Java refuse de compiler ce programme et affiche `cannot find symbol`. Quelle ligne est fautive ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-err-07",
+            "difficulty": 1,
+            "tags": [
+              "compilation",
+              "return"
+            ],
+            "prompt": "Java répond `missing return statement`. Complète pour que chaque chemin renvoie une valeur."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-err-l3",
+            "title": "Lire une trace de pile"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-err-08",
+            "difficulty": 1,
+            "tags": [
+              "trace-de-pile",
+              "exceptions"
+            ],
+            "prompt": "D'après cette trace, dans quelle méthode le programme a-t-il planté ?"
+          },
+          {
+            "kind": "match",
+            "id": "bases-err-09",
+            "difficulty": 1,
+            "tags": [
+              "trace-de-pile",
+              "exceptions"
+            ],
+            "prompt": "Voici une trace : `ArithmeticException: / by zero`, puis `at Main.moyenne(Main.java:8)`, puis `at Main.main(Main.java:4)`. Relie chaque morceau à son rôle."
+          },
+          {
+            "kind": "order",
+            "id": "bases-err-10",
+            "difficulty": 1,
+            "tags": [
+              "trace-de-pile",
+              "methode"
+            ],
+            "prompt": "Remets dans l'ordre les gestes pour lire une trace de pile."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-err-11",
+            "difficulty": 2,
+            "tags": [
+              "trace-de-pile",
+              "exceptions"
+            ],
+            "prompt": "Voici une trace. Quelle est l'erreur, que dit son message, et à quelle ligne de ton code vas-tu regarder en premier ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-err-l4",
+            "title": "Les quatre erreurs d'exécution les plus courantes"
+          },
+          {
+            "kind": "match",
+            "id": "bases-err-12",
+            "difficulty": 1,
+            "tags": [
+              "exceptions",
+              "null",
+              "tableaux"
+            ],
+            "prompt": "Relie chaque exception à ce qui la provoque."
+          },
+          {
+            "kind": "output",
+            "id": "bases-err-13",
+            "difficulty": 2,
+            "tags": [
+              "exceptions",
+              "parseint"
+            ],
+            "prompt": "Que se passe-t-il quand on lance ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-err-14",
+            "difficulty": 2,
+            "tags": [
+              "exceptions",
+              "null",
+              "dictionnaires"
+            ],
+            "prompt": "Ce code s'exécute, affiche `4`, puis plante avec une `NullPointerException`. Quelle ligne plante ?"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-err-15",
+            "difficulty": 2,
+            "tags": [
+              "exceptions",
+              "tableaux",
+              "conditions"
+            ],
+            "prompt": "Complète pour ne lire la case que si elle existe, et afficher un message sinon."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-err-l5",
+            "title": "try / catch : attraper une erreur"
+          },
+          {
+            "kind": "output",
+            "id": "bases-err-16",
+            "difficulty": 1,
+            "tags": [
+              "try-catch",
+              "exceptions"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "order",
+            "id": "bases-err-17",
+            "difficulty": 1,
+            "tags": [
+              "try-catch",
+              "methode"
+            ],
+            "prompt": "Une ligne du `try` plante. Remets dans l'ordre ce qui se passe ensuite."
+          },
+          {
+            "kind": "fill",
+            "id": "bases-err-18",
+            "difficulty": 2,
+            "tags": [
+              "try-catch",
+              "parseint"
+            ],
+            "prompt": "Complète pour rattraper l'erreur quand `saisie` n'est pas un nombre."
+          },
+          {
+            "kind": "recall",
+            "id": "bases-err-19",
+            "difficulty": 2,
+            "tags": [
+              "try-catch",
+              "exceptions"
+            ],
+            "prompt": "Explique ce que fait `try` / `catch`, et ce qui se passe ligne par ligne quand une erreur survient dans le `try`."
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-err-l6",
+            "title": "finally et plusieurs catch : l'ordre compte"
+          },
+          {
+            "kind": "output",
+            "id": "bases-err-20",
+            "difficulty": 2,
+            "tags": [
+              "try-catch",
+              "finally"
+            ],
+            "prompt": "On appelle `lire(\"5\", new int[]{10, 20})`. Qu'affiche ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-err-21",
+            "difficulty": 2,
+            "tags": [
+              "try-catch",
+              "ordre-des-catch"
+            ],
+            "prompt": "Java refuse de compiler cette méthode avec `exception NumberFormatException has already been caught`. Quelle ligne est fautive ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-err-22",
+            "difficulty": 2,
+            "tags": [
+              "finally",
+              "ordre-des-catch"
+            ],
+            "prompt": "À quoi sert `finally` ? Et pourquoi doit-on écrire les `catch` du plus précis au plus large ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-err-l7",
+            "title": "Lancer soi-même une erreur avec throw"
+          },
+          {
+            "kind": "fill",
+            "id": "bases-err-23",
+            "difficulty": 2,
+            "tags": [
+              "throw",
+              "illegal-argument"
+            ],
+            "prompt": "Complète pour refuser un âge négatif avec un message qui donne la valeur reçue."
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-err-24",
+            "difficulty": 2,
+            "tags": [
+              "throw",
+              "illegal-argument"
+            ],
+            "prompt": "Une méthode `setAge(int age)` reçoit `-5`. Que doit-elle faire de mieux ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-err-25",
+            "difficulty": 3,
+            "tags": [
+              "throw",
+              "illegal-argument"
+            ],
+            "prompt": "Écris, en pseudo-code ou en Java, le début d'une méthode `setAge(int age)` qui refuse un âge négatif ou supérieur à 150. Quel message mets-tu, et pourquoi ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "bases-err-l8",
+            "title": "Les bonnes habitudes avec les erreurs"
+          },
+          {
+            "kind": "spot",
+            "id": "bases-err-26",
+            "difficulty": 2,
+            "tags": [
+              "bonnes-pratiques",
+              "try-catch"
+            ],
+            "prompt": "Ce code compile et ne plante jamais, mais il contient une très mauvaise habitude. Quelle ligne la contient ?"
+          },
+          {
+            "kind": "mcq",
+            "id": "bases-err-27",
+            "difficulty": 2,
+            "tags": [
+              "bonnes-pratiques",
+              "try-catch"
+            ],
+            "prompt": "Quel `catch` est le mieux écrit pour traiter une saisie qui devait être un nombre ?"
+          },
+          {
+            "kind": "recall",
+            "id": "bases-err-28",
+            "difficulty": 3,
+            "tags": [
+              "bonnes-pratiques",
+              "try-catch"
+            ],
+            "prompt": "Cite trois mauvaises habitudes avec `catch`, dis ce qui est dangereux dans chacune et ce qu'on fait à la place."
+          }
+        ],
+        "format": "doux"
+      }
+    ]
+  },
+  {
     "id": "java",
     "title": "Java",
     "description": "Le langage : fondamentaux, POO, collections, exceptions, Java moderne.",
@@ -22,28 +2027,28 @@ export const courses: CourseMeta[] = [
           {
             "kind": "lesson",
             "id": "java-fond-l1",
-            "title": "Primitifs, wrappers et les pièges de l'autoboxing"
-          },
-          {
-            "kind": "output",
-            "id": "java-fond-01",
-            "difficulty": 2,
-            "tags": [
-              "autoboxing",
-              "wrappers",
-              "egalite"
-            ],
-            "prompt": "Qu'affiche ce code ?"
+            "title": "Primitifs et wrappers : la case et la boîte"
           },
           {
             "kind": "mcq",
-            "id": "java-fond-02",
-            "difficulty": 1,
+            "id": "java-fond-05",
+            "difficulty": 2,
             "tags": [
               "wrappers",
-              "egalite"
+              "generiques"
             ],
-            "prompt": "Deux variables `Integer a` et `Integer b`. Quelle comparaison est correcte ?"
+            "prompt": "Pourquoi écrit-on `Map<String, Integer>` et jamais `Map<String, int>` ?"
+          },
+          {
+            "kind": "match",
+            "id": "java-fond-07",
+            "difficulty": 1,
+            "tags": [
+              "primitifs",
+              "wrappers",
+              "initialisation"
+            ],
+            "prompt": "Associe chaque type de **champ** à sa valeur par défaut quand il n'est pas initialisé."
           },
           {
             "kind": "output",
@@ -57,27 +2062,6 @@ export const courses: CourseMeta[] = [
             "prompt": "Que se passe-t-il ?"
           },
           {
-            "kind": "output",
-            "id": "java-fond-04",
-            "difficulty": 3,
-            "tags": [
-              "autoboxing",
-              "surcharge-vs-redefinition",
-              "collections"
-            ],
-            "prompt": "Qu'affiche ce code ?"
-          },
-          {
-            "kind": "mcq",
-            "id": "java-fond-05",
-            "difficulty": 2,
-            "tags": [
-              "wrappers",
-              "generiques"
-            ],
-            "prompt": "Pourquoi écrit-on `Map<String, Integer>` et jamais `Map<String, int>` ?"
-          },
-          {
             "kind": "spot",
             "id": "java-fond-06",
             "difficulty": 2,
@@ -89,15 +2073,41 @@ export const courses: CourseMeta[] = [
             "prompt": "Cette méthode est correcte mais anormalement lente. Trouve la ligne responsable."
           },
           {
-            "kind": "match",
-            "id": "java-fond-07",
+            "kind": "lesson",
+            "id": "java-fond-l2",
+            "title": "Comparer des boîtes : == contre equals"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-fond-02",
             "difficulty": 1,
             "tags": [
-              "primitifs",
               "wrappers",
-              "initialisation"
+              "egalite"
             ],
-            "prompt": "Associe chaque type de **champ** à sa valeur par défaut quand il n'est pas initialisé."
+            "prompt": "Deux variables `Integer a` et `Integer b`. Quelle comparaison est correcte ?"
+          },
+          {
+            "kind": "output",
+            "id": "java-fond-01",
+            "difficulty": 2,
+            "tags": [
+              "autoboxing",
+              "wrappers",
+              "egalite"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "output",
+            "id": "java-fond-04",
+            "difficulty": 3,
+            "tags": [
+              "autoboxing",
+              "surcharge-vs-redefinition",
+              "collections"
+            ],
+            "prompt": "Qu'affiche ce code ?"
           },
           {
             "kind": "recall",
@@ -112,19 +2122,8 @@ export const courses: CourseMeta[] = [
           },
           {
             "kind": "lesson",
-            "id": "java-fond-l2",
-            "title": "String : immuable, pool de constantes et StringBuilder"
-          },
-          {
-            "kind": "output",
-            "id": "java-fond-09",
-            "difficulty": 2,
-            "tags": [
-              "string",
-              "string-pool",
-              "egalite"
-            ],
-            "prompt": "Qu'affiche ce code ?"
+            "id": "java-fond-l3",
+            "title": "String : un texte qu'on ne modifie jamais"
           },
           {
             "kind": "output",
@@ -135,50 +2134,6 @@ export const courses: CourseMeta[] = [
               "immuabilite"
             ],
             "prompt": "Qu'affiche ce code ?"
-          },
-          {
-            "kind": "spot",
-            "id": "java-fond-11",
-            "difficulty": 2,
-            "tags": [
-              "string",
-              "immuabilite",
-              "performance"
-            ],
-            "prompt": "Cette méthode est correcte mais très lente sur une grande liste. Trouve la ligne responsable."
-          },
-          {
-            "kind": "mcq",
-            "id": "java-fond-12",
-            "difficulty": 1,
-            "tags": [
-              "string",
-              "egalite",
-              "null"
-            ],
-            "prompt": "Quelle différence entre `s.equals(\"ok\")` et `\"ok\".equals(s)` ?"
-          },
-          {
-            "kind": "fill",
-            "id": "java-fond-13",
-            "difficulty": 1,
-            "tags": [
-              "string",
-              "immuabilite",
-              "stringbuilder"
-            ],
-            "prompt": "Complète pour obtenir `AVAJ` dans `r`."
-          },
-          {
-            "kind": "recall",
-            "id": "java-fond-14",
-            "difficulty": 2,
-            "tags": [
-              "string",
-              "string-pool",
-              "egalite"
-            ],
-            "prompt": "Qu'est-ce que le pool de chaînes ? Quand deux chaînes de même contenu sont-elles le même objet, et quand ne le sont-elles pas ?"
           },
           {
             "kind": "output",
@@ -204,8 +2159,77 @@ export const courses: CourseMeta[] = [
           },
           {
             "kind": "lesson",
-            "id": "java-fond-l3",
-            "title": "Java passe tout par valeur"
+            "id": "java-fond-l4",
+            "title": "String : le pool, equals et StringBuilder"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-fond-12",
+            "difficulty": 1,
+            "tags": [
+              "string",
+              "egalite",
+              "null"
+            ],
+            "prompt": "Quelle différence entre `s.equals(\"ok\")` et `\"ok\".equals(s)` ?"
+          },
+          {
+            "kind": "fill",
+            "id": "java-fond-13",
+            "difficulty": 1,
+            "tags": [
+              "string",
+              "immuabilite",
+              "stringbuilder"
+            ],
+            "prompt": "Complète pour obtenir `AVAJ` dans `r`."
+          },
+          {
+            "kind": "output",
+            "id": "java-fond-09",
+            "difficulty": 2,
+            "tags": [
+              "string",
+              "string-pool",
+              "egalite"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "spot",
+            "id": "java-fond-11",
+            "difficulty": 2,
+            "tags": [
+              "string",
+              "immuabilite",
+              "performance"
+            ],
+            "prompt": "Cette méthode est correcte mais très lente sur une grande liste. Trouve la ligne responsable."
+          },
+          {
+            "kind": "recall",
+            "id": "java-fond-14",
+            "difficulty": 2,
+            "tags": [
+              "string",
+              "string-pool",
+              "egalite"
+            ],
+            "prompt": "Qu'est-ce que le pool de chaînes ? Quand deux chaînes de même contenu sont-elles le même objet, et quand ne le sont-elles pas ?"
+          },
+          {
+            "kind": "lesson",
+            "id": "java-fond-l5",
+            "title": "Passage par valeur : Java copie ce qu'on lui donne"
+          },
+          {
+            "kind": "mcq",
+            "id": "java-fond-19",
+            "difficulty": 1,
+            "tags": [
+              "passage-par-valeur"
+            ],
+            "prompt": "Java passe-t-il les objets par référence ?"
           },
           {
             "kind": "output",
@@ -228,24 +2252,6 @@ export const courses: CourseMeta[] = [
             "prompt": "Qu'affiche ce code ?"
           },
           {
-            "kind": "mcq",
-            "id": "java-fond-19",
-            "difficulty": 1,
-            "tags": [
-              "passage-par-valeur"
-            ],
-            "prompt": "Java passe-t-il les objets par référence ?"
-          },
-          {
-            "kind": "spot",
-            "id": "java-fond-20",
-            "difficulty": 2,
-            "tags": [
-              "passage-par-valeur"
-            ],
-            "prompt": "`reset(c)` ne remet jamais le compteur à zéro. Trouve la ligne responsable."
-          },
-          {
             "kind": "recall",
             "id": "java-fond-21",
             "difficulty": 2,
@@ -253,6 +2259,11 @@ export const courses: CourseMeta[] = [
               "passage-par-valeur"
             ],
             "prompt": "Java est-il « pass by value » ou « pass by reference » ? Donne un exemple où une méthode modifie ce que voit l'appelant, et un où elle ne le peut pas."
+          },
+          {
+            "kind": "lesson",
+            "id": "java-fond-l6",
+            "title": "Modifier ou remplacer, et renvoyer plusieurs résultats"
           },
           {
             "kind": "mcq",
@@ -263,6 +2274,15 @@ export const courses: CourseMeta[] = [
               "conception"
             ],
             "prompt": "Une méthode doit « renvoyer » deux résultats calculés. Quelle approche est correcte en Java ?"
+          },
+          {
+            "kind": "spot",
+            "id": "java-fond-20",
+            "difficulty": 2,
+            "tags": [
+              "passage-par-valeur"
+            ],
+            "prompt": "`reset(c)` ne remet jamais le compteur à zéro. Trouve la ligne responsable."
           },
           {
             "kind": "fill",
@@ -276,18 +2296,17 @@ export const courses: CourseMeta[] = [
           },
           {
             "kind": "lesson",
-            "id": "java-fond-l4",
-            "title": "final, portée et blocs static"
+            "id": "java-fond-l7",
+            "title": "final : figer, mais figer quoi ?"
           },
           {
-            "kind": "output",
-            "id": "java-fond-24",
-            "difficulty": 2,
+            "kind": "match",
+            "id": "java-fond-28",
+            "difficulty": 1,
             "tags": [
-              "initialisation",
-              "static"
+              "final"
             ],
-            "prompt": "Qu'affiche ce code ?"
+            "prompt": "Associe chaque cible de `final` à son effet."
           },
           {
             "kind": "spot",
@@ -301,17 +2320,6 @@ export const courses: CourseMeta[] = [
             "prompt": "Ce code ne compile pas. Trouve la ligne fautive."
           },
           {
-            "kind": "fill",
-            "id": "java-fond-26",
-            "difficulty": 2,
-            "tags": [
-              "final",
-              "static",
-              "initialisation"
-            ],
-            "prompt": "Complète pour que la classe compile."
-          },
-          {
             "kind": "spot",
             "id": "java-fond-27",
             "difficulty": 2,
@@ -321,15 +2329,6 @@ export const courses: CourseMeta[] = [
               "portee"
             ],
             "prompt": "Ce code ne compile pas. Trouve la ligne fautive."
-          },
-          {
-            "kind": "match",
-            "id": "java-fond-28",
-            "difficulty": 1,
-            "tags": [
-              "final"
-            ],
-            "prompt": "Associe chaque cible de `final` à son effet."
           },
           {
             "kind": "recall",
@@ -343,6 +2342,32 @@ export const courses: CourseMeta[] = [
             "prompt": "`private final List<String> items = new ArrayList<>();` : qu'est-ce que `final` garantit, qu'est-ce qu'il ne garantit pas, et comment obtenir une vraie liste immuable ?"
           },
           {
+            "kind": "lesson",
+            "id": "java-fond-l8",
+            "title": "static et ordre d'initialisation"
+          },
+          {
+            "kind": "output",
+            "id": "java-fond-24",
+            "difficulty": 2,
+            "tags": [
+              "initialisation",
+              "static"
+            ],
+            "prompt": "Qu'affiche ce code ?"
+          },
+          {
+            "kind": "fill",
+            "id": "java-fond-26",
+            "difficulty": 2,
+            "tags": [
+              "final",
+              "static",
+              "initialisation"
+            ],
+            "prompt": "Complète pour que la classe compile."
+          },
+          {
             "kind": "order",
             "id": "java-fond-30",
             "difficulty": 2,
@@ -353,7 +2378,8 @@ export const courses: CourseMeta[] = [
             ],
             "prompt": "La JVM rencontre `Config.DEFAULTS` pour la première fois. Remets dans l'ordre ce qui se passe."
           }
-        ]
+        ],
+        "format": "doux"
       },
       {
         "id": "java-interfaces-classes-abstraites",

@@ -59,6 +59,9 @@ export function isChapterValidated(chapter: ChapterMeta, state: AppState): boole
 }
 
 export function isChapterUnlocked(chapter: ChapterMeta, index: ContentIndex, state: AppState): boolean {
+  // Programme intensif : le calendrier remplace les prérequis, sinon un
+  // chapitre à 65 % bloquerait tout le reste du mois.
+  if (state.program !== null) return true;
   return chapter.prerequisites.every((id) => {
     const prereq = index.chaptersById.get(id);
     return prereq !== undefined && isChapterValidated(prereq, state);

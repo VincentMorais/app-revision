@@ -162,7 +162,7 @@ describe("mode révision", () => {
     for (const id of ["e30", "e31", "e32"]) s = recordAnswer(s, id, "again", T0 - DAY_MS);
     const plan = composeReviewSession({ exercises, state: s, now: T0, seed: 1 });
     const ids = plan.steps.map((st) => (st.kind === "exercise" ? st.exerciseId : ""));
-    expect(ids).toHaveLength(12);
+    expect(ids).toHaveLength(10);
     expect(ids).toEqual(expect.arrayContaining(["e30", "e31", "e32"]));
   });
 
@@ -173,15 +173,15 @@ describe("mode révision", () => {
     expect(plan.steps).toEqual([]);
   });
 
-  it("est déterministe pour une graine donnée et borné à [10, 15]", () => {
+  it("est déterministe pour une graine donnée et borné à [8, 12]", () => {
     const exercises = pool(30);
     let s: AppState = createEmptyState();
     for (let i = 0; i < 30; i++) s = recordAnswer(s, `e${i}`, "good", T0 - 2 * DAY_MS);
     const a = composeReviewSession({ exercises, state: s, now: T0, seed: 42 });
     const b = composeReviewSession({ exercises, state: s, now: T0, seed: 42 });
     expect(a).toEqual(b);
-    expect(composeReviewSession({ exercises, state: s, now: T0, size: 3 }).steps).toHaveLength(10);
-    expect(composeReviewSession({ exercises, state: s, now: T0, size: 40 }).steps).toHaveLength(15);
+    expect(composeReviewSession({ exercises, state: s, now: T0, size: 3 }).steps).toHaveLength(8);
+    expect(composeReviewSession({ exercises, state: s, now: T0, size: 40 }).steps).toHaveLength(12);
   });
 });
 

@@ -9,9 +9,10 @@
 
 import type { Grade, ItemState } from "./srs";
 import { emptyStreak, type StreakState } from "./streak";
+import { DEFAULT_DAILY_GOAL, xpForGrade, type DailyXp } from "./xp";
 
 export const STORAGE_KEY = "app-revision:state";
-export const STATE_VERSION = 2 as const;
+export const STATE_VERSION = 3 as const;
 /** Nombre maximal de réponses conservées dans le journal. */
 export const MAX_ATTEMPTS = 5000;
 
@@ -21,6 +22,13 @@ export type Attempt = {
   at: number;
   correct: boolean;
   grade: Grade;
+};
+
+/** Programme intensif : date de départ et chapitres que l'on a choisi de sauter. */
+export type ProgramState = {
+  /** Timestamp ms du jour 1. */
+  startedAt: number;
+  skipped: string[];
 };
 
 export type AppState = {
@@ -37,6 +45,14 @@ export type AppState = {
    */
   validatedChapters: Record<string, number>;
   streak: StreakState;
+  /** Points d'expérience cumulés (jamais retirés). */
+  xp: number;
+  /** XP gagné par jour (YYYY-MM-DD), 30 derniers jours. */
+  daily: DailyXp;
+  /** Objectif quotidien en XP. */
+  dailyGoal: number;
+  /** Programme intensif en cours, `null` sinon. Lève les verrous de chapitres. */
+  program: ProgramState | null;
 };
 
 export function createEmptyState(): AppState {
@@ -47,6 +63,10 @@ export function createEmptyState(): AppState {
     lessonsRead: {},
     validatedChapters: {},
     streak: emptyStreak(),
+    xp: 0,
+    daily: {},
+    dailyGoal: DEFAULT_DAILY_GOAL,
+    program: null,
   };
 }
 
@@ -164,11 +184,13 @@ function numberMap(v: unknown): Record<string, number> {
  * Migrations :
  * - v1 → v2 : ajout de `validatedChapters` (vide ; la validation sera
  *   recalculée à la prochaine réponse via `settleValidation`).
+ * - v2 → v3 : ajout de `xp` (reconstitué depuis le journal pour ne pas repartir
+ *   de zéro), `daily`, `dailyGoal` et `program`.
  */
 export function migrate(raw: unknown): AppState {
   const empty = createEmptyState();
   if (!isRecord(raw)) return empty;
-  if (raw.version !== 1 && raw.version !== STATE_VERSION) return empty;
+  if (raw.version !== 1 && raw.version !== 2 && raw.version !== STATE_VERSION) return empty;
 
   const items: Record<string, ItemState> = {};
   if (isRecord(raw.items)) {
@@ -195,7 +217,20 @@ export function migrate(raw: unknown): AppState {
     };
   }
 
-  return { version: STATE_VERSION, items, attempts, lessonsRead, validatedChapters, streak };
+  const xp =
+    raw.version === STATE_VERSION && typeof raw.xp === "number" && raw.xp >= 0
+      ? raw.xp
+      : attempts.reduce((sum, a) => sum + xpForGrade(a.grade), 0);
+  const daily = numberMap(raw.daily);
+  const dailyGoal = typeof raw.dailyGoal === "number" && raw.dailyGoal > 0 ? raw.dailyGoal : DEFAULT_DAILY_GOAL;
+
+  let program: ProgramState | null = null;
+  if (isRecord(raw.program) && typeof raw.program.startedAt === "number") {
+    const skipped = Array.isArray(raw.program.skipped) ? raw.program.skipped.filter((x): x is string => typeof x === "string") : [];
+    program = { startedAt: raw.program.startedAt, skipped };
+  }
+
+  return { version: STATE_VERSION, items, attempts, lessonsRead, validatedChapters, streak, xp, daily, dailyGoal, program };
 }
 
 // ---------------------------------------------------------------------------

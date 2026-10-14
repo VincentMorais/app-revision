@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { FullContent } from "@/content/full";
 import { ExerciseView, KIND_LABELS } from "@/components/exercises/ExerciseView";
 import { LessonView } from "@/components/lesson/LessonView";
@@ -8,7 +8,8 @@ import { Button } from "@/components/ui/Button";
 import { grade as gradeAnswer, type Answer, type Verdict } from "@/lib/grading";
 import { seedFor } from "@/lib/random";
 import { composeReplaySession, type SessionPlan } from "@/lib/session";
-import { actions } from "@/lib/store";
+import { actions, useAppState } from "@/lib/store";
+import { xpForGrade, XP_SESSION_BONUS } from "@/lib/xp";
 import { ExplanationPanel } from "./ExplanationPanel";
 import { SessionSummary, type SessionResult } from "./SessionSummary";
 
@@ -31,6 +32,10 @@ export function SessionRunner({ plan, title, contenu, onExit }: { plan: SessionP
   const [verdict, setVerdict] = useState<Verdict | null>(null);
   const [results, setResults] = useState<SessionResult[]>([]);
   const [round, setRound] = useState(0);
+  const appState = useAppState();
+  // Photographie au lancement : sert à calculer ce que la séance a rapporté.
+  const [start] = useState(() => ({ xp: appState.xp, today: appState.daily }));
+  const bonusGiven = useRef(false);
 
   const steps = active.steps;
   const total = steps.length;
@@ -54,6 +59,18 @@ export function SessionRunner({ plan, title, contenu, onExit }: { plan: SessionP
     setStep((s) => s + 1);
   }, [missing, step]);
 
+  const finished = total > 0 && step >= total;
+  useEffect(() => {
+    // Bonus de fin de séance, une seule fois ; pas pour un simple « rejouer mes erreurs ».
+    if (!finished || bonusGiven.current || active.mode === "replay" || results.length === 0) return;
+    bonusGiven.current = true;
+    actions.bonusXp(XP_SESSION_BONUS);
+  }, [finished, active.mode, results.length]);
+
+  // Série de bonnes réponses en cours (se coupe à la première erreur).
+  let combo = 0;
+  for (let i = results.length - 1; i >= 0 && results[i].verdict.correct; i--) combo++;
+
   if (total === 0) {
     return (
       <Shell title={title} mode={active.mode} progress={0} onExit={onExit}>
@@ -71,6 +88,12 @@ export function SessionRunner({ plan, title, contenu, onExit }: { plan: SessionP
       <Shell title={title} mode={active.mode} progress={1} onExit={onExit}>
         <SessionSummary
           results={results}
+          startXp={start.xp}
+          startDaily={start.today}
+          xp={appState.xp}
+          daily={appState.daily}
+          dailyGoal={appState.dailyGoal}
+          bonus={active.mode !== "replay" && results.length > 0 ? XP_SESSION_BONUS : 0}
           onReplayErrors={
             wrongIds.length > 0
               ? () => {
@@ -100,7 +123,7 @@ export function SessionRunner({ plan, title, contenu, onExit }: { plan: SessionP
     // `missing` a déjà programmé le saut : on n'affiche rien en attendant.
     if (!lesson) return null;
     return (
-      <Shell title={title} mode={active.mode} progress={step / total} onExit={onExit} counter={`${step + 1}/${total}`}>
+      <Shell title={title} mode={active.mode} progress={step / total} onExit={onExit} counter={`${step + 1}/${total}`} combo={combo}>
         <LessonView
           key={lesson.id}
           lesson={lesson}
@@ -126,7 +149,7 @@ export function SessionRunner({ plan, title, contenu, onExit }: { plan: SessionP
   }
 
   return (
-    <Shell title={title} mode={active.mode} progress={step / total} onExit={onExit} counter={`${step + 1}/${total}`} kind={KIND_LABELS[exercise.kind]}>
+    <Shell title={title} mode={active.mode} progress={step / total} onExit={onExit} counter={`${step + 1}/${total}`} kind={KIND_LABELS[exercise.kind]} combo={combo}>
       <ExerciseView
         key={`${exercise.id}-${round}`}
         exercise={exercise}
@@ -134,7 +157,7 @@ export function SessionRunner({ plan, title, contenu, onExit }: { plan: SessionP
         verdict={verdict}
         onSubmit={submit}
       />
-      {verdict && <ExplanationPanel exercise={exercise} verdict={verdict} onContinue={next} continueLabel={step + 1 < total ? "Continuer" : "Voir le récapitulatif"} />}
+      {verdict && <ExplanationPanel exercise={exercise} verdict={verdict} xp={xpForGrade(verdict.grade)} combo={combo} onContinue={next} continueLabel={step + 1 < total ? "Continuer" : "Voir le récapitulatif"} />}
     </Shell>
   );
 }
@@ -145,6 +168,7 @@ function Shell({
   progress,
   counter,
   kind,
+  combo = 0,
   onExit,
   children,
 }: {
@@ -153,6 +177,7 @@ function Shell({
   progress: number;
   counter?: string;
   kind?: string;
+  combo?: number;
   onExit: () => void;
   children: React.ReactNode;
 }) {
@@ -170,10 +195,15 @@ function Shell({
               {kind ? ` · ${kind}` : ""}
             </p>
           </div>
-          {counter && <span className="text-xs text-fg-muted">{counter}</span>}
+          {combo >= 2 && (
+            <span key={combo} className="anim-pop rounded-full bg-warn/15 px-2 py-0.5 text-xs font-semibold text-warn tabular-nums" aria-label={`${combo} bonnes réponses d'affilée`}>
+              🔥 {combo}
+            </span>
+          )}
+          {counter && <span className="text-xs text-fg-muted tabular-nums">{counter}</span>}
         </div>
-        <div className="h-1 w-full rounded-full bg-bg-muted" role="progressbar" aria-valuenow={Math.round(progress * 100)} aria-valuemin={0} aria-valuemax={100}>
-          <div className="h-1 rounded-full bg-accent" style={{ width: `${Math.round(progress * 100)}%` }} />
+        <div className="h-1.5 w-full rounded-full bg-bg-muted" role="progressbar" aria-valuenow={Math.round(progress * 100)} aria-valuemin={0} aria-valuemax={100}>
+          <div className="h-1.5 rounded-full bg-accent transition-[width] duration-500" style={{ width: `${Math.round(progress * 100)}%` }} />
         </div>
       </header>
       <div className="flex-1 pb-4 pt-4">{children}</div>

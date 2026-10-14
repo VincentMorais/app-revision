@@ -10,6 +10,7 @@
  * `content/<parcours>/index.ts` et en extrait les métadonnées.
  */
 export const COURSE_DIRS = [
+  "bases",
   "java",
   "spring",
   "data",
